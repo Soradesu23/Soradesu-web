@@ -1,0 +1,3335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soradesu</title>
+  <meta name="description" content="Personal space of Soradesu.">
+  <meta name="theme-color" content="#050508">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+
+  <style>
+    @keyframes cursorAnim {
+      0.00% { cursor: url("data:image/webp;base64,UklGRoICAABXRUJQVlA4WAoAAAAQAAAAIwAAIwAAQUxQSGkAAAABDzD/ERHCTW3bUrMfn6HKwkAmCSgIkTKZoANJkYCDWJgMpAsdFWiI6H8kqKCGA7TQy2gV1DIScMQdw3/pjmZbhu5Uh65/Vpq+DMMsjHNYYfg+Qm5KmJIx/cKrevGqzryqWIwJLhsAsQIAVlA4IPIBAADQCgCdASokACQAPlEgjUQjoiEVVgA4BQS0AGibQCiUWaTupvWAegB+wHo4frl8AH7EejH/7U/GgBDCP+T5L9QDygPV3+zIeqtWLjTLE6UhXCGJkvYlDxC8ZqmWwArQwAD+9jRTo/a/us3WhwvxOwQjh6SH/9YSwf9/5fljsKvH6Iw8JdXgypAfWQtP5TwDaBxoYSmT8SNWZNIfxnw+AEyri5P47464qDeMQmgemec//mflAIQ7EeLqrreTaea3y6JcMhj8GY/+R5B6gEK3Xf+1czuVGdnASlP+2NmQDl1RnfefGo93/5neXO88m6ppub1//29+v5f6TW9iYxNGUF8j/GwqnUtFfzaKVWWLn4/JZf3pSLuz42C6fvb9li0RW2Af3mBUjXg9iLe+7Q08G3sl2qkP6TLifadsNbMD7xVv6rO6dhD+LTpm0MLXu+0ffb4lKldHIpG/3Xz/urv95sZezJndNmHfgp9PSH502NDJtxISE+fUFhrVm3SzwkxEtK9NIu2aLLCP30hKHveK2y2WCPKJAXaQ81nKKe4KxLOd2kHryd1W1JnF7b9PGVASk7zPvcb/rAXBh4Ko9K6WBtJcG/qFra37cuJgHyIjor3t486hErP61tSYzn9b///aCQcp/axb9J3V+vP7WLfpO7L2QAA=") 0 0, auto; }
+      50.00% { cursor: url("data:image/webp;base64,UklGRnQCAABXRUJQVlA4WAoAAAAQAAAAIwAAIwAAQUxQSGUAAAABDzD/ERHCUW3bbrLTh0FAsxAFBC8xkVlFGA6w0AwwY9jSLET0fwIiyEb56DAqWzSngLJFDpENKrTvOZVQsU1D9TEP1c31oGjSUPsRunyCCVPnp/Ft5hbceEWrcOugHU0Wqdl2DgBWUDgg6AEAANALAJ0BKiQAJAA+UR6NRKOhoRccBZg4BQS0ADuCkAYqPye8knfAP1V4ADyav1g+BD9af2H+AD9YP/ddRm6DwA0gTKXoAdCX0Of1uCYoo0oucnasjw5cWf9vnJhZ2gueZNsqddJoGuAA/vY0U6PvX3bTJ/GNCy0GZ3ph5SXljRH+HuPdLF2qgc49yBV5kYxBPd9im9e0cs2Zd5M9St5h+lWOL1uJNablZts5GFFINVU6AxKmkVdrQhmIP//zNKRV9wCaeMNkCMZQr3O4HPZAw0qifsvQAPrGY5sKG26p/ZUabJubvjPfhOpUv8K/016ofTqWHuYjgO91K3yd97UDfCL1/8xf/6H6by0iT4LP0zx2f/8MV/Tk6/nZLbplBI732C2zz+DD6YR/n0ync8gPyN3xLU6a72DeBs80gpjJvwW10etfkd3yqjRG9saUgxyn/cOqv2a2bpfnnF4498c16hNLpttQG3+WXWjJcI423x8fLo//2E/97PXU3v7zHOGtkv/LmmqnZEQYH79m98E4I+9kyMbj/9vcEHNsTf7V5k/kf/9PqQHhbJu8m90CEp5YzPain7ctYE3f9IQKTe/CRA+kv//9pSkSDFexq2fT5UJxX0OymTa+iW/P23uWWLdcK+mjoEBawAAA") 0 0, auto; }
+    }
+    html {
+      animation: cursorAnim 400ms step-end infinite;
+    }
+    :root {
+      --bg: #050508;
+      --text: #cbd5e1;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --glass-bg: rgba(18, 18, 24, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-hover: rgba(255, 255, 255, 0.2);
+      --pink: #ec4899;
+      --pink-glow: rgba(236, 72, 153, 0.4);
+      --pink-subtle: rgba(236, 72, 153, 0.12);
+      --green-discord: #23a55a;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --transition: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body, * {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+
+    *::-webkit-scrollbar,
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      background: transparent !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+      height: 100%;
+    }
+
+    body {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: inherit;
+    }
+
+    a[href], button {
+      cursor: pointer;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--pink);
+      outline-offset: 3px;
+    }
+
+    /* Fullscreen Parallax Background Video */
+    .bg-video-container {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      filter: none;
+      transform: scale(1);
+      transition: transform 0.6s ease-out;
+      will-change: transform;
+    }
+
+    .bg-vignette {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at center, rgba(5, 5, 8, 0.35) 0%, rgba(5, 5, 8, 0.72) 100%);
+      pointer-events: none;
+    }
+
+    /* Enter Screen Modal & Cinematic Exit */
+    .enter-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 8, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.65s ease,
+                  visibility 0.65s ease;
+      will-change: opacity, transform, filter;
+    }
+
+    .enter-screen.is-exiting {
+      opacity: 0;
+      transform: scale(1.08);
+      filter: blur(24px);
+      pointer-events: none;
+    }
+
+    .enter-screen.is-exiting .enter-icon-wrap {
+      transform: scale(3.2);
+      filter: blur(12px);
+      opacity: 0;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.55s ease,
+                  opacity 0.4s ease;
+    }
+
+    .enter-screen.is-exiting .enter-title {
+      transform: scale(1.15) translateY(-8px);
+      letter-spacing: 0.22em;
+      filter: blur(8px);
+      opacity: 0;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                  letter-spacing 0.55s ease,
+                  filter 0.55s ease,
+                  opacity 0.4s ease;
+    }
+
+    .enter-screen.is-exiting .enter-sub {
+      transform: translateY(12px);
+      letter-spacing: 0.28em;
+      filter: blur(6px);
+      opacity: 0;
+      transition: transform 0.5s ease,
+                  letter-spacing 0.5s ease,
+                  filter 0.5s ease,
+                  opacity 0.35s ease;
+    }
+
+    .enter-screen.dismissed {
+      display: none !important;
+    }
+
+    /* Shockwave Lens Flash */
+    .enter-flash {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: radial-gradient(circle at center, rgba(236, 72, 153, 0.5) 0%, rgba(236, 72, 153, 0.12) 40%, transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .enter-flash.active {
+      opacity: 1;
+      transform: scale(1.6);
+    }
+
+    /* Cinematic Hero Profile Entrance Stagger */
+    @keyframes heroAvatarPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(24px);
+        filter: blur(12px);
+      }
+      60% {
+        transform: scale(1.08) translateY(-4px);
+        filter: blur(0px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0px);
+      }
+    }
+
+    @keyframes heroItemSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+        filter: blur(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
+      }
+    }
+
+    @keyframes reticleBurst {
+      0% {
+        transform: scale(0.3) rotate(-120deg);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.25) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.85;
+      }
+    }
+
+    .hero-profile-box.hero-entering .hero-avatar-wrap {
+      animation: heroAvatarPop 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-profile-box.hero-entering .ar-reticle-ring {
+      animation: reticleBurst 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-profile-box.hero-entering .kaomoji-box {
+      animation: heroItemSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+    }
+
+    .hero-profile-box.hero-entering .hero-name-row {
+      animation: heroItemSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
+    }
+
+    .hero-profile-box.hero-entering .hero-bio {
+      animation: heroItemSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
+    }
+
+    .hero-profile-box.hero-entering .social-pill-btn:nth-child(1) {
+      animation: heroItemSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+    }
+    .hero-profile-box.hero-entering .social-pill-btn:nth-child(2) {
+      animation: heroItemSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.48s both;
+    }
+    .hero-profile-box.hero-entering .social-pill-btn:nth-child(3) {
+      animation: heroItemSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.54s both;
+    }
+
+    .enter-icon-wrap {
+      margin-bottom: 16px;
+      animation: floatBreath 2.6s ease-in-out infinite alternate;
+      color: var(--pink);
+    }
+
+    .enter-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      color: #ffffff;
+      text-shadow: 0 0 24px rgba(236, 72, 153, 0.4);
+    }
+
+    .enter-sub {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @keyframes floatBreath {
+      0% { transform: translateY(0) scale(0.96); opacity: 0.8; }
+      100% { transform: translateY(-8px) scale(1.04); opacity: 1; }
+    }
+
+    /* Persistent HUD Controls & Volume Slider */
+    .hud-audio-wrap {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 100;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-audio-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+
+    .hud-audio-btn:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+      background: var(--glass-hover);
+      box-shadow: 0 0 16px var(--pink-glow);
+    }
+
+    .hud-audio-btn.is-playing {
+      border-color: var(--pink);
+      color: #ffffff;
+      animation: audioPulseRing 2.2s infinite ease-out;
+    }
+
+    .hud-volume-panel {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      max-width: 0;
+      padding: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition: max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, padding 0.3s ease, border-color 0.25s ease;
+    }
+
+    .hud-audio-wrap.is-open .hud-volume-panel,
+    .hud-audio-wrap:hover .hud-volume-panel {
+      opacity: 1;
+      max-width: 180px;
+      padding: 0 14px;
+      pointer-events: auto;
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .hud-volume-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 85px;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .hud-volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 10px var(--pink-glow);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .hud-volume-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .hud-volume-slider::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--pink);
+      border: none;
+      box-shadow: 0 0 10px var(--pink-glow);
+      cursor: pointer;
+    }
+
+    .hud-volume-val {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 32px;
+      text-align: right;
+    }
+
+    @keyframes audioPulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.5), 0 0 16px var(--pink-glow); }
+      70% { box-shadow: 0 0 0 8px rgba(236, 72, 153, 0), 0 0 20px var(--pink-glow); }
+      100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0), 0 0 16px var(--pink-glow); }
+    }
+
+    .hud-bottom-bar {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+      font-family: var(--font-mono);
+      pointer-events: none;
+    }
+
+    .hud-clock {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+
+    .tech-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 3px 10px;
+      border-radius: 6px;
+      transition: all var(--transition);
+    }
+
+    .tech-pill:hover {
+      color: var(--pink);
+      border-color: rgba(236,72,153,0.4);
+      background: var(--pink-subtle);
+      box-shadow: 0 0 10px var(--pink-glow);
+    }
+
+    .hud-nav-cue {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      color: var(--text-dim);
+      background: none;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: opacity 0.35s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hud-nav-cue:hover {
+      transform: translateX(-50%) translateY(2px);
+      color: var(--pink);
+    }
+
+    .scroll-mouse-capsule {
+      width: 18px;
+      height: 28px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      background: rgba(18, 18, 24, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      padding-top: 4px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hud-nav-cue:hover .scroll-mouse-capsule {
+      border-color: var(--pink);
+      box-shadow: 0 0 12px var(--pink-glow);
+    }
+
+    .scroll-wheel-dot {
+      width: 2.5px;
+      height: 5.5px;
+      border-radius: 3px;
+      background: var(--pink);
+      box-shadow: 0 0 6px var(--pink);
+      animation: mouseWheelGlide 1.9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+
+    @keyframes mouseWheelGlide {
+      0% {
+        opacity: 0;
+        transform: translateY(0);
+      }
+      20% {
+        opacity: 1;
+      }
+      70% {
+        opacity: 1;
+        transform: translateY(9px);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+    }
+
+    .scroll-cue-label {
+      font-family: var(--font-mono);
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--text-muted);
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .hud-nav-cue:hover .scroll-cue-label {
+      color: var(--pink);
+    }
+
+    /* Spatial motion graphics for cybernetic telemetry depth */
+    .ar-spatial-grid {
+      position: fixed;
+      bottom: -15vh;
+      left: -20vw;
+      right: -20vw;
+      height: 60vh;
+      background-image: 
+        linear-gradient(to right, rgba(236, 72, 153, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      transform: perspective(600px) rotateX(68deg);
+      transform-origin: bottom center;
+      pointer-events: none;
+      z-index: -1;
+      mask-image: radial-gradient(ellipse 65% 55% at 50% 50%, black 15%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 50%, black 15%, transparent 75%);
+      animation: gridFlow 24s linear infinite;
+      will-change: transform;
+    }
+
+    @keyframes gridFlow {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 400px; }
+    }
+
+
+
+    /* AR Optical Reticle & Telemetry */
+    .ar-reticle-ring {
+      position: absolute;
+      inset: -22px;
+      border-radius: 50%;
+      border: 1px dashed rgba(236, 72, 153, 0.45);
+      animation: arRotate 18s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .ar-reticle-ring::before {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-top-color: var(--pink);
+      border-bottom-color: #38bdf8;
+      animation: arRotateReverse 10s linear infinite;
+    }
+
+    @keyframes arRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes arRotateReverse {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .ar-reticle-corners {
+      position: absolute;
+      inset: -16px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .ar-corner {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-color: rgba(255, 255, 255, 0.4);
+      border-style: solid;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ar-corner.tl { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; }
+    .ar-corner.tr { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; }
+    .ar-corner.bl { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; }
+    .ar-corner.br { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
+
+    .hero-avatar-wrap:hover .ar-corner {
+      border-color: var(--pink);
+      transform: scale(0.92);
+      filter: drop-shadow(0 0 6px var(--pink));
+    }
+
+
+
+    /* Full-page vertical snap layout */
+    .slide-section {
+      min-height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      position: relative;
+    }
+
+    /* Spatial Motion Reveal & Glide Transitions */
+    .slide-section .hero-profile-box,
+    .slide-section .about-slide-box,
+    .slide-section .activity-slide-box {
+      opacity: 0;
+      transform: translateY(32px) scale(0.96);
+      filter: blur(5px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .slide-section.is-visible .hero-profile-box,
+    .slide-section.is-visible .about-slide-box,
+    .slide-section.is-visible .activity-slide-box {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0px);
+    }
+
+    /* Slide 1: Primary profile */
+    .hero-profile-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 580px;
+      width: 100%;
+    }
+
+    .kaomoji-box {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9);
+      margin-bottom: 16px;
+      min-height: 28px;
+      letter-spacing: 0.12em;
+    }
+
+    /* Spatial 3D Tilt Card & Holographic Glare */
+    .tilt-card {
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.16s ease-out, box-shadow 0.25s ease-out;
+    }
+
+    .tilt-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.16) 0%, rgba(236, 72, 153, 0.1) 40%, transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+    }
+
+    .tilt-card:hover::after {
+      opacity: 1;
+    }
+
+    .hero-avatar-wrap {
+      position: relative;
+      width: 98px;
+      height: 98px;
+      margin-bottom: 22px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+      animation: floatAvatar 4.2s ease-in-out infinite;
+    }
+
+    .hero-avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -14px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, rgba(56, 189, 248, 0.2) 50%, transparent 75%);
+      z-index: 0;
+      filter: blur(14px);
+      animation: pulseAura 3.6s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes floatAvatar {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(1.2deg); }
+    }
+
+    @keyframes pulseAura {
+      0% { transform: scale(0.9); opacity: 0.4; }
+      100% { transform: scale(1.15); opacity: 0.95; }
+    }
+
+    .hero-avatar-img {
+      width: 98px;
+      height: 98px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-avatar-decor {
+      position: absolute;
+      inset: -14%;
+      width: 128%;
+      height: 128%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-presence-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #71717a;
+      border: 3px solid #050508;
+      z-index: 3;
+      transition: background-color var(--transition);
+    }
+
+    .hero-name-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
+    }
+
+    .hero-name {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.95), 0 0 3px rgba(0, 0, 0, 0.95);
+      transition: color var(--transition);
+    }
+
+    .hero-name:hover {
+      color: var(--pink);
+      text-shadow: 0 0 24px var(--pink-glow);
+    }
+
+    .badges-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      background: rgba(35, 36, 40, 0.75);
+      border: 1px solid var(--glass-border);
+      border-radius: 9999px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .badge-img {
+      width: auto;
+      height: 18px;
+      max-width: 20px;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+    }
+
+    .badge-img:hover {
+      transform: scale(1.25);
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
+    }
+
+    .badge-more-pill {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.75);
+      font-family: var(--font-mono);
+      margin-left: 1px;
+      letter-spacing: -0.02em;
+    }
+
+    .widget-name-badges-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+    }
+
+    .widget-badges-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      padding: 2px 8px;
+    }
+
+    .badge-mini-img {
+      width: auto;
+      height: 14px;
+      max-width: 16px;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      transition: transform 0.15s ease;
+    }
+
+    .badge-mini-img:hover {
+      transform: scale(1.2);
+    }
+
+    .badge-mini-more {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    .clan-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-bio {
+      font-size: 15px;
+      color: var(--text-muted);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.95);
+      margin-bottom: 26px;
+      max-width: 440px;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.24s,
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.24s;
+    }
+
+    .hero-socials-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.32s,
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
+    }
+
+    .slide-section.is-visible .hero-avatar-wrap,
+    .slide-section.is-visible .hero-name-row,
+    .slide-section.is-visible .hero-bio,
+    .slide-section.is-visible .hero-socials-row {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .social-pill-btn {
+      min-height: 44px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      transition: all var(--transition);
+    }
+
+    .social-pill-btn:hover {
+      background: var(--glass-hover);
+      border-color: rgba(236, 72, 153, 0.5);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 24px rgba(236, 72, 153, 0.35);
+    }
+
+    .social-icon-img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    /* Slide 2: About and guilds */
+    .about-slide-box {
+      max-width: 820px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      color: var(--text);
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .sub-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.14);
+      margin-bottom: 12px;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+    }
+
+    .slide-section.is-visible .sub-divider {
+      transform: scaleX(1);
+    }
+
+    .about-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+    }
+
+    .slide-section.is-visible .about-bullets {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-bullets li::before {
+      content: '• ';
+      color: var(--pink);
+      font-weight: 700;
+    }
+
+    .widgets-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    }
+
+    .slide-section.is-visible .widgets-grid {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .widget-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 18px 20px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all var(--transition);
+    }
+
+    .widget-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: var(--glass-hover);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .widget-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .widget-avatar-box {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+
+    .widget-avatar-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .widget-details {
+      min-width: 0;
+    }
+
+    .widget-title {
+      font-size: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .widget-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-green-join {
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 10px;
+      background: var(--green-discord);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: filter var(--transition);
+    }
+
+    .btn-green-join:hover {
+      filter: brightness(1.15);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(35, 165, 90, 0.45);
+    }
+
+    /* Roblox showcase module */
+    .roblox-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 0;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.36s,
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.36s,
+                  border-color 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+
+    .slide-section.is-visible .roblox-card {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .roblox-card:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 20px 50px rgba(56, 189, 248, 0.18);
+    }
+
+    /* Ambient Glow Behind Character */
+    .roblox-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -20px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(236, 72, 153, 0.12) 45%, transparent 70%);
+      pointer-events: none;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    /* Banner Header */
+    .roblox-banner-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 22px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, rgba(56, 189, 248, 0.08) 50%, rgba(236, 72, 153, 0.04) 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      position: relative;
+      z-index: 2;
+    }
+
+    .roblox-banner-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .roblox-brand-icon {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    }
+
+    .roblox-brand-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: var(--font-mono);
+    }
+
+    .roblox-verified-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      font-family: var(--font-mono);
+    }
+
+    .roblox-view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(236, 72, 153, 0.25));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .roblox-view-btn:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.45), rgba(236, 72, 153, 0.45));
+      border-color: rgba(56, 189, 248, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
+    }
+
+    /* Main Body Grid */
+    .roblox-main-body {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 20px;
+      padding: 20px 24px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Left Info Column */
+    .roblox-info-pane {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .roblox-avatar-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .roblox-headshot-box {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(135deg, #38bdf8, #ec4899);
+      flex-shrink: 0;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+    }
+
+    .roblox-headshot-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #181920;
+      display: block;
+    }
+
+    .roblox-online-indicator {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #22c55e;
+      border: 2px solid #181920;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    .roblox-identity {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .roblox-display-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .roblox-username-sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .roblox-bio-quote {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.5;
+      font-style: italic;
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 2px solid #38bdf8;
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* Social Stats Pills */
+    .roblox-stats-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .roblox-stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .roblox-stat-num {
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .roblox-stat-label {
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    /* Tag Pills */
+    .roblox-tags-strip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .roblox-mini-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+    }
+
+    /* Right Character Showcase Pod */
+    .roblox-char-showcase {
+      position: relative;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .roblox-char-stage {
+      position: relative;
+      width: 175px;
+      height: 195px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      transition: transform 0.12s ease-out;
+      will-change: transform;
+    }
+
+    .roblox-pod-glow {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(56, 189, 248, 0.5) 0%, rgba(236, 72, 153, 0.3) 40%, transparent 70%);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .roblox-pod-pedestal {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%) rotateX(72deg);
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(56, 189, 248, 0.55);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.3), inset 0 0 12px rgba(236, 72, 153, 0.25);
+      pointer-events: none;
+      animation: spinPedestalRing 14s linear infinite;
+    }
+
+    @keyframes spinPedestalRing {
+      from { transform: translateX(-50%) rotateX(72deg) rotate(0deg); }
+      to { transform: translateX(-50%) rotateX(72deg) rotate(360deg); }
+    }
+
+    .roblox-character-figure {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(56, 189, 248, 0.25));
+      animation: charGentleBob 4.5s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    @keyframes charGentleBob {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    /* Slide 3: Live discord activity */
+    .activity-slide-box {
+      max-width: 700px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .big-activity-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(14px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
+    }
+
+    .slide-section.is-visible .big-activity-card {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .activity-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .activity-chip {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(236, 72, 153, 0.15);
+      color: var(--pink);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .activity-chip.game {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+    }
+
+    .activity-main-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .activity-art-wrap {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .activity-art {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: rgba(255, 255, 255, 0.05);
+      flex-shrink: 0;
+      animation: grooveDance 1.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite,
+                 groovePulseAura 2.2s ease-in-out infinite alternate;
+      transform-origin: center bottom;
+      transition: transform 0.25s ease;
+      will-change: transform;
+      position: relative;
+      z-index: 2;
+    }
+
+    .activity-art:hover {
+      animation: grooveDanceFast 0.85s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite,
+                 groovePulseAura 1.4s ease-in-out infinite alternate;
+      cursor: pointer;
+    }
+
+    .art-pulse-ring {
+      position: absolute;
+      inset: -5px;
+      border-radius: 18px;
+      border: 1.5px dashed rgba(236, 72, 153, 0.38);
+      pointer-events: none;
+      animation: grooveRingSpin 10s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes grooveDance {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+      }
+      18% {
+        transform: translateY(-7px) rotate(-4.5deg) scale(1.05);
+      }
+      35% {
+        transform: translateY(2px) rotate(3deg) scale(0.97);
+      }
+      52% {
+        transform: translateY(-8px) rotate(5deg) scale(1.06);
+      }
+      70% {
+        transform: translateY(2px) rotate(-3.5deg) scale(0.98);
+      }
+      85% {
+        transform: translateY(-4px) rotate(-1.5deg) scale(1.03);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+      }
+    }
+
+    @keyframes grooveDanceFast {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(1.02);
+      }
+      25% {
+        transform: translateY(-9px) rotate(-6deg) scale(1.08);
+      }
+      50% {
+        transform: translateY(3px) rotate(0deg) scale(0.96);
+      }
+      75% {
+        transform: translateY(-9px) rotate(6deg) scale(1.08);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg) scale(1.02);
+      }
+    }
+
+    @keyframes groovePulseAura {
+      0% {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(236, 72, 153, 0.2);
+      }
+      50% {
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.5);
+      }
+      100% {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 22px rgba(236, 72, 153, 0.55);
+      }
+    }
+
+    @keyframes grooveRingSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .activity-equalizer-bars {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 16px;
+    }
+
+    .eq-bar {
+      width: 3px;
+      border-radius: 2px;
+      background: var(--pink);
+      animation: eqBounce 0.8s ease-in-out infinite alternate;
+    }
+
+    .eq-bar.bar1 { height: 6px; animation-delay: 0.1s; }
+    .eq-bar.bar2 { height: 14px; animation-delay: 0.35s; background: #38bdf8; }
+    .eq-bar.bar3 { height: 9px; animation-delay: 0.2s; }
+    .eq-bar.bar4 { height: 15px; animation-delay: 0.45s; background: #38bdf8; }
+
+    @keyframes eqBounce {
+      0% { height: 4px; opacity: 0.6; }
+      100% { height: 16px; opacity: 1; }
+    }
+
+    .activity-text-info {
+      min-width: 0;
+    }
+
+    .activity-song-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .activity-song-artist {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .activity-song-album {
+      font-size: 12px;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .activity-scrub-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .activity-scrub-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--pink);
+      transition: width 0.3s ease;
+    }
+
+    .activity-time-stamps {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      margin-top: 6px;
+    }
+
+    .idle-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 24px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .back-to-top-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .btn-back-to-top {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      min-height: 44px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      transition: all var(--transition);
+    }
+
+    .btn-back-to-top:hover {
+      color: #ffffff;
+      border-color: var(--pink);
+      box-shadow: 0 0 14px var(--pink-glow);
+    }
+
+    /* Toast */
+    .toast-pill {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #1b1b24;
+      border: 1px solid var(--glass-border);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 200;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .toast-pill.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .defense-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(5, 5, 8, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(0.92);
+    }
+
+    .defense-modal.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    .defense-card {
+      max-width: 520px;
+      width: 100%;
+      background: radial-gradient(circle at 50% 0%, rgba(35, 18, 26, 0.98), rgba(12, 12, 18, 0.98));
+      border: 1px solid rgba(239, 68, 68, 0.55);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 45px rgba(239, 68, 68, 0.35), inset 0 0 25px rgba(239, 68, 68, 0.1);
+      border-radius: 22px;
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      animation: modalGlitchShake 0.45s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .defense-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ef4444, #ec4899, #38bdf8, #ef4444);
+      background-size: 300% 100%;
+      animation: laserBorderRun 3s linear infinite;
+    }
+
+    @keyframes laserBorderRun {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 300% 0%; }
+    }
+
+    @keyframes modalGlitchShake {
+      0% { transform: translate(0, 0) scale(0.95); }
+      15% { transform: translate(-4px, 3px) scale(1.02); }
+      30% { transform: translate(4px, -3px) scale(0.99); }
+      45% { transform: translate(-3px, -2px) scale(1.01); }
+      60% { transform: translate(3px, 2px) scale(1); }
+      75% { transform: translate(-1px, -1px); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    .defense-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .defense-alert-pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .defense-radar-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 10px #ef4444;
+      position: relative;
+    }
+
+    .defense-radar-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1.5px solid #ef4444;
+      animation: radarPulse 1.4s ease-out infinite;
+    }
+
+    @keyframes radarPulse {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+
+    .defense-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.14);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .defense-close-btn {
+      font-size: 22px;
+      line-height: 1;
+      color: var(--text-dim);
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: color 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .defense-close-btn:hover {
+      color: #ffffff;
+      transform: scale(1.15);
+    }
+
+    .defense-avatar-scene {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: -2px 0 2px 0;
+    }
+
+    .ascii-troll-skull {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #f87171;
+      text-shadow: 0 0 12px rgba(239, 68, 68, 0.7), 0 0 20px rgba(236, 72, 153, 0.4);
+      animation: floatBreath 2.2s ease-in-out infinite alternate;
+      user-select: text;
+    }
+
+    .defense-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: #ffffff;
+      text-align: center;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+    }
+
+    .defense-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: -6px;
+      line-height: 1.4;
+    }
+
+    .defense-terminal {
+      background: rgba(8, 9, 14, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-family: var(--font-mono);
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .term-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .term-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .term-tag.red {
+      color: #f87171;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .term-tag.blue {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .term-section {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 8px 10px;
+      border-radius: 8px;
+      border-left: 2px solid #ef4444;
+    }
+
+    .term-label {
+      color: #f87171;
+      font-weight: 700;
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .term-val.highlight {
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .term-sub {
+      color: #38bdf8;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .term-grid-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .term-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 7px 9px;
+      border-radius: 7px;
+      min-width: 0;
+    }
+
+    .term-val-mono {
+      color: #e2e8f0;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .term-footer-warning {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10.5px;
+      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px dashed rgba(239, 68, 68, 0.3);
+      padding: 6px 10px;
+      border-radius: 6px;
+      line-height: 1.3;
+    }
+
+    .defense-btn {
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.35), rgba(236, 72, 153, 0.35));
+      border: 1px solid rgba(239, 68, 68, 0.55);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      margin-top: 2px;
+      box-shadow: 0 4px 18px rgba(239, 68, 68, 0.3);
+    }
+
+    .defense-btn:hover {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.6), rgba(236, 72, 153, 0.6));
+      border-color: #ef4444;
+      box-shadow: 0 0 26px rgba(239, 68, 68, 0.6);
+      transform: translateY(-2px) scale(1.01);
+    }
+
+    /* Mobile Adaptations */
+
+    @media (max-width: 768px) {
+      .hero-name {
+        font-size: 30px;
+      }
+      .widgets-grid {
+        grid-template-columns: 1fr;
+      }
+      .roblox-main-body {
+        grid-template-columns: 1fr;
+      }
+      .roblox-char-showcase {
+        height: 190px;
+      }
+      .hud-bottom-bar {
+        font-size: 11px;
+      }
+      .big-activity-card {
+        padding: 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .slide-section .hero-profile-box,
+      .slide-section .about-slide-box,
+      .slide-section .activity-slide-box,
+      .slide-section .hero-avatar-wrap,
+      .slide-section .hero-name-row,
+      .slide-section .hero-bio,
+      .slide-section .hero-socials-row,
+      .slide-section .about-bullets,
+      .slide-section .widgets-grid,
+      .slide-section .roblox-card,
+      .slide-section .sub-divider,
+      .slide-section .big-activity-card {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+      .bg-video {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Parallax Background Video -->
+  <div class="bg-video-container">
+    <video id="bgVideo" class="bg-video" width="1920" height="1080" autoplay loop muted playsinline preload="auto">
+      <source src="bg_video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div id="bgVignette" class="bg-vignette"></div>
+  <div class="ar-spatial-grid" aria-hidden="true"></div>
+
+  <!-- Enter Screen Gate -->
+  <div id="enterScreen" class="enter-screen" role="dialog" aria-modal="true" aria-label="Klik untuk masuk">
+    <div class="enter-icon-wrap" aria-hidden="true">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+    </div>
+    <div class="enter-title">click to enter</div>
+    <div class="enter-sub">soradesu ^^</div>
+  </div>
+  <div id="enterFlash" class="enter-flash" aria-hidden="true"></div>
+
+  <!-- Persistent HUD Audio Control & Volume Slider -->
+  <div class="hud-audio-wrap" id="hudAudioWrap">
+    <button id="hudAudioBtn" class="hud-audio-btn" type="button" aria-label="Mute atau nyalakan audio" title="Audio & volume">
+      <svg id="hudSpeakerIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="1" y1="1" x2="23" y2="23"></line>
+        <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
+        <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"></path>
+        <line x1="12" y1="19" x2="12" y2="23"></line>
+        <line x1="8" y1="23" x2="16" y2="23"></line>
+      </svg>
+    </button>
+    <div class="hud-volume-panel" id="hudVolumePanel">
+      <input type="range" id="hudVolumeSlider" class="hud-volume-slider" min="0" max="1" step="0.01" value="1" aria-label="Volume audio">
+      <span class="hud-volume-val" id="hudVolumeVal">100%</span>
+    </div>
+  </div>
+
+
+
+  <!-- Footer Telemetry HUD -->
+  <div class="hud-bottom-bar">
+    <span>&copy; <span id="currentYear"></span> Soradesu</span>
+    <span>|</span>
+    <span>Indonesia</span>
+    <span>|</span>
+    <span id="liveClock" class="hud-clock"></span>
+  </div>
+
+  <!-- Interactive Cybernetic Scroll Cue -->
+  <button class="hud-nav-cue" id="hudNavCue" aria-label="Scroll to next slide">
+    <div class="scroll-mouse-capsule" aria-hidden="true">
+      <span class="scroll-wheel-dot"></span>
+    </div>
+    <span class="scroll-cue-label">SCROLL</span>
+  </button>
+
+  <!-- Slide 1: Primary Profile -->
+  <section id="slide1" class="slide-section is-visible" aria-label="Profil Utama">
+    <div class="hero-profile-box">
+      <div id="kaomojiWidget" class="kaomoji-box">&gt; _ &lt;</div>
+
+      <!-- Avatar with Decoration & AR Reticle -->
+      <div class="hero-avatar-wrap">
+        <!-- AR VR Optical Reticle -->
+        <div class="ar-reticle-ring" aria-hidden="true"></div>
+        <div class="ar-reticle-corners" aria-hidden="true">
+          <span class="ar-corner tl"></span>
+          <span class="ar-corner tr"></span>
+          <span class="ar-corner bl"></span>
+          <span class="ar-corner br"></span>
+        </div>
+
+
+        <img id="userAvatar" class="hero-avatar-img" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar Soradesu" width="98" height="98">
+        <img src="avatar_decoration.png" class="hero-avatar-decor" alt="" aria-hidden="true" width="125" height="125">
+        <span id="discordStatusIndicator" class="hero-presence-dot" title="Offline" aria-label="Status: Offline"></span>
+      </div>
+
+      <!-- Display Name & Badges Pill -->
+      <div class="hero-name-row">
+        <h1 id="displayName" class="hero-name">Soradesu</h1>
+        <div class="badges-pill" aria-label="Badges">
+          <span id="clanTag" class="clan-tag" style="display: none;"></span>
+          <img src="badge_real_sword.png" class="badge-img" alt="Game Time" title="Game Time: Committed" width="18" height="18">
+          <img src="badge_real_monitor.png" class="badge-img" alt="Streamer" title="Streamer: Breakout" width="18" height="18">
+          <img src="badge_real_controller.png" class="badge-img" alt="Game Variety" title="Game Variety: Dabbler" width="18" height="18">
+          <img src="badge_real_age6.png" class="badge-img" alt="Account Age" title="6 Years Active" width="18" height="18">
+          <img src="badge_real_hash.png" class="badge-img" alt="Origin" title="Originally Known As" width="18" height="18">
+          <img src="badge_real_wreath.png" class="badge-img" alt="Quest" title="Completed a Quest" width="18" height="18">
+          <img src="badge_real_plus1.png" class="badge-img" alt="More Badges" title="More Badges (+1)" width="16" height="18">
+        </div>
+      </div>
+
+      <!-- Bio / Subtitle -->
+      <p id="heroBioText" class="hero-bio">
+        Independent builder, occasional gamer, and hobbyist scripter in JavaScript/Python ^^
+      </p>
+
+      <!-- Social Links Row -->
+      <div class="hero-socials-row">
+        <a href="https://discord.com/users/754194203302690846" target="_blank" rel="noopener noreferrer" class="social-pill-btn" aria-label="Profil Discord">
+          <img src="discord_badge.png" class="social-icon-img" alt="" aria-hidden="true" width="20" height="20">
+          <span>Discord</span>
+        </a>
+
+        <a href="https://steamcommunity.com/id/soradesu23/" target="_blank" rel="noopener noreferrer" class="social-pill-btn" aria-label="Profil Steam">
+          <img src="steam_badge.png" class="social-icon-img" alt="" aria-hidden="true" width="20" height="20">
+          <span>Steam</span>
+        </a>
+
+        <a href="https://www.roblox.com/users/2507529929/profile" target="_blank" rel="noopener noreferrer" class="social-pill-btn" aria-label="Profil Roblox">
+          <img src="roblox_icon.svg" class="social-icon-img" alt="" aria-hidden="true" width="20" height="20">
+          <span>Roblox</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 2: About & Discord -->
+  <section id="slide2" class="slide-section" aria-label="Tentang Saya & Discord">
+    <div class="about-slide-box">
+      <div>
+        <h2 class="section-title">About me</h2>
+        <div class="section-subtitle">Hello, I'm Soradesu,^^</div>
+        <div class="sub-divider"></div>
+        <ul class="about-bullets">
+          <li>Coding bots, web projects, and exploring game reverse-engineering.</li>
+        </ul>
+        <div class="tech-pills-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Lua</span>
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">PAWN</span>
+        </div>
+      </div>
+
+      <!-- Live Widgets Grid -->
+      <div class="widgets-grid">
+        <!-- Widget 1: Discord Presence Card -->
+        <div class="widget-card tilt-card">
+          <div class="widget-left">
+            <div class="widget-avatar-box">
+              <img id="widgetAvatar" class="widget-avatar-img" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar" width="48" height="48">
+            </div>
+            <div class="widget-details">
+              <div class="widget-name-badges-row">
+                <div id="widgetName" class="widget-title">hamsskuy</div>
+                <div class="widget-badges-mini" aria-label="Badges">
+                  <img src="badge_real_sword.png" class="badge-mini-img" alt="Game Time" title="Game Time: Committed" width="16" height="14">
+                  <img src="badge_real_monitor.png" class="badge-mini-img" alt="Streamer" title="Streamer: Breakout" width="16" height="14">
+                  <img src="badge_real_controller.png" class="badge-mini-img" alt="Game Variety" title="Game Variety: Dabbler" width="16" height="14">
+                  <img src="badge_real_age6.png" class="badge-mini-img" alt="Account Age" title="6 Years Active" width="16" height="14">
+                  <img src="badge_real_hash.png" class="badge-mini-img" alt="Origin" title="Originally Known As" width="16" height="14">
+                  <img src="badge_real_wreath.png" class="badge-mini-img" alt="Quest" title="Completed a Quest" width="16" height="14">
+                  <img src="badge_real_plus1.png" class="badge-mini-img" alt="More Badges" title="More Badges (+1)" width="14" height="14">
+                </div>
+              </div>
+              <div id="widgetActivity" class="widget-sub">Online</div>
+            </div>
+          </div>
+          <a href="https://discord.com/users/754194203302690846" target="_blank" rel="noopener noreferrer" class="btn-green-join">
+            Profile
+          </a>
+        </div>
+
+        <!-- Widget 2: Server Invite Card -->
+        <div class="widget-card tilt-card">
+          <div class="widget-left">
+            <img src="guild_icon.png" class="widget-avatar-img" alt="Guild Icon" width="48" height="48" style="border-radius: 12px;">
+            <div class="widget-details">
+              <div class="widget-title">BAPAK KAU | ROBLOX</div>
+              <div class="widget-sub">
+                <span id="guildOnlineCount">23</span> Online &bull; <span id="guildMemberCount">76</span> Members
+              </div>
+            </div>
+          </div>
+          <a href="https://discord.gg/NhqN3hErGw" target="_blank" rel="noopener noreferrer" class="btn-green-join">
+            Join
+          </a>
+        </div>
+      </div>
+
+      <!-- Roblox Profile Showcase Card -->
+      <div class="roblox-card tilt-card" id="robloxCard">
+        <div class="roblox-banner-bar">
+          <div class="roblox-banner-brand">
+            <img src="roblox_icon.svg" class="roblox-brand-icon" alt="" aria-hidden="true" width="18" height="18">
+            <span class="roblox-brand-title">ROBLOX</span>
+            <span class="roblox-verified-chip">VERIFIED PROFILE</span>
+          </div>
+          <a href="https://www.roblox.com/users/2507529929/profile" target="_blank" rel="noopener noreferrer" class="roblox-view-btn" aria-label="Buka Profil Roblox">
+            <span>View Profile</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+
+        <div class="roblox-main-body">
+          <!-- Left: User Info, Stats, Bio -->
+          <div class="roblox-info-pane">
+            <div class="roblox-avatar-heading">
+              <div class="roblox-headshot-box">
+                <img src="roblox_avatar_headshot.png" alt="Awasjatuh Avatar" class="roblox-headshot-img" width="52" height="52">
+                <span class="roblox-online-indicator" title="Active Player"></span>
+              </div>
+              <div class="roblox-identity">
+                <h3 class="roblox-display-title">Awasjatuh</h3>
+                <span class="roblox-username-sub">@ilhammp12</span>
+              </div>
+            </div>
+
+            <p class="roblox-bio-quote">
+              &ldquo;I am a man who places great importance on the actions taken by health experts.&rdquo;
+            </p>
+
+            <!-- Social Stats Counter Pills -->
+            <div class="roblox-stats-strip">
+              <div class="roblox-stat-badge">
+                <span class="roblox-stat-num">40</span>
+                <span class="roblox-stat-label">Friends</span>
+              </div>
+              <div class="roblox-stat-badge">
+                <span class="roblox-stat-num">2</span>
+                <span class="roblox-stat-label">Followers</span>
+              </div>
+              <div class="roblox-stat-badge">
+                <span class="roblox-stat-num">1</span>
+                <span class="roblox-stat-label">Following</span>
+              </div>
+            </div>
+
+            <!-- Avatar Tags -->
+            <div class="roblox-tags-strip">
+              <span class="roblox-mini-tag">ID: 2507529929</span>
+              <span class="roblox-mini-tag">R6 Avatar</span>
+            </div>
+          </div>
+
+          <!-- Right: Full-Body Character Showcase -->
+          <div class="roblox-char-showcase">
+            <div class="roblox-char-stage">
+              <div class="roblox-pod-glow" aria-hidden="true"></div>
+              <div class="roblox-pod-pedestal" aria-hidden="true"></div>
+              <img src="roblox_avatar_full.png" alt="Roblox Character Full Body" class="roblox-character-figure" width="175" height="195">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Live Activity -->
+  <section id="slide3" class="slide-section" aria-label="Aktivitas Saat Ini">
+    <div class="activity-slide-box">
+      <div>
+        <h2 class="section-title">Activity</h2>
+        <div class="section-subtitle">What I'm doing right now ^^</div>
+        <div class="sub-divider"></div>
+      </div>
+
+      <div class="big-activity-card tilt-card">
+        <!-- Active Activity Container -->
+        <div id="liveActivityBox" style="display: none;">
+          <div class="activity-top-row">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span id="activityBadge" class="activity-chip">Spotify</span>
+              <div class="activity-equalizer-bars" aria-hidden="true">
+                <span class="eq-bar bar1"></span>
+                <span class="eq-bar bar2"></span>
+                <span class="eq-bar bar3"></span>
+                <span class="eq-bar bar4"></span>
+              </div>
+            </div>
+            <span id="activityTimer" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-dim);">00:00</span>
+          </div>
+
+          <div class="activity-main-info" style="margin-top: 14px;">
+            <div class="activity-art-wrap">
+              <img id="activityArtwork" class="activity-art" src="" alt="Artwork" width="80" height="80">
+              <span class="art-pulse-ring" aria-hidden="true"></span>
+            </div>
+            <div class="activity-text-info">
+              <div id="activitySongTitle" class="activity-song-title">Song Title</div>
+              <div id="activitySongArtist" class="activity-song-artist">Artist Name</div>
+              <div id="activitySongAlbum" class="activity-song-album">Album</div>
+            </div>
+          </div>
+
+          <!-- Progress Bar for Spotify -->
+          <div id="activityProgressWrap" style="margin-top: 16px; display: none;">
+            <div class="activity-scrub-bar">
+              <div id="activityProgressBar" class="activity-scrub-fill"></div>
+            </div>
+            <div class="activity-time-stamps">
+              <span id="progressCurrent">0:00</span>
+              <span id="progressTotal">0:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offline Container -->
+        <div id="idleActivityBox" class="idle-box">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #71717a;" aria-hidden="true"></span>
+          <span>Sedang tidak memutar musik atau memainkan game di Discord.</span>
+        </div>
+
+        <div class="back-to-top-wrap">
+          <button id="backToTopBtn" class="btn-back-to-top" type="button">
+            &uarr; Back to Beginning
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast Popup -->
+  <div id="toastPill" class="toast-pill" role="status" aria-live="polite">
+    Username disalin ke clipboard!
+  </div>
+
+  <!-- Inspect / View Source Defense Modal (Cyber Jumpscare Edition) -->
+  <div id="defenseModal" class="defense-modal" role="dialog" aria-modal="true" aria-label="Akses Dibatasi">
+    <div class="defense-card">
+      <div class="defense-header">
+        <div class="defense-alert-pulse">
+          <span class="defense-radar-dot"></span>
+          <span class="defense-badge">CRITICAL BREACH // TARGET LOCKED</span>
+        </div>
+        <button id="closeDefenseBtn" class="defense-close-btn" type="button" aria-label="Tutup">&times;</button>
+      </div>
+
+      <div class="defense-avatar-scene">
+        <pre class="ascii-troll-skull" aria-hidden="true">
+   .---.
+  /     \
+ | () () |  ( ͡° ͜ʖ ͡°)
+  \  ^  /
+   |||||
+        </pre>
+      </div>
+
+      <h3 class="defense-title">yahhh mau lihat resource nya yahh No no no 😜</h3>
+      <p class="defense-sub">Ngapain inspect bang? Mau maling CSS atau nyolong script? Ketahuan lu!</p>
+
+      <!-- Cyber Terminal Dox Grid -->
+      <div class="defense-terminal">
+        <div class="term-status-row">
+          <span class="term-tag red">STATUS: COMPROMISED</span>
+          <span id="termPing" class="term-tag blue">LATENCY: 12ms</span>
+        </div>
+
+        <div class="term-section">
+          <div class="term-label">📍 LOKASI FISIK TARGET:</div>
+          <div id="termLocation" class="term-val highlight">Indonesia, Jakarta</div>
+          <div id="termCoords" class="term-sub">Koordinat: -6.221694, 106.733674</div>
+        </div>
+
+        <div class="term-grid-cols">
+          <div class="term-col">
+            <span class="term-label">📡 IP ADDRESS</span>
+            <span id="termIp" class="term-val-mono">103.190.46.153</span>
+          </div>
+          <div class="term-col">
+            <span class="term-label">🏢 ISP / PROVIDER</span>
+            <span id="termIsp" class="term-val-mono">PT INDONESIA COMNETS PLUS</span>
+          </div>
+        </div>
+
+        <div class="term-grid-cols">
+          <div class="term-col">
+            <span class="term-label">💻 PERANGKAT &amp; OS</span>
+            <span id="termDevice" class="term-val-mono">Windows (Chrome)</span>
+          </div>
+          <div class="term-col">
+            <span class="term-label">🖥️ RESOLUSI LAYAR</span>
+            <span id="termScreen" class="term-val-mono">1920 x 1080</span>
+          </div>
+        </div>
+
+        <div class="term-footer-warning">
+          <span id="termWarningText">⚠️ Data koordinat telah di-cache. Jangan coba-coba lagi ya adek-adek ^^</span>
+        </div>
+      </div>
+
+      <button id="defenseConfirmBtn" class="defense-btn" type="button">
+        💀 AMPUN BANG, SAYA KHILAF
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var DISCORD_USER_ID = '754194203302690846';
+      var GUILD_INVITE_CODE = 'NhqN3hErGw';
+
+      
+      var bgVideo = document.getElementById('bgVideo');
+      var bgVignette = document.getElementById('bgVignette');
+      var enterScreen = document.getElementById('enterScreen');
+      var enterFlash = document.getElementById('enterFlash');
+      var hudAudioWrap = document.getElementById('hudAudioWrap');
+      var hudAudioBtn = document.getElementById('hudAudioBtn');
+      var hudSpeakerIcon = document.getElementById('hudSpeakerIcon');
+      var hudVolumeSlider = document.getElementById('hudVolumeSlider');
+      var hudVolumeVal = document.getElementById('hudVolumeVal');
+      var hudNavCue = document.getElementById('hudNavCue');
+      var currentYear = document.getElementById('currentYear');
+      var toastPill = document.getElementById('toastPill');
+      var kaomojiWidget = document.getElementById('kaomojiWidget');
+      var backToTopBtn = document.getElementById('backToTopBtn');
+
+      var userAvatar = document.getElementById('userAvatar');
+      var discordStatusIndicator = document.getElementById('discordStatusIndicator');
+      var displayName = document.getElementById('displayName');
+      var clanTag = document.getElementById('clanTag');
+      var heroBioText = document.getElementById('heroBioText');
+
+      var widgetAvatar = document.getElementById('widgetAvatar');
+      var widgetName = document.getElementById('widgetName');
+      var widgetActivity = document.getElementById('widgetActivity');
+      var guildOnlineCount = document.getElementById('guildOnlineCount');
+      var guildMemberCount = document.getElementById('guildMemberCount');
+
+      var liveActivityBox = document.getElementById('liveActivityBox');
+      var idleActivityBox = document.getElementById('idleActivityBox');
+      var activityBadge = document.getElementById('activityBadge');
+      var activityTimer = document.getElementById('activityTimer');
+      var activityArtwork = document.getElementById('activityArtwork');
+      var activitySongTitle = document.getElementById('activitySongTitle');
+      var activitySongArtist = document.getElementById('activitySongArtist');
+      var activitySongAlbum = document.getElementById('activitySongAlbum');
+      var activityProgressWrap = document.getElementById('activityProgressWrap');
+      var activityProgressBar = document.getElementById('activityProgressBar');
+      var progressCurrent = document.getElementById('progressCurrent');
+      var progressTotal = document.getElementById('progressTotal');
+
+      if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+      }
+
+      
+      var kaomojis = ['> _ <', '+ _ +', '$ _ $', '- _ -', '0 _ 0', '† _ †', '^ _ ^', '* _ *'];
+      var glitchGlyphs = ['!', '<', '>', '/', '#', '%', '&', '*', '^', '+', '~'];
+      var kaomojiIndex = 0;
+
+      function scrambleKaomoji(target) {
+        if (!kaomojiWidget) return;
+        var step = 0;
+        var maxSteps = 4;
+        var timer = setInterval(function () {
+          step++;
+          if (step >= maxSteps) {
+            clearInterval(timer);
+            kaomojiWidget.textContent = target;
+            kaomojiWidget.style.opacity = '1';
+          } else {
+            var res = '';
+            for (var i = 0; i < target.length; i++) {
+              res += glitchGlyphs[Math.floor(Math.random() * glitchGlyphs.length)];
+            }
+            kaomojiWidget.textContent = res;
+            kaomojiWidget.style.opacity = '0.75';
+          }
+        }, 40);
+      }
+
+      if (kaomojiWidget) {
+        setInterval(function () {
+          kaomojiIndex = (kaomojiIndex + 1) % kaomojis.length;
+          scrambleKaomoji(kaomojis[kaomojiIndex]);
+        }, 2500);
+      }
+
+      
+      var isAudioPlaying = false;
+
+      function updateVolumeUI(vol) {
+        if (hudVolumeSlider) hudVolumeSlider.value = vol;
+        if (hudVolumeVal) hudVolumeVal.textContent = Math.round(vol * 100) + '%';
+        if (vol <= 0.01) {
+          updateSpeakerIcon(false);
+        } else {
+          updateSpeakerIcon(true);
+        }
+      }
+
+      function updateSpeakerIcon(active) {
+        if (!hudSpeakerIcon) return;
+        if (active) {
+          hudSpeakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>';
+          if (hudAudioBtn) hudAudioBtn.classList.add('is-playing');
+        } else {
+          hudSpeakerIcon.innerHTML = '<line x1="1" y1="1" x2="23" y2="23"></line><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
+          if (hudAudioBtn) hudAudioBtn.classList.remove('is-playing');
+        }
+      }
+
+      function toggleAudio(e) {
+        if (e) e.stopPropagation();
+        if (!bgVideo) return;
+        if (hudAudioWrap) {
+          hudAudioWrap.classList.toggle('is-open');
+        }
+        if (bgVideo.muted || bgVideo.paused) {
+          bgVideo.muted = false;
+          if (bgVideo.volume < 0.05) bgVideo.volume = 1;
+          bgVideo.play().then(function () {
+            isAudioPlaying = true;
+            updateVolumeUI(bgVideo.volume);
+          }).catch(function () {});
+        } else if (hudAudioWrap && !hudAudioWrap.classList.contains('is-open')) {
+          bgVideo.pause();
+          isAudioPlaying = false;
+          updateSpeakerIcon(false);
+        }
+      }
+
+      if (hudVolumeSlider) {
+        hudVolumeSlider.addEventListener('input', function (e) {
+          e.stopPropagation();
+          if (!bgVideo) return;
+          var val = parseFloat(this.value);
+          bgVideo.volume = val;
+          if (val > 0) {
+            bgVideo.muted = false;
+            if (bgVideo.paused) {
+              bgVideo.play().then(function () {
+                isAudioPlaying = true;
+              }).catch(function () {});
+            } else {
+              isAudioPlaying = true;
+            }
+          } else {
+            bgVideo.muted = true;
+            isAudioPlaying = false;
+          }
+          updateVolumeUI(val);
+        });
+
+        hudVolumeSlider.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      }
+
+      document.addEventListener('click', function (e) {
+        if (hudAudioWrap && !hudAudioWrap.contains(e.target)) {
+          hudAudioWrap.classList.remove('is-open');
+        }
+      });
+
+      if (enterScreen) {
+        enterScreen.addEventListener('click', function () {
+          
+          enterScreen.classList.add('is-exiting');
+
+          
+          if (enterFlash) {
+            enterFlash.classList.add('active');
+            setTimeout(function () {
+              enterFlash.classList.remove('active');
+            }, 600);
+          }
+
+          
+          var heroBox = document.querySelector('.hero-profile-box');
+          if (heroBox) {
+            heroBox.classList.add('hero-entering');
+          }
+
+          
+          setTimeout(function () {
+            enterScreen.classList.add('dismissed');
+          }, 650);
+
+          if (bgVideo) {
+            try {
+              bgVideo.currentTime = 0;
+            } catch (e) {}
+            bgVideo.muted = false;
+            bgVideo.volume = 1;
+            updateVolumeUI(1);
+            bgVideo.play().then(function () {
+              isAudioPlaying = true;
+              updateSpeakerIcon(true);
+            }).catch(function () {
+              updateSpeakerIcon(false);
+            });
+          }
+        });
+      }
+
+      if (hudAudioBtn) {
+        hudAudioBtn.addEventListener('click', toggleAudio);
+      }
+
+      
+      var sections = [document.getElementById('slide1'), document.getElementById('slide2'), document.getElementById('slide3')];
+
+      if (hudNavCue) {
+        hudNavCue.addEventListener('click', function () {
+          var slide2 = document.getElementById('slide2');
+          var slide3 = document.getElementById('slide3');
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          var vh = window.innerHeight;
+          if (scrollTop < vh * 0.6) {
+            if (slide2) slide2.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            if (slide3) slide3.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function () {
+          var slide1 = document.getElementById('slide1');
+          if (slide1) slide1.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      
+      var tiltCards = document.querySelectorAll('.tilt-card');
+      var arGrid = document.querySelector('.ar-spatial-grid');
+
+      function updateSpatialDepth(pitch, yaw) {
+        if (arGrid) {
+          arGrid.style.transform = 'perspective(600px) rotateX(' + (68 + pitch * 0.12).toFixed(2) + 'deg) rotateZ(' + (yaw * 0.08).toFixed(2) + 'deg)';
+        }
+      }
+
+      function handleTiltMove(e, card) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var centerX = rect.width / 2;
+        var centerY = rect.height / 2;
+        var rotateX = ((y - centerY) / centerY) * -6;
+        var rotateY = ((x - centerX) / centerX) * 6;
+
+        card.style.transform = 'perspective(900px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) scale3d(1.02, 1.02, 1.02)';
+        card.style.setProperty('--glare-x', ((x / rect.width) * 100).toFixed(1) + '%');
+        card.style.setProperty('--glare-y', ((y / rect.height) * 100).toFixed(1) + '%');
+
+        if (card.id === 'robloxCard') {
+          var charStage = card.querySelector('.roblox-char-stage');
+          if (charStage) {
+            charStage.style.transform = 'perspective(500px) rotateX(' + (rotateX * 2.2).toFixed(1) + 'deg) rotateY(' + (rotateY * 2.5).toFixed(1) + 'deg) translateZ(28px)';
+          }
+        }
+      }
+
+      function resetTilt(card) {
+        card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        if (card.id === 'robloxCard') {
+          var charStage = card.querySelector('.roblox-char-stage');
+          if (charStage) {
+            charStage.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+          }
+        }
+      }
+
+      tiltCards.forEach(function (card) {
+        card.addEventListener('mousemove', function (e) {
+          handleTiltMove(e, card);
+        });
+        card.addEventListener('mouseleave', function () {
+          resetTilt(card);
+        });
+      });
+
+      // Global Mouse Spatial Tracking
+      window.addEventListener('mousemove', function (e) {
+        var cx = window.innerWidth / 2;
+        var cy = window.innerHeight / 2;
+        var yaw = ((e.clientX - cx) / cx) * 18.5;
+        var pitch = ((e.clientY - cy) / cy) * -12.4;
+        updateSpatialDepth(pitch, yaw);
+      }, { passive: true });
+
+      // Mobile Device Orientation Gyroscope
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', function (event) {
+          if (event.gamma === null || event.beta === null) return;
+          var tiltX = Math.min(6, Math.max(-6, event.gamma * 0.3));
+          var tiltY = Math.min(6, Math.max(-6, (event.beta - 45) * 0.25));
+          tiltCards.forEach(function (card) {
+            card.style.transform = 'perspective(900px) rotateX(' + (-tiltY).toFixed(2) + 'deg) rotateY(' + tiltX.toFixed(2) + 'deg)';
+          });
+          var gyroPitch = -tiltY * 2.2;
+          var gyroYaw = tiltX * 2.5;
+          updateSpatialDepth(gyroPitch, gyroYaw);
+        }, { passive: true });
+      }
+
+      function updateMotionState() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var maxScroll = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+        var scrollPct = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+
+        // Background video micro-parallax depth (pure original clarity)
+        if (bgVideo) {
+          var scale = 1 + scrollPct * 0.05;
+          bgVideo.style.transform = 'scale(' + scale + ')';
+        }
+      }
+
+      window.addEventListener('scroll', updateMotionState, { passive: true });
+      document.body.addEventListener('scroll', updateMotionState, { passive: true });
+
+      // IntersectionObserver for section visibility
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            var targetSection = entry.target;
+            var id = targetSection.id;
+
+            if (entry.isIntersecting) {
+              targetSection.classList.add('is-visible');
+              if (hudNavCue) {
+                if (id === 'slide3') {
+                  hudNavCue.style.opacity = '0';
+                  hudNavCue.style.pointerEvents = 'none';
+                } else {
+                  hudNavCue.style.opacity = '0.85';
+                  hudNavCue.style.pointerEvents = 'auto';
+                }
+              }
+            } else {
+              targetSection.classList.remove('is-visible');
+            }
+          });
+        }, { threshold: 0.35 });
+
+        sections.forEach(function (sec) {
+          if (sec) observer.observe(sec);
+        });
+      }
+
+      
+      var toastTimer;
+      function showToast(msg) {
+        if (!toastPill) return;
+        toastPill.textContent = msg;
+        toastPill.classList.add('visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toastPill.classList.remove('visible');
+        }, 2200);
+      }
+
+      function fetchGuildStats() {
+        var url = 'https://discord.com/api/v10/invites/' + GUILD_INVITE_CODE + '?with_counts=true';
+        fetch(url)
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data && guildOnlineCount && guildMemberCount) {
+              guildOnlineCount.textContent = (data.approximate_presence_count || 23).toLocaleString();
+              guildMemberCount.textContent = (data.approximate_member_count || 76).toLocaleString();
+            }
+          })
+          .catch(function () {});
+      }
+      fetchGuildStats();
+
+      
+      var activityTimerInterval = null;
+
+      function formatDuration(ms) {
+        var totalSec = Math.floor(ms / 1000);
+        var min = Math.floor(totalSec / 60);
+        var sec = totalSec % 60;
+        return min + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+
+      function updateStatusDot(status) {
+        var colors = {
+          online: '#23a55a',
+          idle: '#f0b232',
+          dnd: '#f23f43',
+          offline: '#71717a'
+        };
+        var color = colors[status] || colors.offline;
+        if (discordStatusIndicator) {
+          discordStatusIndicator.style.backgroundColor = color;
+          discordStatusIndicator.title = 'Status: ' + status;
+          discordStatusIndicator.setAttribute('aria-label', 'Status: ' + status);
+        }
+      }
+
+      function renderLanyard(d) {
+        if (!d) return;
+
+        
+        updateStatusDot(d.discord_status || 'offline');
+
+        
+        if (d.discord_user) {
+          var userId = d.discord_user.id;
+          var avatarHash = d.discord_user.avatar;
+          if (avatarHash) {
+            var ext = avatarHash.startsWith('a_') ? 'gif' : 'png';
+            var avatarUrl = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.' + ext + '?size=160';
+            if (userAvatar) userAvatar.src = avatarUrl;
+            if (widgetAvatar) widgetAvatar.src = avatarUrl;
+          }
+          if (d.discord_user.global_name && displayName) {
+            displayName.textContent = d.discord_user.global_name;
+          }
+          if (d.discord_user.username && widgetName) {
+            widgetName.textContent = d.discord_user.username;
+          }
+          if (d.discord_user.clan && clanTag && d.discord_user.clan.tag) {
+            clanTag.textContent = d.discord_user.clan.tag;
+            clanTag.style.display = 'inline-block';
+          }
+        }
+
+        
+        var customAct = null;
+        if (Array.isArray(d.activities)) {
+          for (var i = 0; i < d.activities.length; i++) {
+            if (d.activities[i].type === 4) {
+              customAct = d.activities[i];
+              break;
+            }
+          }
+        }
+        if (customAct && widgetActivity) {
+          var statusText = (customAct.emoji ? (customAct.emoji.name + ' ') : '') + (customAct.state || '');
+          widgetActivity.textContent = statusText.trim() || 'Online';
+        } else if (widgetActivity) {
+          widgetActivity.textContent = (d.discord_status || 'offline').toUpperCase();
+        }
+
+        
+        clearInterval(activityTimerInterval);
+
+        if (d.spotify && d.listening_to_spotify) {
+          
+          if (idleActivityBox) idleActivityBox.style.display = 'none';
+          if (liveActivityBox) liveActivityBox.style.display = 'block';
+
+          if (activityBadge) {
+            activityBadge.className = 'activity-chip';
+            activityBadge.textContent = 'Mendengarkan Spotify';
+          }
+
+          if (activityArtwork) {
+            activityArtwork.src = d.spotify.album_art_url || '';
+            activityArtwork.alt = d.spotify.song || 'Spotify Artwork';
+          }
+          if (activitySongTitle) activitySongTitle.textContent = d.spotify.song || 'Song';
+          if (activitySongArtist) activitySongArtist.textContent = d.spotify.artist || 'Artist';
+          if (activitySongAlbum) activitySongAlbum.textContent = d.spotify.album || '';
+
+          if (activityProgressWrap) activityProgressWrap.style.display = 'block';
+
+          var start = d.spotify.timestamps.start;
+          var end = d.spotify.timestamps.end;
+          var totalDuration = end - start;
+          if (progressTotal) progressTotal.textContent = formatDuration(totalDuration);
+
+          function updateSpotifyTick() {
+            var now = Date.now();
+            var currentMs = Math.max(0, Math.min(now - start, totalDuration));
+            var pct = Math.min(100, (currentMs / totalDuration) * 100);
+            if (activityProgressBar) activityProgressBar.style.width = pct + '%';
+            if (progressCurrent) progressCurrent.textContent = formatDuration(currentMs);
+            if (activityTimer) activityTimer.textContent = formatDuration(currentMs) + ' / ' + formatDuration(totalDuration);
+          }
+          updateSpotifyTick();
+          activityTimerInterval = setInterval(updateSpotifyTick, 1000);
+
+        } else {
+          
+          var game = null;
+          if (Array.isArray(d.activities)) {
+            for (var j = 0; j < d.activities.length; j++) {
+              if (d.activities[j].type === 0) {
+                game = d.activities[j];
+                break;
+              }
+            }
+          }
+
+          if (game) {
+            if (idleActivityBox) idleActivityBox.style.display = 'none';
+            if (liveActivityBox) liveActivityBox.style.display = 'block';
+
+            if (activityBadge) {
+              activityBadge.className = 'activity-chip game';
+              activityBadge.textContent = 'Memainkan ' + (game.name || 'Game');
+            }
+
+            if (activitySongTitle) activitySongTitle.textContent = game.name || 'Game';
+            if (activitySongArtist) activitySongArtist.textContent = game.details || 'Active now';
+            if (activitySongAlbum) activitySongAlbum.textContent = game.state || '';
+
+            if (activityProgressWrap) activityProgressWrap.style.display = 'none';
+
+            // Game icon lookup with dstn fallback
+            var gameIcon = '';
+            if (game.assets && game.assets.large_image) {
+              var lImg = game.assets.large_image;
+              if (lImg.startsWith('mp:external/')) {
+                gameIcon = 'https://media.discordapp.net/' + lImg.replace('mp:', '');
+              } else if (game.application_id) {
+                gameIcon = 'https://cdn.discordapp.com/app-assets/' + game.application_id + '/' + lImg + '.png';
+              }
+            }
+            if (!gameIcon && game.application_id) {
+              gameIcon = 'https://dcdn.dstn.to/app-icons/' + game.application_id + '.png';
+            }
+
+            if (activityArtwork) {
+              activityArtwork.src = gameIcon || 'guild_icon.png';
+              activityArtwork.alt = game.name || 'Game';
+            }
+
+            if (game.timestamps && game.timestamps.start) {
+              var gameStart = game.timestamps.start;
+              function updateGameTick() {
+                var elapsed = Math.max(0, Date.now() - gameStart);
+                if (activityTimer) activityTimer.textContent = formatDuration(elapsed) + ' berlalu';
+              }
+              updateGameTick();
+              activityTimerInterval = setInterval(updateGameTick, 1000);
+            } else {
+              if (activityTimer) activityTimer.textContent = 'Sedang Berjalan';
+            }
+
+          } else {
+            
+            if (liveActivityBox) liveActivityBox.style.display = 'none';
+            if (idleActivityBox) idleActivityBox.style.display = 'flex';
+          }
+        }
+      }
+
+      
+      var ws;
+      var hbTimer;
+
+      function initLanyard() {
+        try {
+          ws = new WebSocket('wss://api.lanyard.rest/socket');
+
+          ws.onmessage = function (event) {
+            try {
+              var packet = JSON.parse(event.data);
+              var op = packet.op;
+              var d = packet.d;
+
+              if (op === 1) {
+                hbTimer = setInterval(function () {
+                  if (ws && ws.readyState === WebSocket.OPEN) {
+                    ws.send(JSON.stringify({ op: 3 }));
+                  }
+                }, d.heartbeat_interval);
+
+                ws.send(JSON.stringify({
+                  op: 2,
+                  d: { subscribe_to_id: DISCORD_USER_ID }
+                }));
+              } else if (op === 0) {
+                if (packet.t === 'INIT_STATE' || packet.t === 'PRESENCE_UPDATE') {
+                  renderLanyard(d);
+                }
+              }
+            } catch (e) {}
+          };
+
+          ws.onclose = function () {
+            clearInterval(hbTimer);
+            setTimeout(initLanyard, 5000);
+          };
+
+          ws.onerror = function () {
+            ws.close();
+            fetchRestLanyard();
+          };
+        } catch (err) {
+          fetchRestLanyard();
+        }
+      }
+
+      function fetchRestLanyard() {
+        fetch('https://api.lanyard.rest/v1/users/' + DISCORD_USER_ID)
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (res && res.success && res.data) {
+              renderLanyard(res.data);
+            }
+          })
+          .catch(function () {});
+      }
+
+      initLanyard();
+
+      
+      function updateClock() {
+        var el = document.getElementById('liveClock');
+        if (!el) return;
+        var now = new Date();
+        var time = now.toLocaleTimeString('id-ID', {
+          timeZone: 'Asia/Jakarta',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        });
+        el.textContent = time + ' WIB';
+      }
+      updateClock();
+      setInterval(updateClock, 1000);
+
+      
+      (function initRobloxSync() {
+        var robloxFigure = document.querySelector('.roblox-character-figure');
+
+        fetch('/api/roblox-avatar')
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (res && res.data && res.data[0] && res.data[0].imageUrl) {
+              var liveUrl = res.data[0].imageUrl;
+              if (robloxFigure) {
+                var img = new Image();
+                img.onload = function () {
+                  robloxFigure.src = liveUrl;
+                };
+                img.src = liveUrl;
+              }
+            }
+          })
+          .catch(function () {});
+      })();
+
+      // Inspect / View Source Defense Engine (Cyber Jumpscare Edition)
+      var defenseModal = document.getElementById('defenseModal');
+      var closeDefenseBtn = document.getElementById('closeDefenseBtn');
+      var defenseConfirmBtn = document.getElementById('defenseConfirmBtn');
+      var termLocation = document.getElementById('termLocation');
+      var termCoords = document.getElementById('termCoords');
+      var termIp = document.getElementById('termIp');
+      var termIsp = document.getElementById('termIsp');
+      var termDevice = document.getElementById('termDevice');
+      var termScreen = document.getElementById('termScreen');
+      var termPing = document.getElementById('termPing');
+      var termWarningText = document.getElementById('termWarningText');
+
+      var geoCache = null;
+
+      function playWarningSfx() {
+        try {
+          var AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtx) return;
+          var actx = new AudioCtx();
+          var osc = actx.createOscillator();
+          var gain = actx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(880, actx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(220, actx.currentTime + 0.32);
+          gain.gain.setValueAtTime(0.18, actx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, actx.currentTime + 0.32);
+          osc.connect(gain);
+          gain.connect(actx.destination);
+          osc.start();
+          osc.stop(actx.currentTime + 0.33);
+        } catch (e) {}
+      }
+
+      function detectPlatform() {
+        var ua = navigator.userAgent || '';
+        var os = 'Unknown OS';
+        if (ua.indexOf('Win') !== -1) os = 'Windows PC';
+        else if (ua.indexOf('Mac') !== -1) os = 'macOS Apple';
+        else if (ua.indexOf('Android') !== -1) os = 'Android Mobile';
+        else if (ua.indexOf('Linux') !== -1) os = 'Linux OS';
+        else if (/iPhone|iPad|iPod/.test(ua)) os = 'iOS Device';
+
+        var browser = 'Browser';
+        if (ua.indexOf('Chrome') !== -1 && ua.indexOf('Edg') === -1) browser = 'Chrome';
+        else if (ua.indexOf('Edg') !== -1) browser = 'Edge';
+        else if (ua.indexOf('Firefox') !== -1) browser = 'Firefox';
+        else if (ua.indexOf('Safari') !== -1 && ua.indexOf('Chrome') === -1) browser = 'Safari';
+
+        return os + ' (' + browser + ')';
+      }
+
+      function updateDefenseModalUI(data) {
+        if (termScreen) {
+          termScreen.textContent = (window.screen.width || 1920) + ' x ' + (window.screen.height || 1080);
+        }
+        if (termDevice) {
+          termDevice.textContent = detectPlatform();
+        }
+
+        if (!data) return;
+
+        var locParts = [];
+        if (data.country) locParts.push(data.country);
+        if (data.region) locParts.push(data.region);
+        if (data.city) locParts.push(data.city);
+        var locStr = locParts.join(', ') || 'Indonesia, Jakarta Barat';
+
+        if (termLocation) termLocation.textContent = locStr;
+        if (termCoords && data.latitude && data.longitude) {
+          termCoords.textContent = 'Koordinat: ' + data.latitude + ', ' + data.longitude;
+        }
+        if (termIp) {
+          termIp.textContent = data.ip || '103.190.46.153';
+        }
+        if (termIsp) {
+          var ispName = (data.connection && (data.connection.isp || data.connection.org)) || 'ISP Provider';
+          termIsp.textContent = ispName;
+        }
+        if (termPing) {
+          termPing.textContent = 'LATENCY: ' + Math.floor(Math.random() * 15 + 8) + 'ms';
+        }
+      }
+
+      function loadGeoData() {
+        fetch('https://ipwho.is/')
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (res && res.success) {
+              geoCache = res;
+              updateDefenseModalUI(res);
+            }
+          })
+          .catch(function () {});
+      }
+      loadGeoData();
+
+      var lastBreachReportTime = 0;
+      function reportBreachLog(triggerAction) {
+        var now = Date.now();
+        if (now - lastBreachReportTime < 5000) return;
+        lastBreachReportTime = now;
+
+        fetch('/api/report-breach', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            trigger: triggerAction || 'Akses Ilegal Terdeteksi',
+            geo: geoCache,
+            device: detectPlatform(),
+            screen: (window.screen.width || 1920) + ' x ' + (window.screen.height || 1080)
+          })
+        }).catch(function () {});
+      }
+
+      function openDefenseModal(triggerAction) {
+        if (!defenseModal) return;
+        playWarningSfx();
+        if (geoCache) {
+          updateDefenseModalUI(geoCache);
+        } else {
+          loadGeoData();
+        }
+        defenseModal.classList.add('is-active');
+        reportBreachLog(triggerAction);
+      }
+
+      function closeDefenseModal() {
+        if (defenseModal) defenseModal.classList.remove('is-active');
+      }
+
+      if (closeDefenseBtn) closeDefenseBtn.addEventListener('click', closeDefenseModal);
+      if (defenseConfirmBtn) defenseConfirmBtn.addEventListener('click', closeDefenseModal);
+
+      // Block Ctrl+U, F12, Ctrl+Shift+I/J/C, Ctrl+S
+      window.addEventListener('keydown', function (e) {
+        var key = e.key ? e.key.toUpperCase() : '';
+        var isCtrl = e.ctrlKey || e.metaKey;
+        var isShift = e.shiftKey;
+
+        var detected = '';
+        if (e.keyCode === 123 || key === 'F12') detected = 'F12 (Open DevTools)';
+        else if (isCtrl && (key === 'U' || e.keyCode === 85)) detected = 'Ctrl + U (View Page Source)';
+        else if (isCtrl && isShift && (key === 'I' || e.keyCode === 73)) detected = 'Ctrl + Shift + I (Inspect Element)';
+        else if (isCtrl && isShift && (key === 'J' || e.keyCode === 74)) detected = 'Ctrl + Shift + J (Console)';
+        else if (isCtrl && isShift && (key === 'C' || e.keyCode === 67)) detected = 'Ctrl + Shift + C (Inspector)';
+        else if (isCtrl && (key === 'S' || e.keyCode === 83)) detected = 'Ctrl + S (Save Page)';
+
+        if (detected) {
+          e.preventDefault();
+          e.stopPropagation();
+          openDefenseModal(detected);
+          return false;
+        }
+      }, true);
+
+      // Block Right Click Context Menu
+      document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        openDefenseModal('Right Click (Context Menu)');
+      });
+
+      // Detect DevTools Opening
+      var devToolsTriggered = false;
+      function checkDevTools() {
+        var diffW = window.outerWidth - window.innerWidth;
+        var diffH = window.outerHeight - window.innerHeight;
+        if (diffW > 160 || diffH > 160) {
+          if (!devToolsTriggered) {
+            devToolsTriggered = true;
+            openDefenseModal('DevTools Window Opened');
+          }
+        } else {
+          devToolsTriggered = false;
+        }
+      }
+      window.addEventListener('resize', checkDevTools);
+
+    })();
+  </script>
+</body>
+</html>

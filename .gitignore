@@ -1,0 +1,9 @@
+# Backups and huge raw files
+*.old.*
+*.backup*
+bg_video_transcoded.mp4
+bg_video_portrait_backup.mp4
+
+# Dependencies & logs
+node_modules/
+*.log
