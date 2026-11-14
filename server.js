@@ -22,8 +22,35 @@ const MIME_TYPES = {
 
 const https = require('https');
 
+// In-Memory Visitor Counter (Resets on server restart)
+let memoryVisitorCount = 0;
+
 const server = http.createServer((req, res) => {
     let reqUrl = req.url.split('?')[0];
+
+    // Live In-Memory Visitor Counter API
+    if (reqUrl === '/api/visitor-count') {
+        const urlParams = new URL(req.url, `http://${req.headers.host || 'localhost'}`).searchParams;
+        if (urlParams.get('reset') === '1' || urlParams.get('reset') === 'true') {
+            memoryVisitorCount = 0;
+            res.writeHead(200, {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'no-cache, no-store, must-revalidate'
+            });
+            res.end(JSON.stringify({ views: memoryVisitorCount, reset: true, success: true }));
+            return;
+        }
+
+        memoryVisitorCount += 1;
+        res.writeHead(200, {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Cache-Control': 'no-cache, no-store, must-revalidate'
+        });
+        res.end(JSON.stringify({ views: memoryVisitorCount, success: true }));
+        return;
+    }
 
     // Live Roblox Avatar Auto-Sync Proxy
     if (reqUrl === '/api/roblox-avatar') {

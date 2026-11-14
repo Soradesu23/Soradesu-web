@@ -6,6 +6,11 @@
   GIT_LFS_ENABLED = "true"
 
 [[redirects]]
+  from = "/api/visitor-count"
+  to = "/.netlify/functions/visitor-count"
+  status = 200
+
+[[redirects]]
   from = "/api/report-breach"
   to = "/.netlify/functions/log"
   status = 200

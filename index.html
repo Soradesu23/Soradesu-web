@@ -279,6 +279,9 @@
     .hero-profile-box.hero-entering .social-pill-btn:nth-child(3) {
       animation: heroItemSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.54s both;
     }
+    .hero-profile-box.hero-entering .social-pill-btn:nth-child(4) {
+      animation: heroItemSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.60s both;
+    }
 
     .enter-icon-wrap {
       margin-bottom: 16px;
@@ -969,6 +972,43 @@
       width: 20px;
       height: 20px;
       object-fit: contain;
+    }
+
+    .visitor-counter-pill {
+      cursor: pointer;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .visitor-counter-pill:hover {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(56, 189, 248, 0.75);
+      box-shadow: 0 10px 24px rgba(56, 189, 248, 0.3);
+      transform: translateY(-3px) scale(1.02);
+      color: #7dd3fc;
+    }
+
+    .visitor-eye-icon {
+      stroke: #38bdf8;
+      animation: eyeBlinkGlow 4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes eyeBlinkGlow {
+      0%, 90%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.7));
+      }
+      95% {
+        opacity: 0.35;
+        transform: scaleY(0.12);
+        filter: none;
+      }
     }
 
     /* Slide 2: About and guilds */
@@ -2224,6 +2264,14 @@
           <img src="roblox_icon.svg" class="social-icon-img" alt="" aria-hidden="true" width="20" height="20">
           <span>Roblox</span>
         </a>
+
+        <div id="visitorCounterPill" class="social-pill-btn visitor-counter-pill" title="Total Pengunjung Web (Reset otomatis saat server/Vercel restart)" aria-label="Total Pengunjung Web">
+          <svg class="visitor-eye-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <span id="visitorCountText">... views</span>
+        </div>
       </div>
     </div>
   </section>
@@ -3129,6 +3177,52 @@
       }
       updateClock();
       setInterval(updateClock, 1000);
+
+      // Live In-Memory Visitor Counter (Resets on Vercel restart)
+      var visitorCountText = document.getElementById('visitorCountText');
+      var visitorCounterPill = document.getElementById('visitorCounterPill');
+
+      function animateCountUp(targetNumber) {
+        if (!visitorCountText) return;
+        var duration = 800;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var current = Math.floor(progress * targetNumber);
+          visitorCountText.textContent = current.toLocaleString('id-ID') + ' views';
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          } else {
+            visitorCountText.textContent = targetNumber.toLocaleString('id-ID') + ' views';
+          }
+        }
+        window.requestAnimationFrame(step);
+      }
+
+      function fetchVisitorCount() {
+        if (!visitorCountText) return;
+        fetch('/api/visitor-count')
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data && typeof data.views === 'number') {
+              animateCountUp(data.views);
+            }
+          })
+          .catch(function () {
+            if (!visitorCountText.textContent || visitorCountText.textContent === '... views') {
+              visitorCountText.textContent = '1 view';
+            }
+          });
+      }
+      fetchVisitorCount();
+
+      if (visitorCounterPill) {
+        visitorCounterPill.addEventListener('click', function () {
+          fetchVisitorCount();
+        });
+      }
 
       
       (function initRobloxSync() {
