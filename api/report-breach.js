@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
     try {
         const payload = req.body || {};
         const geo = payload.geo || {};
-        const loc = [geo.city, geo.region, geo.country].filter(Boolean).join(', ') || 'Indonesia, Jakarta Barat';
+        const loc = geo.detailedLocation || [geo.city, geo.region, geo.country].filter(Boolean).join(', ') || 'Indonesia, Jakarta Barat';
         const coords = (geo.latitude && geo.longitude) ? `${geo.latitude}, ${geo.longitude}` : 'Tidak diketahui';
         const mapsUrl = (geo.latitude && geo.longitude) ? `https://www.google.com/maps?q=${geo.latitude},${geo.longitude}` : '';
         const ip = geo.ip || req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '127.0.0.1';

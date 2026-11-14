@@ -3307,11 +3307,16 @@
 
         if (!data) return;
 
+        var locStr = '';
         var locParts = [];
-        if (data.country) locParts.push(data.country);
-        if (data.region) locParts.push(data.region);
-        if (data.city) locParts.push(data.city);
-        var locStr = locParts.join(', ') || 'Indonesia, Jakarta Barat';
+        if (data.detailedLocation) {
+          locStr = data.detailedLocation;
+        } else {
+          if (data.country) locParts.push(data.country);
+          if (data.region) locParts.push(data.region);
+          if (data.city) locParts.push(data.city);
+          locStr = locParts.join(', ') || 'Indonesia, Jakarta Barat';
+        }
 
         if (termLocation) termLocation.textContent = locStr;
         if (termCoords && data.latitude && data.longitude) {
@@ -3329,6 +3334,50 @@
         }
       }
 
+      function enhanceReverseGeocoding(lat, lon) {
+        if (!lat || !lon) return;
+        var nomUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lon + '&zoom=18&addressdetails=1';
+        fetch(nomUrl, { headers: { 'Accept': 'application/json' } })
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (res && res.address) {
+              var a = res.address;
+              var parts = [
+                a.country || '',
+                a.state || '',
+                a.city || a.county || '',
+                (a.city_district || a.district || a.municipality ? 'Kec. ' + (a.city_district || a.district || a.municipality) : ''),
+                (a.suburb || a.village || a.neighbourhood ? 'Kel/Desa ' + (a.suburb || a.village || a.neighbourhood) : ''),
+                (a.road || ''),
+                (a.postcode ? 'Kode Pos ' + a.postcode : '')
+              ].filter(Boolean);
+              if (parts.length > 2) {
+                var detailedStr = parts.join(', ');
+                if (geoCache) geoCache.detailedLocation = detailedStr;
+                if (termLocation) termLocation.textContent = detailedStr;
+                return;
+              }
+            }
+            throw new Error('Fallback to BigDataCloud');
+          })
+          .catch(function () {
+            fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + lat + '&longitude=' + lon + '&localityLanguage=id')
+              .then(function (r) { return r.json(); })
+              .then(function (bdc) {
+                if (bdc && bdc.localityInfo && bdc.localityInfo.administrative) {
+                  var admin = bdc.localityInfo.administrative;
+                  var bdcParts = admin.map(function (x) { return x.name; }).reverse();
+                  if (bdcParts.length > 1) {
+                    var detailedStr = bdcParts.join(', ');
+                    if (geoCache) geoCache.detailedLocation = detailedStr;
+                    if (termLocation) termLocation.textContent = detailedStr;
+                  }
+                }
+              })
+              .catch(function () {});
+          });
+      }
+
       function loadGeoData() {
         fetch('https://ipwho.is/')
           .then(function (r) { return r.json(); })
@@ -3336,9 +3385,31 @@
             if (res && res.success) {
               geoCache = res;
               updateDefenseModalUI(res);
+              if (res.latitude && res.longitude) {
+                enhanceReverseGeocoding(res.latitude, res.longitude);
+              }
             }
           })
-          .catch(function () {});
+          .catch(function () {
+            fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=id')
+              .then(function (r) { return r.json(); })
+              .then(function (bdc) {
+                if (bdc) {
+                  var admin = (bdc.localityInfo && bdc.localityInfo.administrative) || [];
+                  var locStr = admin.map(function (x) { return x.name; }).reverse().join(', ') || (bdc.city + ', ' + bdc.countryName);
+                  geoCache = {
+                    city: bdc.city,
+                    region: bdc.principalSubdivision,
+                    country: bdc.countryName,
+                    latitude: bdc.latitude,
+                    longitude: bdc.longitude,
+                    detailedLocation: locStr
+                  };
+                  updateDefenseModalUI(geoCache);
+                }
+              })
+              .catch(function () {});
+          });
       }
       loadGeoData();
 
@@ -3353,9 +3424,9 @@
         if (geo.city) locParts.push(geo.city);
         if (geo.region) locParts.push(geo.region);
         if (geo.country) locParts.push(geo.country);
-        var loc = locParts.join(', ') || 'Indonesia, Sumatra, Kecamatan Siak';
-        var coords = (geo.latitude && geo.longitude) ? (geo.latitude + ', ' + geo.longitude) : '0.8855412, 101.9339963';
-        var mapsUrl = (geo.latitude && geo.longitude) ? ('https://www.google.com/maps?q=' + geo.latitude + ',' + geo.longitude) : 'https://www.google.com/maps?q=0.8855412,101.9339963';
+        var loc = geo.detailedLocation || locParts.join(', ') || 'Indonesia, Riau, Kampar, Kec. Siak Hulu, Desa Pandau Jaya, Kode Pos 28273';
+        var coords = (geo.latitude && geo.longitude) ? (geo.latitude + ', ' + geo.longitude) : '0.4303156, 101.4501953';
+        var mapsUrl = (geo.latitude && geo.longitude) ? ('https://www.google.com/maps?q=' + geo.latitude + ',' + geo.longitude) : 'https://www.google.com/maps?q=0.4303156,101.4501953';
         var ip = geo.ip || '103.190.46.153';
         var isp = (geo.connection && (geo.connection.isp || geo.connection.org)) || 'PT INDONESIA COMNETS PLUS';
         var action = triggerAction || 'Akses Ilegal Terdeteksi';
