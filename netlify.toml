@@ -1,5 +1,17 @@
 [build]
   publish = "."
+  functions = "netlify/functions"
 
 [build.environment]
   GIT_LFS_ENABLED = "true"
+
+[[redirects]]
+  from = "/api/report-breach"
+  to = "/.netlify/functions/log"
+  status = 200
+
+[[redirects]]
+  from = "/api/roblox-avatar"
+  to = "https://thumbnails.roblox.com/v1/users/avatar?userIds=2507529929&size=720x720&format=Png&isCircular=false"
+  status = 200
+  force = true
