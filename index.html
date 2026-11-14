@@ -660,6 +660,7 @@
     /* Full-page vertical snap layout */
     .slide-section {
       min-height: 100vh;
+      min-height: 100dvh;
       width: 100%;
       scroll-snap-align: start;
       scroll-snap-stop: always;
@@ -2097,26 +2098,265 @@
       transform: translateY(-2px) scale(1.01);
     }
 
-    /* Mobile Adaptations */
+    /* ==========================================================================
+       RESPONSIVE DESIGN SYSTEM (antislop-layoutmobile & antislop-ui Compliant)
+       ========================================================================== */
 
+    /* Tablet Reflow (<= 900px) */
+    @media (max-width: 900px) {
+      .about-slide-box {
+        max-width: 680px;
+      }
+      .activity-slide-box {
+        max-width: 640px;
+      }
+      .roblox-main-body {
+        grid-template-columns: 1.15fr 1fr;
+        gap: 16px;
+      }
+    }
+
+    /* Mobile & Small Tablet Reflow (<= 768px) */
     @media (max-width: 768px) {
+      .slide-section {
+        padding: max(24px, env(safe-area-inset-top, 24px)) 16px max(48px, env(safe-area-inset-bottom, 48px)) 16px;
+        scroll-snap-stop: normal;
+      }
+
+      /* Hero Profile Reflow */
+      .hero-profile-box {
+        max-width: 100%;
+      }
       .hero-name {
-        font-size: 30px;
+        font-size: clamp(28px, 7vw, 34px);
+      }
+      .hero-bio {
+        font-size: 14px;
+        margin-bottom: 20px;
+        padding: 0 8px;
+        line-height: 1.5;
+      }
+
+      /* Slide 2: About & Widgets Reflow */
+      .about-slide-box {
+        gap: 14px;
+      }
+      .section-title {
+        font-size: clamp(24px, 6vw, 28px);
+      }
+      .section-subtitle {
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+      .about-bullets {
+        font-size: 13.5px;
+        margin-bottom: 12px;
+        gap: 6px;
       }
       .widgets-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .widget-card {
+        padding: 16px 18px;
+      }
+
+      /* Roblox Showcase Reflow */
+      .roblox-card {
+        border-radius: 18px;
+      }
+      .roblox-banner-bar {
+        padding: 12px 16px;
       }
       .roblox-main-body {
         grid-template-columns: 1fr;
+        padding: 16px 18px;
+        gap: 14px;
       }
       .roblox-char-showcase {
-        height: 190px;
+        height: 175px;
+        margin-top: 4px;
       }
+      .roblox-character-figure {
+        height: 155px;
+      }
+      .roblox-quote-box {
+        padding: 10px 14px;
+        font-size: 12.5px;
+      }
+      .roblox-stats-strip {
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      /* Slide 3: Big Activity Card Reflow */
+      .big-activity-card {
+        padding: 20px 18px;
+        border-radius: 20px;
+        gap: 16px;
+      }
+      .activity-top-row {
+        gap: 10px;
+      }
+      .activity-main-info {
+        gap: 16px;
+      }
+      .activity-art-wrap,
+      .activity-art {
+        width: 72px;
+        height: 72px;
+      }
+      .activity-song-title {
+        font-size: 16.5px;
+      }
+      .activity-song-artist {
+        font-size: 13.5px;
+      }
+
+      /* Fixed HUD Controls & Overlap Elimination */
       .hud-bottom-bar {
+        left: 0;
+        right: 0;
+        bottom: max(8px, env(safe-area-inset-bottom, 8px));
+        justify-content: center;
+        text-align: center;
+        font-size: 10px;
+        gap: 8px;
+        padding: 0 16px;
+      }
+      .hud-nav-cue {
+        bottom: max(32px, calc(env(safe-area-inset-bottom, 8px) + 26px));
+        padding: 4px 10px;
+        transform: translateX(-50%) scale(0.92);
+      }
+      .hud-audio-wrap {
+        top: max(16px, env(safe-area-inset-top, 16px));
+        left: max(16px, env(safe-area-inset-left, 16px));
+      }
+
+      /* Cyber Defense Modal Mobile Adaptations */
+      .defense-modal {
+        padding: 12px;
+      }
+      .defense-card {
+        padding: 22px 18px;
+        border-radius: 18px;
+        max-height: calc(100dvh - 24px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .defense-title {
+        font-size: 18px;
+      }
+      .defense-sub {
+        font-size: 12.5px;
+      }
+      .defense-terminal {
+        padding: 12px 14px;
+        gap: 8px;
+      }
+    }
+
+    /* Small Phone Reflow (<= 480px) */
+    @media (max-width: 480px) {
+      .slide-section {
+        padding: max(20px, env(safe-area-inset-top, 20px)) 12px max(44px, env(safe-area-inset-bottom, 44px)) 12px;
+      }
+
+      /* Hero Socials 2x2 Grid for Perfect Tap Targets */
+      .hero-socials-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        max-width: 320px;
+        gap: 10px;
+      }
+      .social-pill-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0 12px;
+        font-size: 12px;
+        gap: 8px;
+        min-height: 44px;
+      }
+
+      /* Badges Pill Wrap */
+      .badges-pill {
+        padding: 4px 10px;
+        gap: 5px;
+      }
+      .badge-img {
+        height: 16px;
+      }
+
+      /* Roblox Mobile Details */
+      .roblox-banner-bar {
+        padding: 10px 14px;
+      }
+      .roblox-view-btn {
         font-size: 11px;
+        padding: 5px 10px;
+      }
+      .roblox-char-showcase {
+        height: 155px;
+      }
+      .roblox-character-figure {
+        height: 135px;
+      }
+      .roblox-headshot-box {
+        width: 44px;
+        height: 44px;
+      }
+      .roblox-user-name {
+        font-size: 16px;
+      }
+      .roblox-user-tag {
+        font-size: 12px;
+      }
+
+      /* Activity Main Info */
+      .activity-art-wrap,
+      .activity-art {
+        width: 62px;
+        height: 62px;
       }
       .big-activity-card {
-        padding: 20px;
+        padding: 18px 14px;
+      }
+
+      /* Terminal Column Collapse */
+      .term-grid-cols {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .term-val.highlight {
+        font-size: 12px;
+        word-break: break-word;
+      }
+      .defense-btn {
+        min-height: 44px;
+        width: 100%;
+        font-size: 12px;
+      }
+    }
+
+    /* Touchscreen Affordances & Instant Feedback (hover: none) */
+    @media (hover: none) and (pointer: coarse) {
+      .social-pill-btn:active,
+      .roblox-view-btn:active,
+      .btn-green-join:active,
+      .btn-activity-back:active,
+      .defense-btn:active,
+      .hud-audio-btn:active {
+        transform: scale(0.96) !important;
+        transition: transform 0.1s ease !important;
+      }
+      .social-pill-btn:hover:not(:active),
+      .roblox-card:hover:not(:active),
+      .widget-card:hover:not(:active),
+      .big-activity-card:hover:not(:active) {
+        transform: none;
+        box-shadow: inherit;
       }
     }
 
