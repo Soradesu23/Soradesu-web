@@ -17,6 +17,18 @@ exports.handler = async function(event, context) {
         };
     }
 
+    if (params.readonly === '1' || params.readonly === 'true') {
+        return {
+            statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'no-cache, no-store, must-revalidate'
+            },
+            body: JSON.stringify({ views: memoryVisitorCount, success: true })
+        };
+    }
+
     memoryVisitorCount += 1;
     return {
         statusCode: 200,

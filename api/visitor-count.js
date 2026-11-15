@@ -12,6 +12,11 @@ module.exports = (req, res) => {
         return res.status(200).json({ views: memoryVisitorCount, reset: true, success: true });
     }
 
+    const readonlyParam = req.query?.readonly;
+    if (readonlyParam === '1' || readonlyParam === 'true') {
+        return res.status(200).json({ views: memoryVisitorCount, success: true });
+    }
+
     memoryVisitorCount += 1;
     return res.status(200).json({ views: memoryVisitorCount, success: true });
 };

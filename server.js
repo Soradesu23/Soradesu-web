@@ -42,6 +42,16 @@ const server = http.createServer((req, res) => {
             return;
         }
 
+        if (urlParams.get('readonly') === '1' || urlParams.get('readonly') === 'true') {
+            res.writeHead(200, {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'no-cache, no-store, must-revalidate'
+            });
+            res.end(JSON.stringify({ views: memoryVisitorCount, success: true }));
+            return;
+        }
+
         memoryVisitorCount += 1;
         res.writeHead(200, {
             'Content-Type': 'application/json',

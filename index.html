@@ -976,7 +976,7 @@
     }
 
     .visitor-counter-pill {
-      cursor: pointer;
+      cursor: default;
       background: rgba(15, 23, 42, 0.65);
       border: 1px solid rgba(56, 189, 248, 0.35);
       color: #38bdf8;
@@ -987,9 +987,8 @@
 
     .visitor-counter-pill:hover {
       background: rgba(15, 23, 42, 0.85);
-      border-color: rgba(56, 189, 248, 0.75);
-      box-shadow: 0 10px 24px rgba(56, 189, 248, 0.3);
-      transform: translateY(-3px) scale(1.02);
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.2);
       color: #7dd3fc;
     }
 
@@ -3443,11 +3442,21 @@
 
       function fetchVisitorCount() {
         if (!visitorCountText) return;
-        fetch('/api/visitor-count')
+        var hasVisited = false;
+        try {
+          hasVisited = sessionStorage.getItem('soradesu_view_counted') === '1';
+        } catch (e) {}
+
+        var endpoint = hasVisited ? '/api/visitor-count?readonly=1' : '/api/visitor-count';
+
+        fetch(endpoint)
           .then(function (res) { return res.json(); })
           .then(function (data) {
             if (data && typeof data.views === 'number') {
               animateCountUp(data.views);
+              try {
+                sessionStorage.setItem('soradesu_view_counted', '1');
+              } catch (e) {}
             }
           })
           .catch(function () {
@@ -3457,12 +3466,6 @@
           });
       }
       fetchVisitorCount();
-
-      if (visitorCounterPill) {
-        visitorCounterPill.addEventListener('click', function () {
-          fetchVisitorCount();
-        });
-      }
 
       
       (function initRobloxSync() {
