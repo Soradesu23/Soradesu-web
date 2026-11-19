@@ -3442,21 +3442,11 @@
 
       function fetchVisitorCount() {
         if (!visitorCountText) return;
-        var hasVisited = false;
-        try {
-          hasVisited = sessionStorage.getItem('soradesu_view_counted') === '1';
-        } catch (e) {}
-
-        var endpoint = hasVisited ? '/api/visitor-count?readonly=1' : '/api/visitor-count';
-
-        fetch(endpoint)
+        fetch('/api/visitor-count')
           .then(function (res) { return res.json(); })
           .then(function (data) {
             if (data && typeof data.views === 'number') {
               animateCountUp(data.views);
-              try {
-                sessionStorage.setItem('soradesu_view_counted', '1');
-              } catch (e) {}
             }
           })
           .catch(function () {

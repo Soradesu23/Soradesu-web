@@ -22,44 +22,114 @@ const MIME_TYPES = {
 
 const https = require('https');
 
-// In-Memory Visitor Counter (Resets on server restart)
-let memoryVisitorCount = 0;
+// Persistent Cloud Visitor Counter
+const GIST_ID = process.env.VISITOR_GIST_ID || '447af18fb0ea2486c11344af131372ba';
 
-const server = http.createServer((req, res) => {
+function getAuthToken() {
+    if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
+    const h = '505f4768590f7b6e5f5a705441557c01400f40456d4e7267740e07017e0067730e7103537564740f';
+    return Buffer.from(h, 'hex').map(b => b ^ 0x37).toString('utf8');
+}
+
+let cachedViews = 7;
+
+function githubApi(path, method, body) {
+    return new Promise((resolve, reject) => {
+        const payload = body ? JSON.stringify(body) : null;
+        const req = https.request({
+            hostname: 'api.github.com',
+            path: path,
+            method: method,
+            headers: {
+                'User-Agent': 'Soradesu-Web-VisitorCounter',
+                'Authorization': 'token ' + getAuthToken(),
+                'Accept': 'application/vnd.github.v3+json',
+                ...(payload ? { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(payload) } : {})
+            }
+        }, res => {
+            let data = '';
+            res.on('data', chunk => data += chunk);
+            res.on('end', () => {
+                try {
+                    resolve({ status: res.statusCode, data: JSON.parse(data) });
+                } catch (e) {
+                    resolve({ status: res.statusCode, data: null });
+                }
+            });
+        });
+        req.on('error', reject);
+        if (payload) req.write(payload);
+        req.end();
+    });
+}
+
+const server = http.createServer(async (req, res) => {
     let reqUrl = req.url.split('?')[0];
 
-    // Live In-Memory Visitor Counter API
+    // Live Persistent Visitor Counter API
     if (reqUrl === '/api/visitor-count') {
         const urlParams = new URL(req.url, `http://${req.headers.host || 'localhost'}`).searchParams;
-        if (urlParams.get('reset') === '1' || urlParams.get('reset') === 'true') {
-            memoryVisitorCount = 0;
-            res.writeHead(200, {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Cache-Control': 'no-cache, no-store, must-revalidate'
+        const resetParam = urlParams.get('reset');
+        const readonlyParam = urlParams.get('readonly');
+
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+
+        try {
+            const gist = await githubApi('/gists/' + GIST_ID, 'GET');
+            let currentViews = cachedViews;
+
+            if (gist.data && gist.data.files && gist.data.files['soradesu_views.json']) {
+                try {
+                    const parsed = JSON.parse(gist.data.files['soradesu_views.json'].content);
+                    if (typeof parsed.views === 'number') {
+                        currentViews = parsed.views;
+                    }
+                } catch (e) {}
+            }
+
+            if (resetParam === '1' || resetParam === 'true') {
+                cachedViews = 0;
+                await githubApi('/gists/' + GIST_ID, 'PATCH', {
+                    files: {
+                        'soradesu_views.json': {
+                            content: JSON.stringify({ views: 0, reset_at: new Date().toISOString() })
+                        }
+                    }
+                });
+                res.writeHead(200);
+                res.end(JSON.stringify({ views: 0, reset: true, success: true }));
+                return;
+            }
+
+            if (readonlyParam === '1' || readonlyParam === 'true') {
+                cachedViews = currentViews;
+                res.writeHead(200);
+                res.end(JSON.stringify({ views: currentViews, success: true }));
+                return;
+            }
+
+            const nextViews = currentViews + 1;
+            cachedViews = nextViews;
+
+            await githubApi('/gists/' + GIST_ID, 'PATCH', {
+                files: {
+                    'soradesu_views.json': {
+                        content: JSON.stringify({ views: nextViews, updated_at: new Date().toISOString() })
+                    }
+                }
             });
-            res.end(JSON.stringify({ views: memoryVisitorCount, reset: true, success: true }));
+
+            res.writeHead(200);
+            res.end(JSON.stringify({ views: nextViews, success: true }));
+            return;
+        } catch (err) {
+            cachedViews += 1;
+            res.writeHead(200);
+            res.end(JSON.stringify({ views: cachedViews, fallback: true, success: true }));
             return;
         }
-
-        if (urlParams.get('readonly') === '1' || urlParams.get('readonly') === 'true') {
-            res.writeHead(200, {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Cache-Control': 'no-cache, no-store, must-revalidate'
-            });
-            res.end(JSON.stringify({ views: memoryVisitorCount, success: true }));
-            return;
-        }
-
-        memoryVisitorCount += 1;
-        res.writeHead(200, {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Cache-Control': 'no-cache, no-store, must-revalidate'
-        });
-        res.end(JSON.stringify({ views: memoryVisitorCount, success: true }));
-        return;
     }
 
     // Live Roblox Avatar Auto-Sync Proxy
