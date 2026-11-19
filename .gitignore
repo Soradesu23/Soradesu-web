@@ -1,6 +1,8 @@
 # Backups and huge raw files
 *.old.*
 *.backup*
+*.previous.*
+tiktok_video_no_watermark.mp4
 bg_video_transcoded.mp4
 bg_video_portrait_backup.mp4
 
