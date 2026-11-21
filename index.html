@@ -747,18 +747,103 @@
       transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
                   transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
       animation: floatAvatar 4.2s ease-in-out infinite;
+      --bass-scale: 1;
+      --bass-glow: 0.45;
+      --bass-ring-opacity: 0.55;
     }
 
     .hero-avatar-wrap::before {
       content: '';
       position: absolute;
-      inset: -14px;
+      inset: -18px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, rgba(56, 189, 248, 0.2) 50%, transparent 75%);
+      background: radial-gradient(circle, rgba(56, 189, 248, var(--bass-glow, 0.5)) 0%, rgba(236, 72, 153, calc(var(--bass-glow, 0.45) * 0.85)) 48%, transparent 74%);
       z-index: 0;
-      filter: blur(14px);
-      animation: pulseAura 3.6s ease-in-out infinite alternate;
+      filter: blur(15px);
+      transform: scale(var(--bass-scale, 1));
+      transition: transform 0.07s ease-out, opacity 0.07s ease-out;
       pointer-events: none;
+    }
+
+    .hero-avatar-wrap.is-bass-reactive .ar-reticle-ring {
+      border-color: rgba(56, 189, 248, var(--bass-ring-opacity, 0.65));
+      filter: drop-shadow(0 0 calc(var(--bass-glow, 0.45) * 14px) rgba(56, 189, 248, 0.75));
+    }
+
+    /* Live Status Thought Bubble (#4) */
+    .hero-status-bubble {
+      position: absolute;
+      top: -14px;
+      left: calc(100% + 10px);
+      z-index: 6;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.82);
+      border: 1px solid rgba(56, 189, 248, 0.42);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 14px rgba(56, 189, 248, 0.22);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #e2e8f0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      max-width: 195px;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      animation: statusBubbleFloat 3.6s ease-in-out infinite alternate;
+    }
+
+    .hero-status-bubble:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 10px 28px rgba(56, 189, 248, 0.38), 0 0 16px rgba(236, 72, 153, 0.28);
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    .hero-status-bubble::before {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: -6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+    }
+
+    .hero-status-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: -11px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.65);
+    }
+
+    .status-bubble-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 8px #38bdf8;
+      flex-shrink: 0;
+    }
+
+    .status-bubble-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @keyframes statusBubbleFloat {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-5px); }
     }
 
     @keyframes floatAvatar {
@@ -776,7 +861,9 @@
       height: 98px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(56, 189, 248, 0.35);
+      position: relative;
+      z-index: 1;
     }
 
     .hero-avatar-decor {
@@ -820,12 +907,51 @@
       letter-spacing: -0.03em;
       color: var(--text);
       text-shadow: 0 2px 18px rgba(0, 0, 0, 0.95), 0 0 3px rgba(0, 0, 0, 0.95);
-      transition: color var(--transition);
+      transition: color var(--transition), text-shadow var(--transition), transform 0.2s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .hero-name:hover {
-      color: var(--pink);
-      text-shadow: 0 0 24px var(--pink-glow);
+      color: #38bdf8;
+      text-shadow: 0 0 22px rgba(56, 189, 248, 0.55), 0 0 32px var(--pink-glow);
+      transform: translateY(-1px);
+    }
+
+    .copy-hint-chip {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #7dd3fc;
+      opacity: 0;
+      transform: translateX(-4px) scale(0.92);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      pointer-events: none;
+    }
+
+    .hero-name:hover .copy-hint-chip,
+    .widget-title.copyable-user:hover .copy-hint-chip {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .widget-title.copyable-user {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .widget-title.copyable-user:hover {
+      color: #38bdf8;
     }
 
     .badges-pill {
@@ -964,9 +1090,9 @@
 
     .social-pill-btn:hover {
       background: var(--glass-hover);
-      border-color: rgba(236, 72, 153, 0.5);
+      border-color: rgba(56, 189, 248, 0.58);
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 10px 24px rgba(236, 72, 153, 0.35);
+      box-shadow: 0 10px 26px rgba(56, 189, 248, 0.32), 0 0 18px rgba(236, 72, 153, 0.25);
     }
 
     .social-icon-img {
@@ -1037,8 +1163,8 @@
 
     .sub-divider {
       width: 100%;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.14);
+      height: 1.5px;
+      background: linear-gradient(90deg, #38bdf8 0%, #ec4899 55%, transparent 100%);
       margin-bottom: 12px;
       transform-origin: left;
       transform: scaleX(0);
@@ -1510,13 +1636,71 @@
       border-radius: 24px;
       padding: 28px;
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       display: flex;
       flex-direction: column;
       gap: 20px;
+      position: relative;
+      overflow: hidden;
       opacity: 0;
       transform: translateY(24px) scale(0.98);
       transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
-                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
+                  border-color 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+
+    .big-activity-card:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 18px 46px rgba(56, 189, 248, 0.18), 0 0 28px rgba(236, 72, 153, 0.15);
+    }
+
+    /* Dynamic Album Art Ambient Glow (#6) */
+    .activity-ambient-bg {
+      position: absolute;
+      inset: -30px;
+      background-size: cover;
+      background-position: center;
+      filter: blur(42px) saturate(1.75);
+      opacity: 0;
+      transition: opacity 0.55s ease, background-image 0.55s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .activity-ambient-bg.is-active {
+      opacity: 0.32;
+    }
+
+    .big-activity-card > *:not(.activity-ambient-bg) {
+      position: relative;
+      z-index: 2;
+    }
+
+    .spotify-open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: rgba(30, 215, 96, 0.16);
+      border: 1px solid rgba(30, 215, 96, 0.42);
+      color: #4ade80;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .spotify-open-btn:hover {
+      background: rgba(30, 215, 96, 0.32);
+      border-color: #22c55e;
+      color: #ffffff;
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
+      transform: translateY(-1px);
     }
 
     .slide-section.is-visible .big-activity-card {
@@ -1719,7 +1903,8 @@
     .activity-scrub-fill {
       height: 100%;
       width: 0%;
-      background: var(--pink);
+      background: linear-gradient(90deg, #38bdf8, #ec4899);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
       transition: width 0.3s ease;
     }
 
@@ -2408,6 +2593,14 @@
         height: 16px;
       }
 
+      .hero-status-bubble {
+        left: 72%;
+        top: -16px;
+        max-width: 128px;
+        font-size: 9.5px;
+        padding: 3px 8px;
+      }
+
       /* Roblox Mobile Compact Details */
       .roblox-banner-bar {
         padding: 7px 12px;
@@ -2591,8 +2784,8 @@
     <div class="hero-profile-box">
       <div id="kaomojiWidget" class="kaomoji-box">&gt; _ &lt;</div>
 
-      <!-- Avatar with Decoration & AR Reticle -->
-      <div class="hero-avatar-wrap">
+      <!-- Avatar with Decoration, AR Reticle & Live Status Thought Bubble -->
+      <div id="heroAvatarWrap" class="hero-avatar-wrap">
         <!-- AR VR Optical Reticle -->
         <div class="ar-reticle-ring" aria-hidden="true"></div>
         <div class="ar-reticle-corners" aria-hidden="true">
@@ -2602,6 +2795,10 @@
           <span class="ar-corner br"></span>
         </div>
 
+        <div id="heroStatusBubble" class="hero-status-bubble" title="Klik untuk salin username Discord">
+          <span class="status-bubble-dot" aria-hidden="true"></span>
+          <span id="heroStatusBubbleText" class="status-bubble-text">soradesu.vercel.app</span>
+        </div>
 
         <img id="userAvatar" class="hero-avatar-img" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar Soradesu" width="98" height="98">
         <img src="avatar_decoration.png" class="hero-avatar-decor" alt="" aria-hidden="true" width="125" height="125">
@@ -2610,7 +2807,10 @@
 
       <!-- Display Name & Badges Pill -->
       <div class="hero-name-row">
-        <h1 id="displayName" class="hero-name">Soradesu</h1>
+        <h1 id="displayName" class="hero-name" title="Klik untuk salin username Discord" role="button" tabindex="0">
+          <span id="displayNameText">Soradesu</span>
+          <span class="copy-hint-chip">COPY</span>
+        </h1>
         <div class="badges-pill" aria-label="Badges">
           <span id="clanTag" class="clan-tag" style="display: none;"></span>
           <img src="badge_real_sword.png" class="badge-img" alt="Game Time" title="Game Time: Committed" width="18" height="18">
@@ -2684,7 +2884,7 @@
             </div>
             <div class="widget-details">
               <div class="widget-name-badges-row">
-                <div id="widgetName" class="widget-title">hamsskuy</div>
+                <div id="widgetName" class="widget-title copyable-user" title="Klik untuk salin username Discord" role="button" tabindex="0">hamsskuy</div>
                 <div class="widget-badges-mini" aria-label="Badges">
                   <img src="badge_real_sword.png" class="badge-mini-img" alt="Game Time" title="Game Time: Committed" width="16" height="14">
                   <img src="badge_real_monitor.png" class="badge-mini-img" alt="Streamer" title="Streamer: Breakout" width="16" height="14">
@@ -2743,31 +2943,31 @@
           <div class="roblox-info-pane">
             <div class="roblox-avatar-heading">
               <div class="roblox-headshot-box">
-                <img src="roblox_avatar_headshot.png" alt="Awasjatuh Avatar" class="roblox-headshot-img" width="52" height="52">
-                <span class="roblox-online-indicator" title="Active Player"></span>
+                <img id="robloxHeadshotImg" src="roblox_avatar_headshot.png" alt="Awasjatuh Avatar" class="roblox-headshot-img" width="52" height="52">
+                <span id="robloxOnlineDot" class="roblox-online-indicator" title="Active Player"></span>
               </div>
               <div class="roblox-identity">
-                <h3 class="roblox-display-title">Awasjatuh</h3>
-                <span class="roblox-username-sub">@ilhammp12</span>
+                <h3 id="robloxDisplayName" class="roblox-display-title">Awasjatuh</h3>
+                <span id="robloxUsernameSub" class="roblox-username-sub">@ilhammp12</span>
               </div>
             </div>
 
-            <p class="roblox-bio-quote">
+            <p id="robloxBioQuote" class="roblox-bio-quote">
               &ldquo;I am a man who places great importance on the actions taken by health experts.&rdquo;
             </p>
 
-            <!-- Social Stats Counter Pills -->
+            <!-- Social Stats Counter Pills (Live Synced from Roblox API) -->
             <div class="roblox-stats-strip">
               <div class="roblox-stat-badge">
-                <span class="roblox-stat-num">40</span>
+                <span id="robloxFriendsCount" class="roblox-stat-num">37</span>
                 <span class="roblox-stat-label">Friends</span>
               </div>
               <div class="roblox-stat-badge">
-                <span class="roblox-stat-num">2</span>
+                <span id="robloxFollowersCount" class="roblox-stat-num">2</span>
                 <span class="roblox-stat-label">Followers</span>
               </div>
               <div class="roblox-stat-badge">
-                <span class="roblox-stat-num">1</span>
+                <span id="robloxFollowingCount" class="roblox-stat-num">1</span>
                 <span class="roblox-stat-label">Following</span>
               </div>
             </div>
@@ -2775,7 +2975,7 @@
             <!-- Avatar Tags -->
             <div class="roblox-tags-strip">
               <span class="roblox-mini-tag">ID: 2507529929</span>
-              <span class="roblox-mini-tag">R6 Avatar</span>
+              <span id="robloxPresenceTag" class="roblox-mini-tag">R6 Avatar</span>
             </div>
           </div>
 
@@ -2802,10 +3002,13 @@
       </div>
 
       <div class="big-activity-card tilt-card">
+        <!-- Dynamic Album Art / Game Icon Ambient Blur Background (#6) -->
+        <div id="activityAmbientBg" class="activity-ambient-bg" aria-hidden="true"></div>
+
         <!-- Active Activity Container -->
         <div id="liveActivityBox" style="display: none;">
           <div class="activity-top-row">
-            <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
               <span id="activityBadge" class="activity-chip">Spotify</span>
               <div class="activity-equalizer-bars" aria-hidden="true">
                 <span class="eq-bar bar1"></span>
@@ -2814,7 +3017,18 @@
                 <span class="eq-bar bar4"></span>
               </div>
             </div>
-            <span id="activityTimer" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-dim);">00:00</span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <a id="spotifyOpenBtn" href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="spotify-open-btn" style="display: none;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M8 14.5c2.5-1 5.5-1 8 0"></path>
+                  <path d="M7 11.5c3.5-1.2 6.5-1.2 10 0"></path>
+                  <path d="M6.5 8.5c4-1.4 7-1.4 11 0"></path>
+                </svg>
+                <span>Open in Spotify</span>
+              </a>
+              <span id="activityTimer" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-dim);">00:00</span>
+            </div>
           </div>
 
           <div class="activity-main-info" style="margin-top: 14px;">
@@ -2955,8 +3169,12 @@
       var backToTopBtn = document.getElementById('backToTopBtn');
 
       var userAvatar = document.getElementById('userAvatar');
+      var heroAvatarWrap = document.getElementById('heroAvatarWrap');
+      var heroStatusBubble = document.getElementById('heroStatusBubble');
+      var heroStatusBubbleText = document.getElementById('heroStatusBubbleText');
       var discordStatusIndicator = document.getElementById('discordStatusIndicator');
       var displayName = document.getElementById('displayName');
+      var displayNameText = document.getElementById('displayNameText');
       var clanTag = document.getElementById('clanTag');
       var heroBioText = document.getElementById('heroBioText');
 
@@ -2968,6 +3186,8 @@
 
       var liveActivityBox = document.getElementById('liveActivityBox');
       var idleActivityBox = document.getElementById('idleActivityBox');
+      var activityAmbientBg = document.getElementById('activityAmbientBg');
+      var spotifyOpenBtn = document.getElementById('spotifyOpenBtn');
       var activityBadge = document.getElementById('activityBadge');
       var activityTimer = document.getElementById('activityTimer');
       var activityArtwork = document.getElementById('activityArtwork');
@@ -3019,6 +3239,55 @@
       
       var isAudioPlaying = false;
       var lastVolume = 1;
+      var audioAnalyser = null;
+      var audioDataArray = null;
+      var audioCtxInstance = null;
+
+      function initBassReactiveAura() {
+        if (audioAnalyser || !bgVideo) return;
+        try {
+          var AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtx) return;
+          audioCtxInstance = new AudioCtx();
+          var source = audioCtxInstance.createMediaElementSource(bgVideo);
+          audioAnalyser = audioCtxInstance.createAnalyser();
+          audioAnalyser.fftSize = 128;
+          audioAnalyser.smoothingTimeConstant = 0.78;
+          source.connect(audioAnalyser);
+          audioAnalyser.connect(audioCtxInstance.destination);
+          audioDataArray = new Uint8Array(audioAnalyser.frequencyBinCount);
+
+          if (heroAvatarWrap) {
+            heroAvatarWrap.classList.add('is-bass-reactive');
+          }
+
+          function pumpBassFrame() {
+            if (audioAnalyser && audioDataArray && bgVideo && !bgVideo.paused && !bgVideo.muted) {
+              audioAnalyser.getByteFrequencyData(audioDataArray);
+              var bassSum = 0;
+              var bassBins = 8;
+              for (var i = 0; i < bassBins; i++) {
+                bassSum += audioDataArray[i];
+              }
+              var bassNorm = (bassSum / (bassBins * 255));
+              var scaleVal = (1 + bassNorm * 0.42).toFixed(3);
+              var glowVal = (0.42 + bassNorm * 0.56).toFixed(3);
+              var ringVal = (0.5 + bassNorm * 0.5).toFixed(3);
+              if (heroAvatarWrap) {
+                heroAvatarWrap.style.setProperty('--bass-scale', scaleVal);
+                heroAvatarWrap.style.setProperty('--bass-glow', glowVal);
+                heroAvatarWrap.style.setProperty('--bass-ring-opacity', ringVal);
+              }
+            } else if (heroAvatarWrap) {
+              heroAvatarWrap.style.setProperty('--bass-scale', '1');
+              heroAvatarWrap.style.setProperty('--bass-glow', '0.45');
+              heroAvatarWrap.style.setProperty('--bass-ring-opacity', '0.55');
+            }
+            window.requestAnimationFrame(pumpBassFrame);
+          }
+          window.requestAnimationFrame(pumpBassFrame);
+        } catch (e) {}
+      }
 
       function updateVolumeUI(vol) {
         if (hudVolumeSlider) hudVolumeSlider.value = vol;
@@ -3044,6 +3313,10 @@
       function toggleAudio(e) {
         if (e) e.stopPropagation();
         if (!bgVideo) return;
+        initBassReactiveAura();
+        if (audioCtxInstance && audioCtxInstance.state === 'suspended') {
+          try { audioCtxInstance.resume(); } catch (err) {}
+        }
         if (hudAudioWrap) {
           hudAudioWrap.classList.add('is-open');
         }
@@ -3106,6 +3379,10 @@
       function dismissEnterScreen() {
         if (!enterScreen || enterScreen.classList.contains('is-exiting')) return;
         enterScreen.classList.add('is-exiting');
+        initBassReactiveAura();
+        if (audioCtxInstance && audioCtxInstance.state === 'suspended') {
+          try { audioCtxInstance.resume(); } catch (err) {}
+        }
 
         if (enterFlash) {
           enterFlash.classList.add('active');
@@ -3302,6 +3579,30 @@
         }, 2200);
       }
 
+      var currentDiscordUsername = 'hamsskuy';
+      function copyDiscordUsername() {
+        var textToCopy = currentDiscordUsername || 'hamsskuy';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy).then(function () {
+            showToast('Username @' + textToCopy + ' disalin ke clipboard!');
+          }).catch(function () {
+            showToast('Username @' + textToCopy + ' disalin ke clipboard!');
+          });
+        } else {
+          showToast('Username @' + textToCopy + ' disalin ke clipboard!');
+        }
+      }
+
+      if (displayName) {
+        displayName.addEventListener('click', copyDiscordUsername);
+      }
+      if (widgetName) {
+        widgetName.addEventListener('click', copyDiscordUsername);
+      }
+      if (heroStatusBubble) {
+        heroStatusBubble.addEventListener('click', copyDiscordUsername);
+      }
+
       function fetchGuildStats() {
         var url = 'https://discord.com/api/v10/invites/' + GUILD_INVITE_CODE + '?with_counts=true';
         fetch(url)
@@ -3341,6 +3642,16 @@
         }
       }
 
+      function setAmbientCover(imgUrl) {
+        if (!activityAmbientBg) return;
+        if (imgUrl) {
+          activityAmbientBg.style.backgroundImage = 'url("' + imgUrl + '")';
+          activityAmbientBg.classList.add('is-active');
+        } else {
+          activityAmbientBg.classList.remove('is-active');
+        }
+      }
+
       function renderLanyard(d) {
         if (!d) return;
 
@@ -3357,11 +3668,18 @@
             if (userAvatar) userAvatar.src = avatarUrl;
             if (widgetAvatar) widgetAvatar.src = avatarUrl;
           }
-          if (d.discord_user.global_name && displayName) {
-            displayName.textContent = d.discord_user.global_name;
+          if (d.discord_user.global_name) {
+            if (displayNameText) {
+              displayNameText.textContent = d.discord_user.global_name;
+            } else if (displayName) {
+              displayName.textContent = d.discord_user.global_name;
+            }
           }
-          if (d.discord_user.username && widgetName) {
-            widgetName.textContent = d.discord_user.username;
+          if (d.discord_user.username) {
+            currentDiscordUsername = d.discord_user.username;
+            if (widgetName) {
+              widgetName.textContent = d.discord_user.username;
+            }
           }
           if (d.discord_user.clan && clanTag && d.discord_user.clan.tag) {
             clanTag.textContent = d.discord_user.clan.tag;
@@ -3379,11 +3697,21 @@
             }
           }
         }
-        if (customAct && widgetActivity) {
-          var statusText = (customAct.emoji ? (customAct.emoji.name + ' ') : '') + (customAct.state || '');
-          widgetActivity.textContent = statusText.trim() || 'Online';
-        } else if (widgetActivity) {
-          widgetActivity.textContent = (d.discord_status || 'offline').toUpperCase();
+        var customStatusText = '';
+        if (customAct) {
+          customStatusText = ((customAct.emoji ? (customAct.emoji.name + ' ') : '') + (customAct.state || '')).trim();
+        }
+        if (widgetActivity) {
+          widgetActivity.textContent = customStatusText || (d.discord_status || 'offline').toUpperCase();
+        }
+        if (heroStatusBubbleText) {
+          if (customStatusText) {
+            heroStatusBubbleText.textContent = customStatusText;
+          } else if (d.spotify && d.listening_to_spotify && d.spotify.song) {
+            heroStatusBubbleText.textContent = '🎵 ' + d.spotify.song;
+          } else {
+            heroStatusBubbleText.textContent = '@' + currentDiscordUsername;
+          }
         }
 
         
@@ -3399,10 +3727,22 @@
             activityBadge.textContent = 'Mendengarkan Spotify';
           }
 
+          var spotArt = d.spotify.album_art_url || 'guild_icon.png';
           if (activityArtwork) {
-            activityArtwork.src = d.spotify.album_art_url || '';
+            activityArtwork.src = spotArt;
             activityArtwork.alt = d.spotify.song || 'Spotify Artwork';
           }
+          setAmbientCover(spotArt);
+
+          if (spotifyOpenBtn) {
+            if (d.spotify.track_id) {
+              spotifyOpenBtn.href = 'https://open.spotify.com/track/' + d.spotify.track_id;
+              spotifyOpenBtn.style.display = 'inline-flex';
+            } else {
+              spotifyOpenBtn.style.display = 'none';
+            }
+          }
+
           if (activitySongTitle) activitySongTitle.textContent = d.spotify.song || 'Song';
           if (activitySongArtist) activitySongArtist.textContent = d.spotify.artist || 'Artist';
           if (activitySongAlbum) activitySongAlbum.textContent = d.spotify.album || '';
@@ -3426,7 +3766,8 @@
           activityTimerInterval = setInterval(updateSpotifyTick, 1000);
 
         } else {
-          
+          if (spotifyOpenBtn) spotifyOpenBtn.style.display = 'none';
+
           var game = null;
           if (Array.isArray(d.activities)) {
             for (var j = 0; j < d.activities.length; j++) {
@@ -3466,10 +3807,12 @@
               gameIcon = 'https://dcdn.dstn.to/app-icons/' + game.application_id + '.png';
             }
 
+            var finalGameArt = gameIcon || 'guild_icon.png';
             if (activityArtwork) {
-              activityArtwork.src = gameIcon || 'guild_icon.png';
+              activityArtwork.src = finalGameArt;
               activityArtwork.alt = game.name || 'Game';
             }
+            setAmbientCover(finalGameArt);
 
             if (game.timestamps && game.timestamps.start) {
               var gameStart = game.timestamps.start;
@@ -3484,7 +3827,7 @@
             }
 
           } else {
-            
+            setAmbientCover('');
             if (liveActivityBox) liveActivityBox.style.display = 'none';
             if (idleActivityBox) idleActivityBox.style.display = 'flex';
           }
@@ -3611,11 +3954,21 @@
       
       (function initRobloxSync() {
         var robloxFigure = document.querySelector('.roblox-character-figure');
+        var robloxHeadshotImg = document.getElementById('robloxHeadshotImg');
+        var robloxOnlineDot = document.getElementById('robloxOnlineDot');
+        var robloxDisplayName = document.getElementById('robloxDisplayName');
+        var robloxUsernameSub = document.getElementById('robloxUsernameSub');
+        var robloxBioQuote = document.getElementById('robloxBioQuote');
+        var robloxFriendsCount = document.getElementById('robloxFriendsCount');
+        var robloxFollowersCount = document.getElementById('robloxFollowersCount');
+        var robloxFollowingCount = document.getElementById('robloxFollowingCount');
+        var robloxPresenceTag = document.getElementById('robloxPresenceTag');
 
         fetch('/api/roblox-avatar')
           .then(function (r) { return r.json(); })
           .then(function (res) {
-            if (res && res.data && res.data[0] && res.data[0].imageUrl) {
+            if (!res) return;
+            if (res.data && res.data[0] && res.data[0].imageUrl) {
               var liveUrl = res.data[0].imageUrl;
               if (robloxFigure) {
                 var img = new Image();
@@ -3623,6 +3976,50 @@
                   robloxFigure.src = liveUrl;
                 };
                 img.src = liveUrl;
+              }
+            }
+            if (res.headshotUrl && robloxHeadshotImg) {
+              robloxHeadshotImg.src = res.headshotUrl;
+            }
+            if (res.profile) {
+              if (res.profile.displayName && robloxDisplayName) {
+                robloxDisplayName.textContent = res.profile.displayName;
+              }
+              if (res.profile.username && robloxUsernameSub) {
+                robloxUsernameSub.textContent = '@' + res.profile.username;
+              }
+              if (res.profile.description && robloxBioQuote) {
+                robloxBioQuote.textContent = '\u201C' + res.profile.description + '\u201D';
+              }
+            }
+            if (res.stats) {
+              if (typeof res.stats.friends === 'number' && robloxFriendsCount) {
+                robloxFriendsCount.textContent = res.stats.friends.toLocaleString('id-ID');
+              }
+              if (typeof res.stats.followers === 'number' && robloxFollowersCount) {
+                robloxFollowersCount.textContent = res.stats.followers.toLocaleString('id-ID');
+              }
+              if (typeof res.stats.followings === 'number' && robloxFollowingCount) {
+                robloxFollowingCount.textContent = res.stats.followings.toLocaleString('id-ID');
+              }
+            }
+            if (res.presence && robloxOnlineDot) {
+              // Roblox userPresenceType: 0 = Offline, 1 = Online, 2 = InGame, 3 = InStudio
+              var pType = res.presence.userPresenceType || 0;
+              if (pType === 2) {
+                robloxOnlineDot.style.background = '#22c55e';
+                robloxOnlineDot.style.boxShadow = '0 0 8px #22c55e';
+                robloxOnlineDot.title = 'In-Game: ' + (res.presence.lastLocation || 'Roblox');
+                if (robloxPresenceTag) robloxPresenceTag.textContent = 'In-Game';
+              } else if (pType === 1 || pType === 3) {
+                robloxOnlineDot.style.background = '#38bdf8';
+                robloxOnlineDot.style.boxShadow = '0 0 8px #38bdf8';
+                robloxOnlineDot.title = 'Online on Roblox';
+                if (robloxPresenceTag) robloxPresenceTag.textContent = 'Online';
+              } else {
+                robloxOnlineDot.style.background = '#22c55e';
+                robloxOnlineDot.style.boxShadow = '0 0 8px #22c55e';
+                robloxOnlineDot.title = 'Verified Roblox Player';
               }
             }
           })

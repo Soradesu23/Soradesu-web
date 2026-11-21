@@ -132,24 +132,19 @@ const server = http.createServer(async (req, res) => {
         }
     }
 
-    // Live Roblox Avatar Auto-Sync Proxy
+    // Live Roblox Avatar, Stats & Presence Auto-Sync Proxy
     if (reqUrl === '/api/roblox-avatar') {
-        const robloxApiUrl = 'https://thumbnails.roblox.com/v1/users/avatar?userIds=2507529929&size=720x720&format=Png&isCircular=false';
-        https.get(robloxApiUrl, (apiRes) => {
-            let data = '';
-            apiRes.on('data', chunk => data += chunk);
-            apiRes.on('end', () => {
-                res.writeHead(200, {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    'Cache-Control': 'no-cache'
-                });
-                res.end(data);
-            });
-        }).on('error', (err) => {
-            res.writeHead(500, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ error: err.message }));
-        });
+        const robloxHandler = require('./api/roblox-avatar.js');
+        const mockRes = {
+            setHeader: (k, v) => res.setHeader(k, v),
+            status: (code) => ({
+                json: (obj) => {
+                    res.writeHead(code, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify(obj));
+                }
+            })
+        };
+        await robloxHandler(req, mockRes);
         return;
     }
 
