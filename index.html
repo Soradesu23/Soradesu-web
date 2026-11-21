@@ -2115,10 +2115,50 @@
       }
     }
 
+    /* Short Desktop & Laptop Viewport Optimization (<= 820px height, e.g. 1366x768) */
+    @media (max-height: 820px) and (min-width: 769px) {
+      .slide-section {
+        padding: 32px 24px 64px 24px;
+      }
+      .about-slide-box {
+        gap: 12px;
+      }
+      .section-title {
+        font-size: 26px;
+      }
+      .section-subtitle {
+        font-size: 13.5px;
+        margin-bottom: 4px;
+      }
+      .sub-divider {
+        margin-bottom: 8px;
+      }
+      .about-bullets {
+        margin-bottom: 8px;
+      }
+      .widget-card {
+        padding: 12px 16px;
+      }
+      .roblox-banner-bar {
+        padding: 10px 18px;
+      }
+      .roblox-main-body {
+        padding: 14px 20px;
+        gap: 14px;
+      }
+      .roblox-char-showcase {
+        height: 155px;
+      }
+      .roblox-char-stage {
+        width: 145px;
+        height: 150px;
+      }
+    }
+
     /* Mobile & Small Tablet Reflow (<= 768px) */
     @media (max-width: 768px) {
       .slide-section {
-        padding: max(24px, env(safe-area-inset-top, 24px)) 16px max(48px, env(safe-area-inset-bottom, 48px)) 16px;
+        padding: max(20px, env(safe-area-inset-top, 20px)) 16px max(78px, calc(env(safe-area-inset-bottom, 12px) + 68px)) 16px;
         scroll-snap-stop: normal;
       }
 
@@ -2138,54 +2178,131 @@
 
       /* Slide 2: About & Widgets Reflow */
       .about-slide-box {
-        gap: 14px;
+        gap: 10px;
       }
       .section-title {
-        font-size: clamp(24px, 6vw, 28px);
+        font-size: clamp(21px, 5.5vw, 26px);
+        margin-bottom: 2px;
       }
       .section-subtitle {
-        font-size: 14px;
+        font-size: 13px;
         margin-bottom: 4px;
       }
+      .sub-divider {
+        margin-bottom: 6px;
+      }
       .about-bullets {
-        font-size: 13.5px;
-        margin-bottom: 12px;
-        gap: 6px;
+        font-size: 12.5px;
+        margin-bottom: 6px;
+        gap: 4px;
+      }
+      .tech-pills-row {
+        margin-top: 6px;
+        gap: 5px;
+      }
+      .tech-pill {
+        font-size: 9.5px;
+        padding: 2px 8px;
       }
       .widgets-grid {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 8px;
       }
       .widget-card {
-        padding: 16px 18px;
+        padding: 10px 14px;
+        border-radius: 14px;
+      }
+      .widget-avatar-box,
+      .widget-avatar-img {
+        width: 40px;
+        height: 40px;
+      }
+      .widget-title {
+        font-size: 13.5px;
+      }
+      .widget-sub {
+        font-size: 11px;
+      }
+      .btn-green-join {
+        min-height: 36px;
+        padding: 0 14px;
+        font-size: 12px;
       }
 
-      /* Roblox Showcase Reflow */
+      /* Roblox Showcase Compact Side-by-Side Reflow */
       .roblox-card {
-        border-radius: 18px;
+        border-radius: 16px;
       }
       .roblox-banner-bar {
-        padding: 12px 16px;
+        padding: 8px 14px;
+      }
+      .roblox-view-btn {
+        min-height: 34px;
+        padding: 0 12px;
+        font-size: 11px;
       }
       .roblox-main-body {
-        grid-template-columns: 1fr;
-        padding: 16px 18px;
-        gap: 14px;
+        grid-template-columns: 1.28fr 0.72fr;
+        padding: 12px 14px;
+        gap: 10px;
       }
-      .roblox-char-showcase {
-        height: 175px;
-        margin-top: 4px;
+      .roblox-info-pane {
+        gap: 7px;
       }
-      .roblox-character-figure {
-        height: 155px;
+      .roblox-avatar-heading {
+        gap: 10px;
       }
-      .roblox-quote-box {
-        padding: 10px 14px;
-        font-size: 12.5px;
+      .roblox-headshot-box {
+        width: 42px;
+        height: 42px;
+      }
+      .roblox-display-title {
+        font-size: 17px;
+      }
+      .roblox-username-sub {
+        font-size: 11.5px;
+      }
+      .roblox-bio-quote {
+        padding: 6px 10px;
+        font-size: 11.5px;
+        line-height: 1.35;
       }
       .roblox-stats-strip {
-        gap: 8px;
+        gap: 5px;
         flex-wrap: wrap;
+      }
+      .roblox-stat-badge {
+        padding: 3px 7px;
+        font-size: 10px;
+        gap: 4px;
+      }
+      .roblox-tags-strip {
+        gap: 5px;
+      }
+      .roblox-mini-tag {
+        font-size: 10px;
+        padding: 2px 7px;
+      }
+      .roblox-char-showcase {
+        height: 145px;
+        margin-top: 0;
+      }
+      .roblox-char-stage {
+        width: 118px;
+        height: 140px;
+      }
+      .roblox-character-figure {
+        height: 132px;
+      }
+      .roblox-pod-pedestal {
+        width: 104px;
+        height: 104px;
+        bottom: 10px;
+      }
+      .roblox-pod-glow {
+        width: 100px;
+        height: 22px;
+        bottom: 8px;
       }
 
       /* Slide 3: Big Activity Card Reflow */
@@ -2216,7 +2333,7 @@
       .hud-bottom-bar {
         left: 0;
         right: 0;
-        bottom: max(8px, env(safe-area-inset-bottom, 8px));
+        bottom: max(6px, env(safe-area-inset-bottom, 6px));
         justify-content: center;
         text-align: center;
         font-size: 10px;
@@ -2224,13 +2341,16 @@
         padding: 0 16px;
       }
       .hud-nav-cue {
-        bottom: max(32px, calc(env(safe-area-inset-bottom, 8px) + 26px));
-        padding: 4px 10px;
-        transform: translateX(-50%) scale(0.92);
+        bottom: max(24px, calc(env(safe-area-inset-bottom, 6px) + 20px));
+        padding: 2px 10px;
+        gap: 3px;
+        transform: translateX(-50%) scale(0.85);
       }
       .hud-audio-wrap {
-        top: max(16px, env(safe-area-inset-top, 16px));
-        left: max(16px, env(safe-area-inset-left, 16px));
+        top: max(14px, env(safe-area-inset-top, 14px));
+        right: max(14px, env(safe-area-inset-right, 14px));
+        left: auto;
+        flex-direction: row-reverse;
       }
 
       /* Cyber Defense Modal Mobile Adaptations */
@@ -2259,7 +2379,7 @@
     /* Small Phone Reflow (<= 480px) */
     @media (max-width: 480px) {
       .slide-section {
-        padding: max(20px, env(safe-area-inset-top, 20px)) 12px max(44px, env(safe-area-inset-bottom, 44px)) 12px;
+        padding: max(16px, env(safe-area-inset-top, 16px)) 12px max(72px, calc(env(safe-area-inset-bottom, 10px) + 62px)) 12px;
       }
 
       /* Hero Socials 2x2 Grid for Perfect Tap Targets */
@@ -2288,29 +2408,50 @@
         height: 16px;
       }
 
-      /* Roblox Mobile Details */
+      /* Roblox Mobile Compact Details */
       .roblox-banner-bar {
-        padding: 10px 14px;
+        padding: 7px 12px;
+      }
+      .roblox-verified-chip {
+        display: none;
       }
       .roblox-view-btn {
         font-size: 11px;
-        padding: 5px 10px;
+        min-height: 32px;
+        padding: 0 10px;
+      }
+      .roblox-main-body {
+        grid-template-columns: 1.32fr 0.68fr;
+        padding: 10px 12px;
+        gap: 8px;
       }
       .roblox-char-showcase {
-        height: 155px;
+        height: 130px;
+      }
+      .roblox-char-stage {
+        width: 104px;
+        height: 125px;
       }
       .roblox-character-figure {
-        height: 135px;
+        height: 118px;
+      }
+      .roblox-pod-pedestal {
+        width: 92px;
+        height: 92px;
       }
       .roblox-headshot-box {
-        width: 44px;
-        height: 44px;
+        width: 38px;
+        height: 38px;
       }
-      .roblox-user-name {
-        font-size: 16px;
+      .roblox-display-title {
+        font-size: 15.5px;
       }
-      .roblox-user-tag {
-        font-size: 12px;
+      .roblox-username-sub {
+        font-size: 11px;
+      }
+      .roblox-bio-quote {
+        font-size: 11px;
+        padding: 5px 8px;
       }
 
       /* Activity Main Info */
@@ -2344,7 +2485,7 @@
       .social-pill-btn:active,
       .roblox-view-btn:active,
       .btn-green-join:active,
-      .btn-activity-back:active,
+      .btn-back-to-top:active,
       .defense-btn:active,
       .hud-audio-btn:active {
         transform: scale(0.96) !important;
@@ -2678,7 +2819,7 @@
 
           <div class="activity-main-info" style="margin-top: 14px;">
             <div class="activity-art-wrap">
-              <img id="activityArtwork" class="activity-art" src="" alt="Artwork" width="80" height="80">
+              <img id="activityArtwork" class="activity-art" src="guild_icon.png" alt="Artwork" width="80" height="80">
               <span class="art-pulse-ring" aria-hidden="true"></span>
             </div>
             <div class="activity-text-info">
@@ -2877,11 +3018,12 @@
 
       
       var isAudioPlaying = false;
+      var lastVolume = 1;
 
       function updateVolumeUI(vol) {
         if (hudVolumeSlider) hudVolumeSlider.value = vol;
         if (hudVolumeVal) hudVolumeVal.textContent = Math.round(vol * 100) + '%';
-        if (vol <= 0.01) {
+        if (vol <= 0.01 || (bgVideo && bgVideo.muted)) {
           updateSpeakerIcon(false);
         } else {
           updateSpeakerIcon(true);
@@ -2903,19 +3045,27 @@
         if (e) e.stopPropagation();
         if (!bgVideo) return;
         if (hudAudioWrap) {
-          hudAudioWrap.classList.toggle('is-open');
+          hudAudioWrap.classList.add('is-open');
         }
-        if (bgVideo.muted || bgVideo.paused) {
+        if (bgVideo.muted || bgVideo.paused || bgVideo.volume <= 0.01) {
           bgVideo.muted = false;
-          if (bgVideo.volume < 0.05) bgVideo.volume = 1;
+          var targetVol = lastVolume > 0.05 ? lastVolume : 1;
+          bgVideo.volume = targetVol;
           bgVideo.play().then(function () {
             isAudioPlaying = true;
-            updateVolumeUI(bgVideo.volume);
-          }).catch(function () {});
-        } else if (hudAudioWrap && !hudAudioWrap.classList.contains('is-open')) {
-          bgVideo.pause();
+            updateVolumeUI(targetVol);
+          }).catch(function () {
+            updateVolumeUI(targetVol);
+          });
+        } else {
+          if (bgVideo.volume > 0.05) {
+            lastVolume = bgVideo.volume;
+          }
+          bgVideo.muted = true;
           isAudioPlaying = false;
           updateSpeakerIcon(false);
+          if (hudVolumeSlider) hudVolumeSlider.value = 0;
+          if (hudVolumeVal) hudVolumeVal.textContent = '0%';
         }
       }
 
@@ -2926,6 +3076,7 @@
           var val = parseFloat(this.value);
           bgVideo.volume = val;
           if (val > 0) {
+            lastVolume = val;
             bgVideo.muted = false;
             if (bgVideo.paused) {
               bgVideo.play().then(function () {
@@ -2952,45 +3103,45 @@
         }
       });
 
-      if (enterScreen) {
-        enterScreen.addEventListener('click', function () {
-          
-          enterScreen.classList.add('is-exiting');
+      function dismissEnterScreen() {
+        if (!enterScreen || enterScreen.classList.contains('is-exiting')) return;
+        enterScreen.classList.add('is-exiting');
 
-          
-          if (enterFlash) {
-            enterFlash.classList.add('active');
-            setTimeout(function () {
-              enterFlash.classList.remove('active');
-            }, 600);
-          }
-
-          
-          var heroBox = document.querySelector('.hero-profile-box');
-          if (heroBox) {
-            heroBox.classList.add('hero-entering');
-          }
-
-          
+        if (enterFlash) {
+          enterFlash.classList.add('active');
           setTimeout(function () {
-            enterScreen.classList.add('dismissed');
-          }, 650);
+            enterFlash.classList.remove('active');
+          }, 600);
+        }
 
-          if (bgVideo) {
-            try {
-              bgVideo.currentTime = 0;
-            } catch (e) {}
-            bgVideo.muted = false;
-            bgVideo.volume = 1;
-            updateVolumeUI(1);
-            bgVideo.play().then(function () {
-              isAudioPlaying = true;
-              updateSpeakerIcon(true);
-            }).catch(function () {
-              updateSpeakerIcon(false);
-            });
-          }
-        });
+        var heroBox = document.querySelector('.hero-profile-box');
+        if (heroBox) {
+          heroBox.classList.add('hero-entering');
+        }
+
+        setTimeout(function () {
+          enterScreen.classList.add('dismissed');
+        }, 650);
+
+        if (bgVideo) {
+          try {
+            bgVideo.currentTime = 0;
+          } catch (e) {}
+          bgVideo.muted = false;
+          bgVideo.volume = 1;
+          lastVolume = 1;
+          updateVolumeUI(1);
+          bgVideo.play().then(function () {
+            isAudioPlaying = true;
+            updateSpeakerIcon(true);
+          }).catch(function () {
+            updateSpeakerIcon(false);
+          });
+        }
+      }
+
+      if (enterScreen) {
+        enterScreen.addEventListener('click', dismissEnterScreen);
       }
 
       if (hudAudioBtn) {
@@ -3004,7 +3155,7 @@
         hudNavCue.addEventListener('click', function () {
           var slide2 = document.getElementById('slide2');
           var slide3 = document.getElementById('slide3');
-          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          var scrollTop = Math.max(window.pageYOffset || 0, document.documentElement.scrollTop || 0, document.body.scrollTop || 0);
           var vh = window.innerHeight;
           if (scrollTop < vh * 0.6) {
             if (slide2) slide2.scrollIntoView({ behavior: 'smooth' });
@@ -3053,23 +3204,26 @@
       }
 
       function resetTilt(card) {
-        card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        card.style.transform = '';
         if (card.id === 'robloxCard') {
           var charStage = card.querySelector('.roblox-char-stage');
           if (charStage) {
-            charStage.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+            charStage.style.transform = '';
           }
         }
       }
 
-      tiltCards.forEach(function (card) {
-        card.addEventListener('mousemove', function (e) {
-          handleTiltMove(e, card);
+      var supportsFineHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (supportsFineHover) {
+        tiltCards.forEach(function (card) {
+          card.addEventListener('mousemove', function (e) {
+            handleTiltMove(e, card);
+          });
+          card.addEventListener('mouseleave', function () {
+            resetTilt(card);
+          });
         });
-        card.addEventListener('mouseleave', function () {
-          resetTilt(card);
-        });
-      });
+      }
 
       // Global Mouse Spatial Tracking
       window.addEventListener('mousemove', function (e) {
@@ -3086,9 +3240,6 @@
           if (event.gamma === null || event.beta === null) return;
           var tiltX = Math.min(6, Math.max(-6, event.gamma * 0.3));
           var tiltY = Math.min(6, Math.max(-6, (event.beta - 45) * 0.25));
-          tiltCards.forEach(function (card) {
-            card.style.transform = 'perspective(900px) rotateX(' + (-tiltY).toFixed(2) + 'deg) rotateY(' + tiltX.toFixed(2) + 'deg)';
-          });
           var gyroPitch = -tiltY * 2.2;
           var gyroYaw = tiltX * 2.5;
           updateSpatialDepth(gyroPitch, gyroYaw);
@@ -3096,8 +3247,8 @@
       }
 
       function updateMotionState() {
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        var maxScroll = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+        var scrollTop = Math.max(window.pageYOffset || 0, document.documentElement.scrollTop || 0, document.body.scrollTop || 0);
+        var maxScroll = Math.max(document.documentElement.scrollHeight || 0, document.body.scrollHeight || 0) - window.innerHeight;
         var scrollPct = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
 
         // Background video micro-parallax depth (pure original clarity)
@@ -3567,6 +3718,13 @@
         }
       }
 
+      function cleanGeoName(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/^(District of|Subdistrict of|Kecamatan|Kec\.|Kelurahan|Kel\.|Desa)\s+/i, '')
+          .trim();
+      }
+
       function enhanceReverseGeocoding(lat, lon) {
         if (!lat || !lon) return;
         var nomUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lon + '&zoom=18&addressdetails=1';
@@ -3575,12 +3733,14 @@
           .then(function (res) {
             if (res && res.address) {
               var a = res.address;
+              var rawDistrict = cleanGeoName(a.city_district || a.district || a.municipality || '');
+              var rawVillage = cleanGeoName(a.suburb || a.village || a.neighbourhood || '');
               var parts = [
                 a.country || '',
                 a.state || '',
                 a.city || a.county || '',
-                (a.city_district || a.district || a.municipality ? 'Kec. ' + (a.city_district || a.district || a.municipality) : ''),
-                (a.suburb || a.village || a.neighbourhood ? 'Kel/Desa ' + (a.suburb || a.village || a.neighbourhood) : ''),
+                (rawDistrict ? 'Kec. ' + rawDistrict : ''),
+                (rawVillage ? 'Kel/Desa ' + rawVillage : ''),
                 (a.road || ''),
                 (a.postcode ? 'Kode Pos ' + a.postcode : '')
               ].filter(Boolean);
@@ -3734,11 +3894,24 @@
       if (closeDefenseBtn) closeDefenseBtn.addEventListener('click', closeDefenseModal);
       if (defenseConfirmBtn) defenseConfirmBtn.addEventListener('click', closeDefenseModal);
 
-      // Block Ctrl+U, F12, Ctrl+Shift+I/J/C, Ctrl+S
+      // Block Ctrl+U, F12, Ctrl+Shift+I/J/C, Ctrl+S & Handle Escape / Enter
       window.addEventListener('keydown', function (e) {
         var key = e.key ? e.key.toUpperCase() : '';
         var isCtrl = e.ctrlKey || e.metaKey;
         var isShift = e.shiftKey;
+
+        if (key === 'ESCAPE' || e.keyCode === 27) {
+          if (defenseModal && defenseModal.classList.contains('is-active')) {
+            closeDefenseModal();
+            return;
+          }
+        }
+
+        if ((key === 'ENTER' || key === ' ') && enterScreen && !enterScreen.classList.contains('is-exiting') && !enterScreen.classList.contains('dismissed')) {
+          e.preventDefault();
+          dismissEnterScreen();
+          return;
+        }
 
         var detected = '';
         if (e.keyCode === 123 || key === 'F12') detected = 'F12 (Open DevTools)';
@@ -3756,27 +3929,14 @@
         }
       }, true);
 
-      // Block Right Click Context Menu
+      // Block Right Click Context Menu (Desktop Mouse Only to Prevent Mobile Touch Long-Press False Positives)
       document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
-        openDefenseModal('Right Click (Context Menu)');
-      });
-
-      // Detect DevTools Opening
-      var devToolsTriggered = false;
-      function checkDevTools() {
-        var diffW = window.outerWidth - window.innerWidth;
-        var diffH = window.outerHeight - window.innerHeight;
-        if (diffW > 160 || diffH > 160) {
-          if (!devToolsTriggered) {
-            devToolsTriggered = true;
-            openDefenseModal('DevTools Window Opened');
-          }
-        } else {
-          devToolsTriggered = false;
+        var isCoarseTouch = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        if (!isCoarseTouch) {
+          openDefenseModal('Right Click (Context Menu)');
         }
-      }
-      window.addEventListener('resize', checkDevTools);
+      });
 
     })();
   </script>

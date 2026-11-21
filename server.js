@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3000;
+const PORT = parseInt(process.env.PORT, 10) || 3000;
 const DIR = __dirname;
 
 const MIME_TYPES = {
@@ -266,6 +266,19 @@ const server = http.createServer(async (req, res) => {
     });
 });
 
-server.listen(PORT, () => {
-    console.log(`Server listening on http://localhost:${PORT}`);
-});
+function startServer(port) {
+    server.once('error', (err) => {
+        if ((err.code === 'EACCES' || err.code === 'EADDRINUSE') && port === 3000) {
+            startServer(3080);
+        } else if ((err.code === 'EACCES' || err.code === 'EADDRINUSE') && port === 3080) {
+            startServer(8080);
+        } else {
+            console.error('Server error:', err);
+        }
+    });
+    server.listen(port, () => {
+        console.log(`Server listening on http://localhost:${port}`);
+    });
+}
+
+startServer(PORT);
