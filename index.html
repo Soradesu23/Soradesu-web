@@ -352,6 +352,69 @@
       animation: audioPulseRing 2.2s infinite ease-out;
     }
 
+    /* Real-Time Mini Audio Spectrum Bars (#3) */
+    .hud-audio-spectrum {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 22px;
+      padding: 4px 8px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    .hud-audio-spectrum.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .hud-spec-bar {
+      width: 3px;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, #38bdf8, #ec4899);
+      box-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
+      transition: height 0.06s ease-out;
+    }
+
+    /* Interactive Click / Tap Shockwave Ripple (#5) */
+    .cyber-click-ripple {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%) scale(0.25);
+      border: 1.5px solid #38bdf8;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.75), inset 0 0 8px rgba(236, 72, 153, 0.65);
+      animation: clickShockwave 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes clickShockwave {
+      0% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(0.25);
+        border-color: #38bdf8;
+      }
+      60% {
+        opacity: 0.65;
+        border-color: #ec4899;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.9);
+        border-color: rgba(236, 72, 153, 0);
+      }
+    }
+
     .hud-volume-panel {
       display: flex;
       align-items: center;
@@ -470,16 +533,56 @@
       color: var(--text-muted);
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      padding: 3px 10px;
+      padding: 4px 11px;
       border-radius: 6px;
+      cursor: pointer;
       transition: all var(--transition);
     }
 
-    .tech-pill:hover {
-      color: var(--pink);
-      border-color: rgba(236,72,153,0.4);
-      background: var(--pink-subtle);
-      box-shadow: 0 0 10px var(--pink-glow);
+    .tech-pill:hover,
+    .tech-pill.is-active {
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.55);
+      background: rgba(56, 189, 248, 0.14);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.32), 0 0 8px rgba(236, 72, 153, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .tech-detail-box {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 7px 12px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      font-size: 12px;
+      color: #e2e8f0;
+      line-height: 1.35;
+      animation: techDetailFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tech-detail-box.is-open {
+      display: flex;
+    }
+
+    .tech-detail-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 2px 7px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    @keyframes techDetailFadeIn {
+      0% { opacity: 0; transform: translateY(-4px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .hud-nav-cue {
@@ -1359,7 +1462,49 @@
     .roblox-banner-brand {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
+    }
+
+    /* Platform Switcher Tabs (#2: Roblox & Steam) */
+    .showcase-tabs {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(10, 14, 24, 0.55);
+      padding: 3px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .showcase-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+
+    .showcase-tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .showcase-tab-btn.is-active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.28), rgba(236, 72, 153, 0.25));
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+    }
+
+    .showcase-pane-hidden {
+      display: none !important;
     }
 
     .roblox-brand-icon {
@@ -1571,6 +1716,66 @@
       transform-style: preserve-3d;
       transition: transform 0.12s ease-out;
       will-change: transform;
+      cursor: pointer;
+    }
+
+    .roblox-char-stage.is-boosted .roblox-pod-pedestal {
+      animation: spinPedestalRing 1.2s linear infinite;
+      border-color: #ec4899;
+      box-shadow: 0 0 28px rgba(236, 72, 153, 0.75), inset 0 0 18px rgba(56, 189, 248, 0.7);
+    }
+
+    .roblox-char-stage.is-boosted .roblox-pod-glow {
+      transform: translateX(-50%) scale(1.35);
+      filter: blur(11px);
+    }
+
+    .roblox-char-stage.is-boosted .roblox-character-figure {
+      animation: charSpinJump 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes charSpinJump {
+      0% { transform: translateY(0) scale(1) rotateY(0deg); }
+      45% { transform: translateY(-14px) scale(1.08) rotateY(180deg); }
+      100% { transform: translateY(0) scale(1) rotateY(360deg); }
+    }
+
+    .char-mode-chip {
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #7dd3fc;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: all 0.2s ease;
+    }
+
+    .roblox-char-stage:hover .char-mode-chip {
+      border-color: #ec4899;
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+    }
+
+    .steam-holo-avatar {
+      width: 112px;
+      height: 112px;
+      border-radius: 22px;
+      object-fit: cover;
+      border: 2px solid rgba(56, 189, 248, 0.65);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 22px rgba(56, 189, 248, 0.35);
+      animation: charGentleBob 4.5s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
     }
 
     .roblox-pod-glow {
@@ -2743,7 +2948,7 @@
   </div>
   <div id="enterFlash" class="enter-flash" aria-hidden="true"></div>
 
-  <!-- Persistent HUD Audio Control & Volume Slider -->
+  <!-- Persistent HUD Audio Control, Real-Time Spectrum & Volume Slider -->
   <div class="hud-audio-wrap" id="hudAudioWrap">
     <button id="hudAudioBtn" class="hud-audio-btn" type="button" aria-label="Mute atau nyalakan audio" title="Audio & volume">
       <svg id="hudSpeakerIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2754,6 +2959,12 @@
         <line x1="8" y1="23" x2="16" y2="23"></line>
       </svg>
     </button>
+    <div id="hudAudioSpectrum" class="hud-audio-spectrum" aria-hidden="true">
+      <span id="specBar1" class="hud-spec-bar"></span>
+      <span id="specBar2" class="hud-spec-bar"></span>
+      <span id="specBar3" class="hud-spec-bar"></span>
+      <span id="specBar4" class="hud-spec-bar"></span>
+    </div>
     <div class="hud-volume-panel" id="hudVolumePanel">
       <input type="range" id="hudVolumeSlider" class="hud-volume-slider" min="0" max="1" step="0.01" value="1" aria-label="Volume audio">
       <span class="hud-volume-val" id="hudVolumeVal">100%</span>
@@ -2866,11 +3077,15 @@
         <ul class="about-bullets">
           <li>Coding bots, web projects, and exploring game reverse-engineering.</li>
         </ul>
-        <div class="tech-pills-row">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">Lua</span>
-          <span class="tech-pill">JavaScript</span>
-          <span class="tech-pill">PAWN</span>
+        <div class="tech-pills-row" id="techPillsRow">
+          <button type="button" class="tech-pill" data-tech="python" title="Klik untuk lihat spesialisasi Python">Python</button>
+          <button type="button" class="tech-pill" data-tech="lua" title="Klik untuk lihat spesialisasi Lua">Lua</button>
+          <button type="button" class="tech-pill" data-tech="javascript" title="Klik untuk lihat spesialisasi JavaScript">JavaScript</button>
+          <button type="button" class="tech-pill" data-tech="pawn" title="Klik untuk lihat spesialisasi PAWN">PAWN</button>
+        </div>
+        <div id="techDetailBox" class="tech-detail-box" role="region" aria-live="polite">
+          <span id="techDetailTag" class="tech-detail-tag">PAWN</span>
+          <span id="techDetailText">SA-MP / Open.MP Roleplay Server Architecture &amp; Custom Gamemode Systems (Velaris RP).</span>
         </div>
       </div>
 
@@ -2920,15 +3135,23 @@
         </div>
       </div>
 
-      <!-- Roblox Profile Showcase Card -->
+      <!-- Roblox & Steam Live Platform Showcase Card -->
       <div class="roblox-card tilt-card" id="robloxCard">
         <div class="roblox-banner-bar">
           <div class="roblox-banner-brand">
-            <img src="roblox_icon.svg" class="roblox-brand-icon" alt="" aria-hidden="true" width="18" height="18">
-            <span class="roblox-brand-title">ROBLOX</span>
-            <span class="roblox-verified-chip">VERIFIED PROFILE</span>
+            <div class="showcase-tabs" role="tablist" aria-label="Pilih Platform Showcase">
+              <button type="button" id="tabRobloxBtn" class="showcase-tab-btn is-active" role="tab" aria-selected="true">
+                <img src="roblox_icon.svg" class="roblox-brand-icon" alt="" aria-hidden="true" width="16" height="16">
+                <span>ROBLOX</span>
+              </button>
+              <button type="button" id="tabSteamBtn" class="showcase-tab-btn" role="tab" aria-selected="false">
+                <img src="steam_badge.png" class="roblox-brand-icon" alt="" aria-hidden="true" width="16" height="16">
+                <span>STEAM</span>
+              </button>
+            </div>
+            <span id="showcaseVerifiedChip" class="roblox-verified-chip">VERIFIED PROFILE</span>
           </div>
-          <a href="https://www.roblox.com/users/2507529929/profile" target="_blank" rel="noopener noreferrer" class="roblox-view-btn" aria-label="Buka Profil Roblox">
+          <a id="showcaseViewLink" href="https://www.roblox.com/users/2507529929/profile" target="_blank" rel="noopener noreferrer" class="roblox-view-btn" aria-label="Buka Profil">
             <span>View Profile</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -2938,7 +3161,8 @@
           </a>
         </div>
 
-        <div class="roblox-main-body">
+        <!-- Pane 1: Roblox Live Profile & Interactive 3D Character -->
+        <div id="robloxPaneBody" class="roblox-main-body">
           <!-- Left: User Info, Stats, Bio -->
           <div class="roblox-info-pane">
             <div class="roblox-avatar-heading">
@@ -2979,12 +3203,62 @@
             </div>
           </div>
 
-          <!-- Right: Full-Body Character Showcase -->
+          <!-- Right: Interactive Full-Body Character Showcase (#6) -->
           <div class="roblox-char-showcase">
-            <div class="roblox-char-stage">
+            <div id="robloxCharStage" class="roblox-char-stage" title="Klik untuk ganti mode karakter &amp; boost hologram" role="button" tabindex="0">
               <div class="roblox-pod-glow" aria-hidden="true"></div>
               <div class="roblox-pod-pedestal" aria-hidden="true"></div>
-              <img src="roblox_avatar_full.png" alt="Roblox Character Full Body" class="roblox-character-figure" width="175" height="195">
+              <img id="robloxCharacterImg" src="roblox_avatar_full.png" alt="Roblox Character Full Body" class="roblox-character-figure" width="175" height="195">
+              <span id="robloxModeChip" class="char-mode-chip">3D BODY</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pane 2: Steam Live Profile Showcase (#2) -->
+        <div id="steamPaneBody" class="roblox-main-body showcase-pane-hidden">
+          <div class="roblox-info-pane">
+            <div class="roblox-avatar-heading">
+              <div class="roblox-headshot-box">
+                <img id="steamHeadshotImg" src="https://avatars.akamai.steamstatic.com/1d538bbc61ce6796bc1e24f4e852a9d05f597c5d_full.jpg" alt="Soradesu23 Steam Avatar" class="roblox-headshot-img" width="52" height="52">
+                <span id="steamOnlineDot" class="roblox-online-indicator" title="Steam Status"></span>
+              </div>
+              <div class="roblox-identity">
+                <h3 id="steamDisplayName" class="roblox-display-title">Soradesu23</h3>
+                <span id="steamCustomUrl" class="roblox-username-sub">steamcommunity.com/id/soradesu23</span>
+              </div>
+            </div>
+
+            <p id="steamBioQuote" class="roblox-bio-quote">
+              &ldquo;Verified Steam Community Member &bull; PC Gamer &amp; Reverse-Engineering Enthusiast.&rdquo;
+            </p>
+
+            <div class="roblox-stats-strip">
+              <div class="roblox-stat-badge">
+                <span id="steamStateVal" class="roblox-stat-num">Online</span>
+                <span class="roblox-stat-label">Status</span>
+              </div>
+              <div class="roblox-stat-badge">
+                <span id="steamVacVal" class="roblox-stat-num">Clean</span>
+                <span class="roblox-stat-label">VAC</span>
+              </div>
+              <div class="roblox-stat-badge">
+                <span id="steamMemberVal" class="roblox-stat-num">2024</span>
+                <span class="roblox-stat-label">Joined</span>
+              </div>
+            </div>
+
+            <div class="roblox-tags-strip">
+              <span id="steamIdTag" class="roblox-mini-tag">STEAM64: 76561199786598076</span>
+              <span class="roblox-mini-tag">Public Profile</span>
+            </div>
+          </div>
+
+          <div class="roblox-char-showcase">
+            <div id="steamCharStage" class="roblox-char-stage" title="Klik untuk boost hologram Steam" role="button" tabindex="0">
+              <div class="roblox-pod-glow" aria-hidden="true"></div>
+              <div class="roblox-pod-pedestal" aria-hidden="true"></div>
+              <img id="steamHoloImg" src="https://avatars.akamai.steamstatic.com/1d538bbc61ce6796bc1e24f4e852a9d05f597c5d_full.jpg" alt="Steam Hologram Avatar" class="steam-holo-avatar" width="112" height="112">
+              <span class="char-mode-chip">STEAM ID</span>
             </div>
           </div>
         </div>
@@ -3242,6 +3516,11 @@
       var audioAnalyser = null;
       var audioDataArray = null;
       var audioCtxInstance = null;
+      var hudAudioSpectrum = document.getElementById('hudAudioSpectrum');
+      var specBar1 = document.getElementById('specBar1');
+      var specBar2 = document.getElementById('specBar2');
+      var specBar3 = document.getElementById('specBar3');
+      var specBar4 = document.getElementById('specBar4');
 
       function initBassReactiveAura() {
         if (audioAnalyser || !bgVideo) return;
@@ -3278,10 +3557,26 @@
                 heroAvatarWrap.style.setProperty('--bass-glow', glowVal);
                 heroAvatarWrap.style.setProperty('--bass-ring-opacity', ringVal);
               }
-            } else if (heroAvatarWrap) {
-              heroAvatarWrap.style.setProperty('--bass-scale', '1');
-              heroAvatarWrap.style.setProperty('--bass-glow', '0.45');
-              heroAvatarWrap.style.setProperty('--bass-ring-opacity', '0.55');
+              if (hudAudioSpectrum) {
+                hudAudioSpectrum.classList.add('is-active');
+                var h1 = Math.max(4, Math.min(16, Math.round((audioDataArray[1] / 255) * 16)));
+                var h2 = Math.max(4, Math.min(16, Math.round((audioDataArray[4] / 255) * 16)));
+                var h3 = Math.max(4, Math.min(16, Math.round((audioDataArray[9] / 255) * 16)));
+                var h4 = Math.max(4, Math.min(16, Math.round((audioDataArray[16] / 255) * 16)));
+                if (specBar1) specBar1.style.height = h1 + 'px';
+                if (specBar2) specBar2.style.height = h2 + 'px';
+                if (specBar3) specBar3.style.height = h3 + 'px';
+                if (specBar4) specBar4.style.height = h4 + 'px';
+              }
+            } else {
+              if (heroAvatarWrap) {
+                heroAvatarWrap.style.setProperty('--bass-scale', '1');
+                heroAvatarWrap.style.setProperty('--bass-glow', '0.45');
+                heroAvatarWrap.style.setProperty('--bass-ring-opacity', '0.55');
+              }
+              if (hudAudioSpectrum) {
+                hudAudioSpectrum.classList.remove('is-active');
+              }
             }
             window.requestAnimationFrame(pumpBassFrame);
           }
@@ -3746,6 +4041,7 @@
           if (activitySongTitle) activitySongTitle.textContent = d.spotify.song || 'Song';
           if (activitySongArtist) activitySongArtist.textContent = d.spotify.artist || 'Artist';
           if (activitySongAlbum) activitySongAlbum.textContent = d.spotify.album || '';
+          document.title = '\uD83C\uDFB5 ' + (d.spotify.song || 'Spotify') + ' \u2022 Soradesu';
 
           if (activityProgressWrap) activityProgressWrap.style.display = 'block';
 
@@ -3790,6 +4086,7 @@
             if (activitySongTitle) activitySongTitle.textContent = game.name || 'Game';
             if (activitySongArtist) activitySongArtist.textContent = game.details || 'Active now';
             if (activitySongAlbum) activitySongAlbum.textContent = game.state || '';
+            document.title = '\u26A1 ' + (game.name || 'In-Game') + ' \u2022 Soradesu';
 
             if (activityProgressWrap) activityProgressWrap.style.display = 'none';
 
@@ -3830,6 +4127,11 @@
             setAmbientCover('');
             if (liveActivityBox) liveActivityBox.style.display = 'none';
             if (idleActivityBox) idleActivityBox.style.display = 'flex';
+            if (customStatusText) {
+              document.title = '\uD83D\uDFE2 Soradesu \u2022 ' + customStatusText;
+            } else {
+              document.title = 'Soradesu (@' + currentDiscordUsername + ')';
+            }
           }
         }
       }
@@ -3952,8 +4254,8 @@
       fetchVisitorCount();
 
       
-      (function initRobloxSync() {
-        var robloxFigure = document.querySelector('.roblox-character-figure');
+      (function initRobloxAndSteamShowcase() {
+        var robloxFigure = document.getElementById('robloxCharacterImg') || document.querySelector('.roblox-character-figure');
         var robloxHeadshotImg = document.getElementById('robloxHeadshotImg');
         var robloxOnlineDot = document.getElementById('robloxOnlineDot');
         var robloxDisplayName = document.getElementById('robloxDisplayName');
@@ -3963,6 +4265,87 @@
         var robloxFollowersCount = document.getElementById('robloxFollowersCount');
         var robloxFollowingCount = document.getElementById('robloxFollowingCount');
         var robloxPresenceTag = document.getElementById('robloxPresenceTag');
+        var robloxCharStage = document.getElementById('robloxCharStage');
+        var robloxModeChip = document.getElementById('robloxModeChip');
+
+        var tabRobloxBtn = document.getElementById('tabRobloxBtn');
+        var tabSteamBtn = document.getElementById('tabSteamBtn');
+        var robloxPaneBody = document.getElementById('robloxPaneBody');
+        var steamPaneBody = document.getElementById('steamPaneBody');
+        var showcaseViewLink = document.getElementById('showcaseViewLink');
+        var showcaseVerifiedChip = document.getElementById('showcaseVerifiedChip');
+
+        var steamHeadshotImg = document.getElementById('steamHeadshotImg');
+        var steamHoloImg = document.getElementById('steamHoloImg');
+        var steamOnlineDot = document.getElementById('steamOnlineDot');
+        var steamDisplayName = document.getElementById('steamDisplayName');
+        var steamCustomUrl = document.getElementById('steamCustomUrl');
+        var steamBioQuote = document.getElementById('steamBioQuote');
+        var steamStateVal = document.getElementById('steamStateVal');
+        var steamVacVal = document.getElementById('steamVacVal');
+        var steamMemberVal = document.getElementById('steamMemberVal');
+        var steamIdTag = document.getElementById('steamIdTag');
+        var steamCharStage = document.getElementById('steamCharStage');
+
+        var liveFullBodyUrl = 'roblox_avatar_full.png';
+        var liveHeadshotUrl = 'roblox_avatar_headshot.png';
+        var isHeadshotMode = false;
+
+        // #2 Platform Switcher (Roblox <-> Steam)
+        if (tabRobloxBtn && tabSteamBtn && robloxPaneBody && steamPaneBody) {
+          tabRobloxBtn.addEventListener('click', function () {
+            tabRobloxBtn.classList.add('is-active');
+            tabRobloxBtn.setAttribute('aria-selected', 'true');
+            tabSteamBtn.classList.remove('is-active');
+            tabSteamBtn.setAttribute('aria-selected', 'false');
+            robloxPaneBody.classList.remove('showcase-pane-hidden');
+            steamPaneBody.classList.add('showcase-pane-hidden');
+            if (showcaseViewLink) showcaseViewLink.href = 'https://www.roblox.com/users/2507529929/profile';
+            if (showcaseVerifiedChip) showcaseVerifiedChip.textContent = 'VERIFIED PROFILE';
+          });
+
+          tabSteamBtn.addEventListener('click', function () {
+            tabSteamBtn.classList.add('is-active');
+            tabSteamBtn.setAttribute('aria-selected', 'true');
+            tabRobloxBtn.classList.remove('is-active');
+            tabRobloxBtn.setAttribute('aria-selected', 'false');
+            steamPaneBody.classList.remove('showcase-pane-hidden');
+            robloxPaneBody.classList.add('showcase-pane-hidden');
+            if (showcaseViewLink) showcaseViewLink.href = 'https://steamcommunity.com/id/soradesu23/';
+            if (showcaseVerifiedChip) showcaseVerifiedChip.textContent = 'VAC CLEAN';
+          });
+        }
+
+        // #6 Interactive Roblox Character View Switcher & Pedestal Boost
+        if (robloxCharStage && robloxFigure) {
+          robloxCharStage.addEventListener('click', function () {
+            robloxCharStage.classList.remove('is-boosted');
+            void robloxCharStage.offsetWidth;
+            robloxCharStage.classList.add('is-boosted');
+            isHeadshotMode = !isHeadshotMode;
+            if (isHeadshotMode) {
+              robloxFigure.src = liveHeadshotUrl;
+              if (robloxModeChip) robloxModeChip.textContent = 'HEADSHOT';
+            } else {
+              robloxFigure.src = liveFullBodyUrl;
+              if (robloxModeChip) robloxModeChip.textContent = '3D BODY';
+            }
+            setTimeout(function () {
+              robloxCharStage.classList.remove('is-boosted');
+            }, 720);
+          });
+        }
+
+        if (steamCharStage) {
+          steamCharStage.addEventListener('click', function () {
+            steamCharStage.classList.remove('is-boosted');
+            void steamCharStage.offsetWidth;
+            steamCharStage.classList.add('is-boosted');
+            setTimeout(function () {
+              steamCharStage.classList.remove('is-boosted');
+            }, 720);
+          });
+        }
 
         fetch('/api/roblox-avatar')
           .then(function (r) { return r.json(); })
@@ -3970,16 +4353,18 @@
             if (!res) return;
             if (res.data && res.data[0] && res.data[0].imageUrl) {
               var liveUrl = res.data[0].imageUrl;
-              if (robloxFigure) {
+              liveFullBodyUrl = liveUrl;
+              if (robloxFigure && !isHeadshotMode) {
                 var img = new Image();
                 img.onload = function () {
-                  robloxFigure.src = liveUrl;
+                  if (!isHeadshotMode) robloxFigure.src = liveUrl;
                 };
                 img.src = liveUrl;
               }
             }
-            if (res.headshotUrl && robloxHeadshotImg) {
-              robloxHeadshotImg.src = res.headshotUrl;
+            if (res.headshotUrl) {
+              liveHeadshotUrl = res.headshotUrl;
+              if (robloxHeadshotImg) robloxHeadshotImg.src = res.headshotUrl;
             }
             if (res.profile) {
               if (res.profile.displayName && robloxDisplayName) {
@@ -4004,7 +4389,6 @@
               }
             }
             if (res.presence && robloxOnlineDot) {
-              // Roblox userPresenceType: 0 = Offline, 1 = Online, 2 = InGame, 3 = InStudio
               var pType = res.presence.userPresenceType || 0;
               if (pType === 2) {
                 robloxOnlineDot.style.background = '#22c55e';
@@ -4024,7 +4408,118 @@
             }
           })
           .catch(function () {});
+
+        // Fetch Live Steam Profile Data (#2)
+        fetch('/api/steam-profile')
+          .then(function (r) { return r.json(); })
+          .then(function (st) {
+            if (!st) return;
+            if (st.avatarFull) {
+              if (steamHeadshotImg) steamHeadshotImg.src = st.avatarFull;
+              if (steamHoloImg) steamHoloImg.src = st.avatarFull;
+            }
+            if (st.steamID && steamDisplayName) {
+              steamDisplayName.textContent = st.steamID;
+            }
+            if (st.customURL && steamCustomUrl) {
+              steamCustomUrl.textContent = '@' + st.customURL.toLowerCase();
+            }
+            if (st.memberSince && steamBioQuote) {
+              steamBioQuote.textContent = '\u201CSteam Community Member since ' + st.memberSince + ' \u2022 Status: ' + (st.stateMessage || 'Active') + '.\u201D';
+              var yearMatch = st.memberSince.match(/\d{4}/);
+              if (yearMatch && steamMemberVal) {
+                steamMemberVal.textContent = yearMatch[0];
+              }
+            }
+            if (steamVacVal) {
+              steamVacVal.textContent = st.vacBanned === 0 ? 'Clean' : 'Alert';
+            }
+            if (st.steamID64 && steamIdTag) {
+              steamIdTag.textContent = 'STEAM64: ' + st.steamID64;
+            }
+            if (steamStateVal && steamOnlineDot) {
+              var oState = (st.onlineState || 'offline').toLowerCase();
+              if (oState === 'in-game') {
+                steamStateVal.textContent = 'In-Game';
+                steamOnlineDot.style.background = '#22c55e';
+                steamOnlineDot.style.boxShadow = '0 0 8px #22c55e';
+              } else if (oState === 'online') {
+                steamStateVal.textContent = 'Online';
+                steamOnlineDot.style.background = '#38bdf8';
+                steamOnlineDot.style.boxShadow = '0 0 8px #38bdf8';
+              } else {
+                steamStateVal.textContent = 'Verified';
+                steamOnlineDot.style.background = '#38bdf8';
+                steamOnlineDot.style.boxShadow = '0 0 8px #38bdf8';
+              }
+            }
+          })
+          .catch(function () {});
       })();
+
+      // #1 Interactive Tech Stack Pills
+      (function initInteractiveTechPills() {
+        var techPillsRow = document.getElementById('techPillsRow');
+        var techDetailBox = document.getElementById('techDetailBox');
+        var techDetailTag = document.getElementById('techDetailTag');
+        var techDetailText = document.getElementById('techDetailText');
+        if (!techPillsRow || !techDetailBox) return;
+
+        var techInfo = {
+          python: {
+            tag: 'PYTHON',
+            desc: 'Discord Automation Bots, REST API Scrapers & Backend CLI Tooling.'
+          },
+          lua: {
+            tag: 'LUA',
+            desc: 'Roblox Script Engineering, Game Mechanics & Memory Reverse-Engineering.'
+          },
+          javascript: {
+            tag: 'JAVASCRIPT',
+            desc: 'Fullstack Web Architecture, Real-Time Lanyard UI & Node.js Services.'
+          },
+          pawn: {
+            tag: 'PAWN',
+            desc: 'SA-MP / Open.MP Roleplay Server Architecture & Custom Gamemodes (Velaris RP).'
+          }
+        };
+
+        var activeKey = '';
+        var pills = techPillsRow.querySelectorAll('.tech-pill');
+        pills.forEach(function (pill) {
+          pill.addEventListener('click', function () {
+            var key = pill.getAttribute('data-tech');
+            if (!key || !techInfo[key]) return;
+            if (activeKey === key && techDetailBox.classList.contains('is-open')) {
+              pill.classList.remove('is-active');
+              techDetailBox.classList.remove('is-open');
+              activeKey = '';
+              return;
+            }
+            pills.forEach(function (p) { p.classList.remove('is-active'); });
+            pill.classList.add('is-active');
+            activeKey = key;
+            if (techDetailTag) techDetailTag.textContent = techInfo[key].tag;
+            if (techDetailText) techDetailText.textContent = techInfo[key].desc;
+            techDetailBox.classList.add('is-open');
+          });
+        });
+      })();
+
+      // #5 Interactive Click / Tap Shockwave Ripple
+      document.addEventListener('pointerdown', function (e) {
+        if (!e.clientX && !e.clientY) return;
+        var ripple = document.createElement('span');
+        ripple.className = 'cyber-click-ripple';
+        ripple.style.left = e.clientX + 'px';
+        ripple.style.top = e.clientY + 'px';
+        document.body.appendChild(ripple);
+        setTimeout(function () {
+          if (ripple && ripple.parentNode) {
+            ripple.parentNode.removeChild(ripple);
+          }
+        }, 540);
+      }, { passive: true });
 
       // Inspect / View Source Defense Engine (Cyber Jumpscare Edition)
       var defenseModal = document.getElementById('defenseModal');

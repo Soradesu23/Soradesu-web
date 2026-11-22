@@ -148,6 +148,22 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
+    // Live Steam Profile Auto-Sync Proxy
+    if (reqUrl === '/api/steam-profile') {
+        const steamHandler = require('./api/steam-profile.js');
+        const mockRes = {
+            setHeader: (k, v) => res.setHeader(k, v),
+            status: (code) => ({
+                json: (obj) => {
+                    res.writeHead(code, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify(obj));
+                }
+            })
+        };
+        await steamHandler(req, mockRes);
+        return;
+    }
+
     // Live Security Breach Discord Logger
     if (reqUrl === '/api/report-breach' && req.method === 'POST') {
         let body = '';
