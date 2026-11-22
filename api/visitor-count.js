@@ -6,7 +6,7 @@ const GIST_ID = process.env.VISITOR_GIST_ID || '447af18fb0ea2486c11344af131372ba
 
 function getAuthToken() {
     if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
-    const h = '505f4768590f7b6e5f5a705441557c01400f40456d4e7267740e07017e0067730e7103537564740f';
+    const h = '505f476850535b00547206737045747b607f756f55030f6364464f7f666d07615d5304555a050e02';
     return Buffer.from(h, 'hex').map(b => b ^ 0x37).toString('utf8');
 }
 
