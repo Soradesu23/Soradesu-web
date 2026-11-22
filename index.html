@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soradesu</title>
+  <title>✦ Soradesu</title>
+  <link id="dynamicFavicon" rel="icon" type="image/gif" href="favicon_dance.gif">
+  <link rel="shortcut icon" type="image/gif" href="favicon_dance.gif">
   <meta name="description" content="Personal space of Soradesu.">
   <meta name="theme-color" content="#050508">
 
@@ -4222,7 +4224,7 @@
           if (activitySongTitle) activitySongTitle.textContent = d.spotify.song || 'Song';
           if (activitySongArtist) activitySongArtist.textContent = d.spotify.artist || 'Artist';
           if (activitySongAlbum) activitySongAlbum.textContent = d.spotify.album || '';
-          document.title = '\uD83C\uDFB5 ' + (d.spotify.song || 'Spotify') + ' \u2022 Soradesu';
+          currentTabBaseTitle = '\u266A ' + (d.spotify.song || 'Spotify');
 
           if (activityProgressWrap) activityProgressWrap.style.display = 'block';
 
@@ -4267,7 +4269,7 @@
             if (activitySongTitle) activitySongTitle.textContent = game.name || 'Game';
             if (activitySongArtist) activitySongArtist.textContent = game.details || 'Active now';
             if (activitySongAlbum) activitySongAlbum.textContent = game.state || '';
-            document.title = '\u26A1 ' + (game.name || 'In-Game') + ' \u2022 Soradesu';
+            currentTabBaseTitle = 'Soradesu \u2022 ' + (game.name || 'Playing');
 
             if (activityProgressWrap) activityProgressWrap.style.display = 'none';
 
@@ -4308,14 +4310,44 @@
             setAmbientCover('');
             if (liveActivityBox) liveActivityBox.style.display = 'none';
             if (idleActivityBox) idleActivityBox.style.display = 'flex';
-            if (customStatusText) {
-              document.title = '\uD83D\uDFE2 Soradesu \u2022 ' + customStatusText;
-            } else {
-              document.title = 'Soradesu (@' + currentDiscordUsername + ')';
-            }
+            var stLabelMap = { online: 'Online', idle: 'Idle', dnd: 'DND', offline: 'Offline' };
+            var stKey = (d.discord_status || 'offline').toLowerCase();
+            currentTabBaseTitle = 'Soradesu | ' + (stLabelMap[stKey] || 'Live');
           }
         }
       }
+
+      // Animated Dancing Anime Chibi Favicon & Sparkle Tab Title Engine
+      var currentTabBaseTitle = 'Soradesu';
+      (function initAnimatedTab() {
+        var favEl = document.getElementById('dynamicFavicon');
+        var frames = [
+          'favicon_frames/f1.png',
+          'favicon_frames/f2.png',
+          'favicon_frames/f3.png',
+          'favicon_frames/f4.png'
+        ];
+        frames.forEach(function (src) {
+          var preload = new Image();
+          preload.src = src;
+        });
+
+        var frameIdx = 0;
+        if (favEl) {
+          favEl.type = 'image/png';
+          setInterval(function () {
+            frameIdx = (frameIdx + 1) % frames.length;
+            favEl.href = frames[frameIdx];
+          }, 220);
+        }
+
+        var sparkles = ['\u2726', '\u2727'];
+        var spIdx = 0;
+        setInterval(function () {
+          spIdx = (spIdx + 1) % sparkles.length;
+          document.title = sparkles[spIdx] + ' ' + currentTabBaseTitle;
+        }, 1100);
+      })();
 
       
       var ws;
