@@ -1358,6 +1358,137 @@
       object-fit: cover;
     }
 
+    /* Authentic Discord Presence Shapes (Online / Idle / DND / Offline) */
+    .widget-presence-dot {
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #71717a;
+      border: 3px solid #121218;
+      z-index: 3;
+      transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hero-presence-dot[data-status="online"],
+    .widget-presence-dot[data-status="online"] {
+      background: #23a55a;
+      box-shadow: 0 0 8px rgba(35, 165, 90, 0.75);
+    }
+
+    .hero-presence-dot[data-status="idle"],
+    .widget-presence-dot[data-status="idle"] {
+      background: #f0b232;
+      box-shadow: 0 0 8px rgba(240, 178, 50, 0.7);
+    }
+
+    .hero-presence-dot[data-status="idle"]::after,
+    .widget-presence-dot[data-status="idle"]::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 62%;
+      height: 62%;
+      border-radius: 50%;
+      background: #121218;
+    }
+
+    .hero-presence-dot[data-status="dnd"],
+    .widget-presence-dot[data-status="dnd"] {
+      background: #f23f43;
+      box-shadow: 0 0 8px rgba(242, 63, 67, 0.75);
+    }
+
+    .hero-presence-dot[data-status="dnd"]::after,
+    .widget-presence-dot[data-status="dnd"]::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 62%;
+      height: 2.5px;
+      border-radius: 2px;
+      background: #121218;
+    }
+
+    .hero-presence-dot[data-status="offline"],
+    .widget-presence-dot[data-status="offline"] {
+      background: #71717a;
+      box-shadow: none;
+    }
+
+    .hero-presence-dot[data-status="offline"]::after,
+    .widget-presence-dot[data-status="offline"]::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48%;
+      height: 48%;
+      border-radius: 50%;
+      background: #121218;
+    }
+
+    .widget-presence-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+
+    .widget-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 1px 7px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(113, 113, 122, 0.18);
+      border: 1px solid rgba(113, 113, 122, 0.35);
+      color: #a1a1aa;
+      flex-shrink: 0;
+    }
+
+    .widget-status-pill[data-status="online"] {
+      background: rgba(35, 165, 90, 0.16);
+      border-color: rgba(35, 165, 90, 0.45);
+      color: #4ade80;
+    }
+
+    .widget-status-pill[data-status="idle"] {
+      background: rgba(240, 178, 50, 0.16);
+      border-color: rgba(240, 178, 50, 0.45);
+      color: #facc15;
+    }
+
+    .widget-status-pill[data-status="dnd"] {
+      background: rgba(242, 63, 67, 0.16);
+      border-color: rgba(242, 63, 67, 0.45);
+      color: #f87171;
+    }
+
+    .widget-platform-tag {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      color: #7dd3fc;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      padding: 1px 6px;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+
     .widget-details {
       min-width: 0;
     }
@@ -3007,13 +3138,13 @@
         </div>
 
         <div id="heroStatusBubble" class="hero-status-bubble" title="Klik untuk salin username Discord">
-          <span class="status-bubble-dot" aria-hidden="true"></span>
+          <span id="heroStatusBubbleDot" class="status-bubble-dot" aria-hidden="true"></span>
           <span id="heroStatusBubbleText" class="status-bubble-text">soradesu.vercel.app</span>
         </div>
 
         <img id="userAvatar" class="hero-avatar-img" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar Soradesu" width="98" height="98">
         <img src="avatar_decoration.png" class="hero-avatar-decor" alt="" aria-hidden="true" width="125" height="125">
-        <span id="discordStatusIndicator" class="hero-presence-dot" title="Offline" aria-label="Status: Offline"></span>
+        <span id="discordStatusIndicator" class="hero-presence-dot" data-status="offline" title="Status: Offline" aria-label="Status: Offline"></span>
       </div>
 
       <!-- Display Name & Badges Pill -->
@@ -3096,6 +3227,7 @@
           <div class="widget-left">
             <div class="widget-avatar-box">
               <img id="widgetAvatar" class="widget-avatar-img" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar" width="48" height="48">
+              <span id="widgetStatusDot" class="widget-presence-dot" data-status="offline" title="Status: Offline" aria-label="Status: Offline"></span>
             </div>
             <div class="widget-details">
               <div class="widget-name-badges-row">
@@ -3110,7 +3242,11 @@
                   <img src="badge_real_plus1.png" class="badge-mini-img" alt="More Badges" title="More Badges (+1)" width="14" height="14">
                 </div>
               </div>
-              <div id="widgetActivity" class="widget-sub">Online</div>
+              <div class="widget-presence-row">
+                <span id="widgetStatusPill" class="widget-status-pill" data-status="offline">Offline</span>
+                <span id="widgetPlatformTag" class="widget-platform-tag" style="display: none;">Desktop</span>
+                <span id="widgetActivity" class="widget-sub"></span>
+              </div>
             </div>
           </div>
           <a href="https://discord.com/users/754194203302690846" target="_blank" rel="noopener noreferrer" class="btn-green-join">
@@ -3922,18 +4058,62 @@
         return min + ':' + (sec < 10 ? '0' : '') + sec;
       }
 
-      function updateStatusDot(status) {
+      var heroStatusBubbleDot = document.getElementById('heroStatusBubbleDot');
+      var widgetStatusDot = document.getElementById('widgetStatusDot');
+      var widgetStatusPill = document.getElementById('widgetStatusPill');
+      var widgetPlatformTag = document.getElementById('widgetPlatformTag');
+
+      function updateStatusDot(status, lanyardData) {
+        var normStatus = (status || 'offline').toLowerCase();
+        if (normStatus !== 'online' && normStatus !== 'idle' && normStatus !== 'dnd') {
+          normStatus = 'offline';
+        }
         var colors = {
           online: '#23a55a',
           idle: '#f0b232',
           dnd: '#f23f43',
           offline: '#71717a'
         };
-        var color = colors[status] || colors.offline;
+        var labels = {
+          online: 'Online',
+          idle: 'Idle',
+          dnd: 'DND',
+          offline: 'Offline'
+        };
+        var color = colors[normStatus];
+        var label = labels[normStatus];
+
         if (discordStatusIndicator) {
+          discordStatusIndicator.setAttribute('data-status', normStatus);
           discordStatusIndicator.style.backgroundColor = color;
-          discordStatusIndicator.title = 'Status: ' + status;
-          discordStatusIndicator.setAttribute('aria-label', 'Status: ' + status);
+          discordStatusIndicator.title = 'Status: ' + label;
+          discordStatusIndicator.setAttribute('aria-label', 'Status: ' + label);
+        }
+        if (heroStatusBubbleDot) {
+          heroStatusBubbleDot.style.backgroundColor = color;
+          heroStatusBubbleDot.style.boxShadow = '0 0 8px ' + color;
+        }
+        if (widgetStatusDot) {
+          widgetStatusDot.setAttribute('data-status', normStatus);
+          widgetStatusDot.style.backgroundColor = color;
+          widgetStatusDot.title = 'Status: ' + label;
+          widgetStatusDot.setAttribute('aria-label', 'Status: ' + label);
+        }
+        if (widgetStatusPill) {
+          widgetStatusPill.setAttribute('data-status', normStatus);
+          widgetStatusPill.textContent = label;
+        }
+        if (widgetPlatformTag && lanyardData) {
+          var platforms = [];
+          if (lanyardData.active_on_discord_desktop) platforms.push('PC');
+          if (lanyardData.active_on_discord_mobile) platforms.push('Mobile');
+          if (lanyardData.active_on_discord_web) platforms.push('Web');
+          if (platforms.length > 0 && normStatus !== 'offline') {
+            widgetPlatformTag.textContent = platforms.join(' + ');
+            widgetPlatformTag.style.display = 'inline-flex';
+          } else {
+            widgetPlatformTag.style.display = 'none';
+          }
         }
       }
 
@@ -3951,7 +4131,7 @@
         if (!d) return;
 
         
-        updateStatusDot(d.discord_status || 'offline');
+        updateStatusDot(d.discord_status || 'offline', d);
 
         
         if (d.discord_user) {
@@ -3997,7 +4177,8 @@
           customStatusText = ((customAct.emoji ? (customAct.emoji.name + ' ') : '') + (customAct.state || '')).trim();
         }
         if (widgetActivity) {
-          widgetActivity.textContent = customStatusText || (d.discord_status || 'offline').toUpperCase();
+          widgetActivity.textContent = customStatusText || '';
+          widgetActivity.style.display = customStatusText ? 'inline' : 'none';
         }
         if (heroStatusBubbleText) {
           if (customStatusText) {
