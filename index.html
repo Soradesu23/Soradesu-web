@@ -3031,6 +3031,183 @@
       }
     }
 
+    /* ==========================================================================
+       FLUID MOTION PHYSICS, SPECULAR GLASS & MICRO-UX UPGRADE PACK
+       ========================================================================== */
+
+    /* #5 Fluid Cyan-Pink Top Scroll Progress Bar */
+    .scroll-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2.5px;
+      width: 0%;
+      z-index: 950;
+      pointer-events: none;
+      background: linear-gradient(90deg, #38bdf8 0%, #818cf8 50%, #ec4899 100%);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.75), 0 0 8px rgba(236, 72, 153, 0.55);
+      transition: width 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* #4 VisionOS-Style Specular Top Glass Rim */
+    .widget-card,
+    .roblox-card,
+    .big-activity-card {
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+                  0 14px 36px rgba(0, 0, 0, 0.42);
+    }
+
+    .social-pill-btn {
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 6px 18px rgba(0, 0, 0, 0.3);
+      transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  background 0.25s ease,
+                  border-color 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+
+    /* #1 Liquid Glass Shimmer Sweep on Interactive Buttons */
+    .btn-green-join,
+    .roblox-view-btn,
+    .btn-back-to-top {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  filter 0.25s ease,
+                  background 0.25s ease,
+                  border-color 0.25s ease,
+                  box-shadow 0.25s ease,
+                  color 0.25s ease;
+    }
+
+    .social-pill-btn:not(.visitor-counter-pill)::before,
+    .btn-green-join::before,
+    .roblox-view-btn::before,
+    .btn-back-to-top::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -130%;
+      width: 65%;
+      height: 100%;
+      background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.24) 50%, transparent 100%);
+      transform: skewX(-22deg);
+      pointer-events: none;
+      transition: left 0.58s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .social-pill-btn:not(.visitor-counter-pill):hover::before,
+    .btn-green-join:hover::before,
+    .roblox-view-btn:hover::before,
+    .btn-back-to-top:hover::before {
+      left: 155%;
+    }
+
+    /* #2 Choreographed Staggered Entrance (Slide 2 Waterfall) */
+    .slide-section .tech-pill {
+      opacity: 0;
+      transform: translateY(10px) scale(0.92);
+      transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  color 0.2s ease,
+                  border-color 0.2s ease,
+                  background 0.2s ease,
+                  box-shadow 0.2s ease;
+    }
+
+    .slide-section.is-visible .tech-pill {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .slide-section.is-visible .tech-pill:nth-child(1) { transition-delay: 0.14s, 0.14s, 0s, 0s, 0s, 0s; }
+    .slide-section.is-visible .tech-pill:nth-child(2) { transition-delay: 0.20s, 0.20s, 0s, 0s, 0s, 0s; }
+    .slide-section.is-visible .tech-pill:nth-child(3) { transition-delay: 0.26s, 0.26s, 0s, 0s, 0s, 0s; }
+    .slide-section.is-visible .tech-pill:nth-child(4) { transition-delay: 0.32s, 0.32s, 0s, 0s, 0s, 0s; }
+
+    .slide-section .widgets-grid .widget-card {
+      opacity: 0;
+      transform: translateY(18px) scale(0.97);
+    }
+
+    .slide-section.is-visible .widgets-grid .widget-card {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  border-color 0.25s ease,
+                  background 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+
+    .slide-section.is-visible .widgets-grid .widget-card:nth-child(1) { transition-delay: 0.22s, 0.22s, 0s, 0s, 0s; }
+    .slide-section.is-visible .widgets-grid .widget-card:nth-child(2) { transition-delay: 0.32s, 0.32s, 0s, 0s, 0s; }
+
+    /* #3 Smooth Morph Transition for [ROBLOX] <-> [STEAM] Platform Switcher */
+    @keyframes paneMorphIn {
+      0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.985);
+        filter: blur(5px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+      }
+    }
+
+    .pane-morph-in {
+      animation: paneMorphIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* #6 Custom Animated Glass Badge Tooltip Popover (PC Hover & Mobile Tap) */
+    .badge-tooltip-popover {
+      position: fixed;
+      z-index: 9990;
+      padding: 6px 12px;
+      border-radius: 10px;
+      background: rgba(12, 16, 28, 0.92);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18),
+                  0 10px 28px rgba(0, 0, 0, 0.65),
+                  0 0 16px rgba(56, 189, 248, 0.25);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #f8fafc;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -100%) translateY(4px) scale(0.88);
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .badge-tooltip-popover.is-visible {
+      opacity: 1;
+      transform: translate(-50%, -100%) translateY(-8px) scale(1);
+    }
+
+    .badge-tooltip-popover::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      background: rgba(12, 16, 28, 0.94);
+      border-right: 1px solid rgba(56, 189, 248, 0.45);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.45);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation: none !important;
@@ -3044,7 +3221,9 @@
       .slide-section .hero-bio,
       .slide-section .hero-socials-row,
       .slide-section .about-bullets,
+      .slide-section .tech-pill,
       .slide-section .widgets-grid,
+      .slide-section .widgets-grid .widget-card,
       .slide-section .roblox-card,
       .slide-section .sub-divider,
       .slide-section .big-activity-card {
@@ -3059,6 +3238,11 @@
   </style>
 </head>
 <body>
+
+  <!-- #5 Fluid Cyan-Pink Top Scroll Progress Bar -->
+  <div id="scrollProgressBar" class="scroll-progress-bar" aria-hidden="true"></div>
+  <!-- #6 Custom Animated Glass Badge Tooltip -->
+  <div id="badgeTooltip" class="badge-tooltip-popover" role="tooltip" aria-hidden="true"></div>
 
   <!-- Fullscreen Parallax Background Video -->
   <div class="bg-video-container">
@@ -3956,10 +4140,17 @@
         }, { passive: true });
       }
 
+      var scrollProgressBar = document.getElementById('scrollProgressBar');
+
       function updateMotionState() {
         var scrollTop = Math.max(window.pageYOffset || 0, document.documentElement.scrollTop || 0, document.body.scrollTop || 0);
         var maxScroll = Math.max(document.documentElement.scrollHeight || 0, document.body.scrollHeight || 0) - window.innerHeight;
         var scrollPct = maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+
+        // #5 Fluid Cyan-Pink Top Scroll Progress Bar
+        if (scrollProgressBar) {
+          scrollProgressBar.style.width = (scrollPct * 100).toFixed(2) + '%';
+        }
 
         // Background video micro-parallax depth (pure original clarity)
         if (bgVideo) {
@@ -4504,7 +4695,14 @@
         var liveHeadshotUrl = 'roblox_avatar_headshot.png';
         var isHeadshotMode = false;
 
-        // #2 Platform Switcher (Roblox <-> Steam)
+        // #2 & #3 Platform Switcher (Roblox <-> Steam) with Smooth Morph Transition
+        function triggerPaneMorph(el) {
+          if (!el) return;
+          el.classList.remove('pane-morph-in');
+          void el.offsetWidth;
+          el.classList.add('pane-morph-in');
+        }
+
         if (tabRobloxBtn && tabSteamBtn && robloxPaneBody && steamPaneBody) {
           tabRobloxBtn.addEventListener('click', function () {
             tabRobloxBtn.classList.add('is-active');
@@ -4513,6 +4711,7 @@
             tabSteamBtn.setAttribute('aria-selected', 'false');
             robloxPaneBody.classList.remove('showcase-pane-hidden');
             steamPaneBody.classList.add('showcase-pane-hidden');
+            triggerPaneMorph(robloxPaneBody);
             if (showcaseViewLink) showcaseViewLink.href = 'https://www.roblox.com/users/2507529929/profile';
             if (showcaseVerifiedChip) showcaseVerifiedChip.textContent = 'VERIFIED PROFILE';
           });
@@ -4524,6 +4723,7 @@
             tabRobloxBtn.setAttribute('aria-selected', 'false');
             steamPaneBody.classList.remove('showcase-pane-hidden');
             robloxPaneBody.classList.add('showcase-pane-hidden');
+            triggerPaneMorph(steamPaneBody);
             if (showcaseViewLink) showcaseViewLink.href = 'https://steamcommunity.com/id/soradesu23/';
             if (showcaseVerifiedChip) showcaseVerifiedChip.textContent = 'VAC CLEAN';
           });
@@ -4733,6 +4933,76 @@
           }
         }, 540);
       }, { passive: true });
+
+      // #1 Magnetic Hover Pull Physics (Fine Pointer Desktop Only)
+      (function initMagneticButtons() {
+        if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+        var magnetEls = document.querySelectorAll('.social-pill-btn:not(.visitor-counter-pill), .btn-green-join, .roblox-view-btn, .hud-audio-btn, .btn-back-to-top');
+        magnetEls.forEach(function (el) {
+          el.addEventListener('mousemove', function (e) {
+            var rect = el.getBoundingClientRect();
+            var relX = e.clientX - rect.left - rect.width / 2;
+            var relY = e.clientY - rect.top - rect.height / 2;
+            var pullX = Math.max(-6, Math.min(6, relX * 0.16));
+            var pullY = Math.max(-5, Math.min(5, relY * 0.22));
+            el.style.transform = 'translate(' + pullX.toFixed(1) + 'px, ' + (pullY - 2).toFixed(1) + 'px) scale(1.03)';
+          });
+          el.addEventListener('mouseleave', function () {
+            el.style.transform = '';
+          });
+        });
+      })();
+
+      // #6 Custom Animated Glass Badge Tooltip Popover (PC Hover & Mobile Tap)
+      (function initBadgeTooltips() {
+        var tooltipEl = document.getElementById('badgeTooltip');
+        if (!tooltipEl) return;
+        var badges = document.querySelectorAll('.badge-img, .badge-mini-img');
+        var hideTimer = null;
+
+        function showBadgeTip(el, text) {
+          if (!text) return;
+          var rect = el.getBoundingClientRect();
+          tooltipEl.textContent = text;
+          var left = Math.max(72, Math.min(window.innerWidth - 72, rect.left + rect.width / 2));
+          tooltipEl.style.left = left + 'px';
+          tooltipEl.style.top = rect.top + 'px';
+          tooltipEl.classList.add('is-visible');
+          tooltipEl.setAttribute('aria-hidden', 'false');
+        }
+
+        function hideBadgeTip() {
+          tooltipEl.classList.remove('is-visible');
+          tooltipEl.setAttribute('aria-hidden', 'true');
+        }
+
+        badges.forEach(function (badge) {
+          var tipText = badge.getAttribute('title') || badge.getAttribute('alt') || '';
+          if (tipText) {
+            badge.setAttribute('data-badge-tip', tipText);
+            badge.removeAttribute('title');
+          }
+          badge.addEventListener('mouseenter', function () {
+            clearTimeout(hideTimer);
+            showBadgeTip(badge, badge.getAttribute('data-badge-tip'));
+          });
+          badge.addEventListener('mouseleave', function () {
+            hideBadgeTip();
+          });
+          badge.addEventListener('click', function (e) {
+            e.stopPropagation();
+            clearTimeout(hideTimer);
+            showBadgeTip(badge, badge.getAttribute('data-badge-tip'));
+            hideTimer = setTimeout(hideBadgeTip, 2200);
+          });
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!e.target || (!e.target.classList.contains('badge-img') && !e.target.classList.contains('badge-mini-img'))) {
+            hideBadgeTip();
+          }
+        });
+      })();
 
       // Inspect / View Source Defense Engine (Cyber Jumpscare Edition)
       var defenseModal = document.getElementById('defenseModal');
